@@ -6,10 +6,19 @@
     <description>Recent content on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 25 May 2020 14:00:44 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 25 May 2020 14:29:03 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java包管理</title>
+      <link>https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 25 May 2020 14:29:03 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
+      <description>包是什么? 就是把许多类放在一起打的压缩包 什么是包管理 包管理的本质就是告诉JVM如何找到所需的第三方类库 为什么要用包管理呢？ 从运行一个JAVA程序说起： JVM的工作内容: 执行一个类的字节码 加入这个过程中碰到了新的类， 加载它 那么，去哪里加载这些类呢?(通过类路径) 类路径 (Classpath) 在哪可以找到</description>
+    </item>
     
     <item>
       <title>Git常用命令</title>

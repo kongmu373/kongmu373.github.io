@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Git常用命令 | kongmu373的博客</title>
-    <meta property="og:title" content="Git常用命令 - kongmu373的博客">
+    <title>Java包管理 | kongmu373的博客</title>
+    <meta property="og:title" content="Java包管理 - kongmu373的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-05-25T14:00:44&#43;08:00'>
+    <meta property="article:published_time" content='2020-05-25T14:29:03&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-05-25T14:00:44&#43;08:00'>
+    <meta property="article:modified_time" content='2020-05-25T14:29:03&#43;08:00'>
         
     <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
-    <meta name="description" content="Git常用命令">
+    <meta name="description" content="Java包管理">
         
     <meta name="author" content="">
-    <meta property="og:url" content="https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -139,20 +139,13 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#git">git</a>
-      <ul>
-        <li><a href="#git-六行配置">git 六行配置</a></li>
-        <li><a href="#git-常用命令">git 常用命令</a></li>
-      </ul>
-    </li>
-    <li><a href="#github">GitHub</a>
-      <ul>
-        <li><a href="#存储代码">存储代码</a></li>
-        <li><a href="#ssh-key-验证身份">SSH key 验证身份</a></li>
-        <li><a href="#上传和下载代码">上传和下载代码</a></li>
-      </ul>
-    </li>
-    <li><a href="#git高级操作">git高级操作</a></li>
+    <li><a href="#包是什么">包是什么?</a></li>
+    <li><a href="#什么是包管理">什么是包管理</a></li>
+    <li><a href="#为什么要用包管理呢">为什么要用包管理呢？</a></li>
+    <li><a href="#启蒙时代">启蒙时代</a></li>
+    <li><a href="#maven----划时代的包管理">Maven &ndash; 划时代的包管理</a></li>
+    <li><a href="#maven----包冲突及解决实战">Maven &ndash; 包冲突及解决实战</a></li>
+    <li><a href="#maven----实战哪些章节是值得看的">Maven &ndash; 实战哪些章节是值得看的?</a></li>
   </ul>
 </nav>
     </div>
@@ -186,7 +179,7 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">Git常用命令</h1>
+            <h1 class="post-title">Java包管理</h1>
         </header>
         <date class="post-meta meta-date">
             2020年5月25日
@@ -200,50 +193,165 @@
         
         
         <div class="post-content">
-            <h2 id="git">git</h2>
-<h3 id="git-六行配置">git 六行配置</h3>
-<pre><code>git config --global user.name 你的英文名
-git config --global user.email 你的邮箱
-git config --global push.default simple
-git config --global core.quotepath false 
-git config --global core.editor &quot;code --wait&quot;
-git config --global core.autocrlf input
-</code></pre><h3 id="git-常用命令">git 常用命令</h3>
-<pre><code>- git config 
-- git add 路径
-- git status -sb
-- git commit -v
-- git branch x
-- git checkout x
-- git merge 
-- git commit 
-- git branch -d x
-- git log 
-- git relog 
-- git reset --hard XXXXX
-</code></pre>
-<h2 id="github">GitHub</h2>
-<h3 id="存储代码">存储代码</h3>
-<blockquote>
-<p>常用两行命令
-<code>git remote add origin git@xxxxxx</code>
-<code>git push -u origin master</code></p>
-</blockquote>
-<h3 id="ssh-key-验证身份">SSH key 验证身份</h3>
+            <h2 id="包是什么">包是什么?</h2>
 <ul>
-<li>生成 SSH key</li>
-<li>测试 SSH key</li>
+<li>就是把许多类放在一起打的压缩包</li>
 </ul>
-<h3 id="上传和下载代码">上传和下载代码</h3>
+<h2 id="什么是包管理">什么是包管理</h2>
 <ul>
-<li>git pull / git push / git clone</li>
-<li>常用4连 git add/ git commit /[git pull] / git push</li>
+<li>包管理的本质就是告诉JVM如何找到所需的第三方类库</li>
 </ul>
-<h2 id="git高级操作">git高级操作</h2>
+<h2 id="为什么要用包管理呢">为什么要用包管理呢？</h2>
+<p>从运行一个JAVA程序说起：</p>
+<ol>
+<li>
+<p>JVM的工作内容:</p>
 <ul>
-<li>设置快捷</li>
-<li>git rebose</li>
-<li>git stash / stash pop</li>
+<li>执行一个类的字节码</li>
+<li>加入这个过程中碰到了新的类， 加载它</li>
+<li>那么，去哪里加载这些类呢?(通过类路径)</li>
+</ul>
+</li>
+<li>
+<p>类路径 (Classpath)</p>
+<ul>
+<li>在哪可以找到Classpath
+<ul>
+<li>-classpath/-cp</li>
+</ul>
+</li>
+<li>类的全限定类名(目录层级) 唯一确定了这一个类</li>
+</ul>
+</li>
+<li>
+<p>传递依赖</p>
+<ul>
+<li>你依赖的类还依赖了别的类</li>
+<li>Classpath hell
+<ul>
+<li>全限定类名是类的唯一标识</li>
+<li>当多个同名类同时出现在Classpath中,就是噩梦的开始</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>也就是说，当JVM加载越来越多的类时，仅用人手一个一个去添加jar包就变得不切实际了，必须用到包管理工具。</p>
+<h2 id="启蒙时代">启蒙时代</h2>
+<ul>
+<li>Apache Ant
+<ul>
+<li>手动下载jar包，放在一个目录中</li>
+<li>写XML配置，指定编译的源代码目录，依赖的jar包，输出目录等</li>
+</ul>
+</li>
+<li>缺点
+<ul>
+<li>每个人都要自己造一套轮子</li>
+<li>依赖的第三方类库都需要手动下载，费时费力
+<ul>
+<li>假如你的应用依赖了一万个第三方的类库呢？</li>
+</ul>
+</li>
+<li>没有解决Classpath地狱</li>
+</ul>
+</li>
+</ul>
+<h2 id="maven----划时代的包管理">Maven &ndash; 划时代的包管理</h2>
+<ul>
+<li>Convention over configuration (约定优于配置)</li>
+<li>必须强调, Maven 远远不止是包管理工具</li>
+<li>Maven 的中央仓库
+<ul>
+<li>按照一定的约定存储包</li>
+</ul>
+</li>
+<li>Maven的本地仓库
+<ul>
+<li>默认位于 ~/.m2</li>
+<li>下载的第三方包放在这里进行缓存</li>
+</ul>
+</li>
+<li>Maven的包
+<ul>
+<li>按照约定为所有的包编号, 方便检索</li>
+<li>groupId/artifactId/version
+<ul>
+<li>扩展: 语义化版本 (x.y.z) (x-&gt;大版本，y-&gt;小版本, z-&gt;修bug)</li>
+</ul>
+</li>
+<li>SNAPSHOT版本 (开发版本)</li>
+</ul>
+</li>
+</ul>
+<h2 id="maven----包冲突及解决实战">Maven &ndash; 包冲突及解决实战</h2>
+<ul>
+<li>
+<p>传递性依赖的自动管理</p>
+<ul>
+<li>原则: 绝对不允许最终的classpath出现同名不同版本的jar包</li>
+</ul>
+</li>
+<li>
+<p>依赖冲突的解决</p>
+<ul>
+<li>原则：
+<ul>
+<li>分支不同时,最近的胜出.</li>
+<li>分支相同时,靠前的胜出.</li>
+</ul>
+</li>
+<li>解决方案一: 直接在dependencies 引入你想要的包</li>
+<li>解决方案二:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#000080">&lt;dependency&gt;</span>
+  ...
+  <span style="color:#000080">&lt;exclusions&gt;</span>
+      <span style="color:#000080">&lt;exclusion&gt;</span>
+          ...(排除不想引入的包 不需要版本号)
+      <span style="color:#000080">&lt;/exclusion&gt;</span>
+  <span style="color:#000080">&lt;/exclusions&gt;</span>
+<span style="color:#000080">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>
+<p>依赖的scope (依赖的隔离)</p>
+<ul>
+<li>compile (在main和test中都有效)</li>
+<li>test (只在test中有效)</li>
+<li>provided (只在编译有效，运行就没有效果了)
+<ul>
+<li>程序一般先编译，再运行，而provided 只在编译过程时发生效果</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>常见的冲突报错信息</p>
+<ul>
+<li>AbstractMethodError</li>
+<li>NoClassDefFoundError</li>
+<li>ClassNotFoundException</li>
+<li>LinkageError</li>
+</ul>
+</li>
+</ul>
+<h2 id="maven----实战哪些章节是值得看的">Maven &ndash; 实战哪些章节是值得看的?</h2>
+<ul>
+<li>5，6，7，8章(坐标和依赖/生命周期/仓库/聚合和继承)</li>
 </ul>
 
         </div>
@@ -256,6 +364,8 @@ git config --global core.autocrlf input
 <div class="post-archive">
     <h2>See Also</h2>
     <ul class="listing">
+        
+        <li><a href="/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Git常用命令</a></li>
         
         <li><a href="/posts/first-blood/">First Blood</a></li>
         
