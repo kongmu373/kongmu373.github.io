@@ -1,0 +1,739 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Lambda表达式与函数接口 | kongmu373的博客</title>
+    <meta property="og:title" content="Lambda表达式与函数接口 - kongmu373的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-05-26T14:05:22&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-05-26T14:05:22&#43;08:00'>
+        
+    <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
+    <meta name="description" content="Lambda表达式与函数接口">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://kongmu373.github.io/">
+                        kongmu373的博客
+                    </a>
+                
+                <p class="description">专注于Java、移动互联网、项目管理、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://kongmu373.github.io/">首页</a>
+                    
+                    <a  href="https://kongmu373.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://kongmu373.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://kongmu373.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lambda表达式">Lambda表达式</a></li>
+    <li><a href="#函数式接口">函数式接口</a></li>
+    <li><a href="#java-8-中常见函数式接口">Java 8 中常见函数式接口</a></li>
+    <li><a href="#用于原始类型的特殊函数式接口">用于原始类型的特殊函数式接口</a></li>
+    <li><a href="#方法引用">方法引用</a></li>
+    <li><a href="#如何构建方法引用">如何构建方法引用</a></li>
+    <li><a href="#构造函数引用">构造函数引用</a></li>
+    <li><a href="#lambda表达式类型检查与推断">Lambda表达式类型检查与推断</a></li>
+    <li><a href="#类型推断">类型推断</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Lambda表达式与函数接口</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年5月26日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h1 id="lambda表达式与函数式接口">Lambda表达式与函数式接口</h1>
+<h2 id="lambda表达式">Lambda表达式</h2>
+<ol>
+<li>
+<p>Lambda 是什么?</p>
+<ul>
+<li>可以把Lambda表达式理解为 简洁地表示可传递匿名函数的一种方式</li>
+<li>Lambda表达式没有名称，但它有参数列表，函数主体，返回类型，有时还可以抛出的异常列表。</li>
+<li>有以下特性:
+<ol>
+<li>匿名:与匿名函数一样不需要方法名</li>
+<li>函数:有参数列表，函数主题，返回类型，以及抛出异常</li>
+<li>灵活传递:可以作为参数或者存储在变量中</li>
+<li>简洁：相比匿名函数代码量更少</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>
+<p>Lambda 如何使用呢?</p>
+</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// 参数列表 	箭头	函数体
+</span><span style="color:#998;font-style:italic"></span><span style="color:#a61717;background-color:#e3d2d2">（</span><span style="color:#458;font-weight:bold">int</span> x<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> y<span style="color:#000;font-weight:bold">)</span>  <span style="color:#000;font-weight:bold">-&gt;</span> 	x <span style="color:#000;font-weight:bold">+</span> y 
+
+<span style="color:#998;font-style:italic">// 传统写法
+</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">sum</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> x<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> y<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000;font-weight:bold">return</span> x <span style="color:#000;font-weight:bold">+</span> y<span style="color:#000;font-weight:bold">;</span>
+
+<span style="color:#998;font-style:italic">// 只有一条语句
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">(</span>String s<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> s<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">()</span>
+<span style="color:#000;font-weight:bold">(</span>Apple a<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> a<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">&gt;</span> 10 
+
+<span style="color:#998;font-style:italic">// 多条语句
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> x<span style="color:#000;font-weight:bold">,</span> <span style="color:#458;font-weight:bold">int</span> y<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+	System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Result:&#34;</span><span style="color:#000;font-weight:bold">);</span>
+	system<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">+</span>y<span style="color:#000;font-weight:bold">);</span>
+	<span style="color:#000;font-weight:bold">return</span> x <span style="color:#000;font-weight:bold">+</span> y<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+<span style="color:#998;font-style:italic">// 无参
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">-&gt;</span> 42
+
+<span style="color:#998;font-style:italic">// 省去参数类型
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">(</span> a1<span style="color:#000;font-weight:bold">,</span>  a2<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> a1<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">compareTo</span><span style="color:#000;font-weight:bold">(</span>a2<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">())</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>为什么用Lambda表达式?
+最直观的好处就是使得代码变得异常简洁</li>
+</ol>
+<h2 id="函数式接口">函数式接口</h2>
+<ol>
+<li>函数式接口定义
+<ul>
+<li>只定义一个抽象方法的接口</li>
+<li>java8以后接口现在还可以拥有默认方法.</li>
+<li>哪怕有很多默认方法，只要只定义了一个抽象方法，它就仍然是一个函数式接口</li>
+</ul>
+</li>
+<li>函数描述符
+<ul>
+<li>函数式接口的抽象方法的签名基本上就是Lambda表达式的签名，将这种抽象方法叫做函数描述符</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>例子: 函数式接口与对应的函数描述符</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// 例子:
+</span><span style="color:#998;font-style:italic">// java.util.Comparator 函数描述符: (T, T) -&gt; int
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">Comparator</span><span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#458;font-weight:bold">int</span> <span style="color:#900;font-weight:bold">compare</span><span style="color:#000;font-weight:bold">(</span>T o1<span style="color:#000;font-weight:bold">,</span> T o2<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="java-8-中常见函数式接口">Java 8 中常见函数式接口</h2>
+<ol>
+<li>Predicate (判定)
+java.util.function.Predicate 接口定义了一个名叫test的抽象方法,它接受泛型T对象,并返回一个boolean.
+如果需要表示一个涉及类型T的布尔表达式时，就可以使用这个接口了</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#3c5d5d;font-weight:bold">@FunctionalInterface</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">Predicate</span><span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+	 <span style="color:#458;font-weight:bold">boolean</span> <span style="color:#900;font-weight:bold">test</span><span style="color:#000;font-weight:bold">(</span>T t<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#998;font-style:italic">// 用法
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">public</span> staitc <span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> List<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">filter</span><span style="color:#000;font-weight:bold">(</span>List<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> list<span style="color:#000;font-weight:bold">,</span> Predicate<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> p<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	List<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> results <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ArrayList<span style="color:#000;font-weight:bold">&lt;&gt;();</span>
+	<span style="color:#000;font-weight:bold">for</span><span style="color:#000;font-weight:bold">(</span>T s<span style="color:#000;font-weight:bold">:</span> list<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+		<span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span>p<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">test</span><span style="color:#000;font-weight:bold">(</span>s<span style="color:#000;font-weight:bold">))</span> <span style="color:#000;font-weight:bold">{</span>
+			results<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">add</span><span style="color:#000;font-weight:bold">(</span>s<span style="color:#000;font-weight:bold">);</span>
+		<span style="color:#000;font-weight:bold">}</span>
+	<span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+Predicate<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> nonEmptyStringPredicate <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>String s<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#000;font-weight:bold">!</span>s<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">isEmpty</span><span style="color:#000;font-weight:bold">();</span>
+List<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> nonEmpty <span style="color:#000;font-weight:bold">=</span> filter<span style="color:#000;font-weight:bold">(</span>listOfStrings<span style="color:#000;font-weight:bold">,</span> nonEmptyStringPredicate<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>Consumer(消费)
+java.util.function.Consumer 定义了一个名叫acccept的抽象方法，它接受泛型T的对象，没有返回值(void).
+你如果需要访问类型T的对象，并对其执行某些操作，就可以使用这个接口</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#3c5d5d;font-weight:bold">@FunctionalInterface</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">Consumer</span><span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">accept</span><span style="color:#000;font-weight:bold">(</span>T t<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">forEach</span><span style="color:#000;font-weight:bold">(</span>List<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> list<span style="color:#000;font-weight:bold">,</span> Conseumer<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> c<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span>T t<span style="color:#000;font-weight:bold">:</span> list<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+		c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">accept</span><span style="color:#000;font-weight:bold">(</span>i<span style="color:#000;font-weight:bold">);</span>
+	<span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+<span style="color:#998;font-style:italic">//Lambda时Consumer中accept方法的实现
+</span><span style="color:#998;font-style:italic"></span>forEach<span style="color:#000;font-weight:bold">(</span>Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">asList</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">,</span>2<span style="color:#000;font-weight:bold">,</span>3<span style="color:#000;font-weight:bold">,</span>4<span style="color:#000;font-weight:bold">,</span>5<span style="color:#000;font-weight:bold">),</span> <span style="color:#000;font-weight:bold">(</span>Integer i<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#000;font-weight:bold">{</span>System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span>i<span style="color:#000;font-weight:bold">);})</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="3">
+<li>Function
+java.util.funciton.Function&lt;T,R&gt;接口定义了一个叫作apply的方法,它接受一个泛型T的对象，并返回一个泛型R的对象。
+如果你需要定义一个Lambda,将输入对象映射到输出，就可以使用这个接口</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">
+<span style="color:#3c5d5d;font-weight:bold">@FunctionalInterface</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">Function</span><span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">,</span> R<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+	R <span style="color:#900;font-weight:bold">apply</span><span style="color:#000;font-weight:bold">(</span>T t<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> List<span style="color:#000;font-weight:bold">&lt;</span>R<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#900;font-weight:bold">map</span><span style="color:#000;font-weight:bold">(</span>List<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> list<span style="color:#000;font-weight:bold">,</span> Function<span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">,</span> R<span style="color:#000;font-weight:bold">&gt;</span> f<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	List<span style="color:#000;font-weight:bold">&lt;</span>R<span style="color:#000;font-weight:bold">&gt;</span> result <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ArrayList<span style="color:#000;font-weight:bold">&lt;&gt;();</span>
+	<span style="color:#000;font-weight:bold">for</span><span style="color:#000;font-weight:bold">(</span>T s<span style="color:#000;font-weight:bold">:</span> result<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+		result<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">add</span><span style="color:#000;font-weight:bold">(</span>f<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">apply</span><span style="color:#000;font-weight:bold">(</span>s<span style="color:#000;font-weight:bold">));</span>
+	<span style="color:#000;font-weight:bold">}</span>
+	<span style="color:#000;font-weight:bold">return</span> result<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#998;font-style:italic">// 将一个String列表映射到包含每个String长度的Integer列表
+</span><span style="color:#998;font-style:italic"></span>List<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> list <span style="color:#000;font-weight:bold">=</span> map<span style="color:#000;font-weight:bold">(</span>Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">asList</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;labdas&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#d14">&#34;in&#34;</span><span style="color:#000;font-weight:bold">,</span><span style="color:#d14">&#34;action&#34;</span><span style="color:#000;font-weight:bold">),</span> <span style="color:#000;font-weight:bold">(</span>String s<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> s<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>Supplier
+java.util.function.Supplier接口定义了一个叫作get的方法, 没有传入参数，但返回一个泛型T的对象。
+如果你需要产生某个类型的对象时，就可以使用这个接口</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#3c5d5d;font-weight:bold">@FunctionalInterface</span>
+<span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">Supplier</span><span style="color:#000;font-weight:bold">&lt;</span>T<span style="color:#000;font-weight:bold">&gt;</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#998;font-style:italic">/*
+</span><span style="color:#998;font-style:italic">	 * Gets a result.
+</span><span style="color:#998;font-style:italic">	 * @return a result.
+</span><span style="color:#998;font-style:italic">	 */</span>
+	T <span style="color:#900;font-weight:bold">get</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+Supplier<span style="color:#000;font-weight:bold">&lt;</span>Apple<span style="color:#000;font-weight:bold">&gt;</span> s <span style="color:#000;font-weight:bold">=</span> Apple<span style="color:#000;font-weight:bold">::</span><span style="color:#000;font-weight:bold">new</span><span style="color:#000;font-weight:bold">;</span> <span style="color:#998;font-style:italic">// () -&gt; new Apple();
+</span><span style="color:#998;font-style:italic"></span>Apple a <span style="color:#000;font-weight:bold">=</span> s<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="用于原始类型的特殊函数式接口">用于原始类型的特殊函数式接口</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">IntPredicate</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#458;font-weight:bold">boolean</span> <span style="color:#900;font-weight:bold">test</span><span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+IntPredicate evenNumbers <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> i<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> i<span style="color:#000;font-weight:bold">%</span>2 <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">;</span>
+evenNumbers<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">test</span><span style="color:#000;font-weight:bold">(</span>1000<span style="color:#000;font-weight:bold">);</span> <span style="color:#998;font-style:italic">// true
+</span><span style="color:#998;font-style:italic"></span>
+Predicate<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> oddNumbers <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>Integer i<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> i<span style="color:#000;font-weight:bold">%</span>2 <span style="color:#000;font-weight:bold">==</span> 1<span style="color:#000;font-weight:bold">;</span>
+oddNumbers<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">test</span><span style="color:#000;font-weight:bold">(</span>1000<span style="color:#000;font-weight:bold">);</span> <span style="color:#998;font-style:italic">// false 
+</span></code></pre></td></tr></table>
+</div>
+</div><p>针对专门的输入参数类型的函数式接口的名称要加上对应的原始类型前缀即可得到用于基本类型的特殊函数式接口</p>
+<h2 id="方法引用">方法引用</h2>
+<p>方法引用让你可以重复使用现有的方法定义并传递这些方法
+| Lambda表达式 | 等同的方法引用 |
+| &mdash;- | &mdash;-|
+| (Car c) -&gt; c.getPrice() | Car::getPrice |
+| (String s) -&gt; System.out.println(s) | System.out.::println|</p>
+<h2 id="如何构建方法引用">如何构建方法引用</h2>
+<ol>
+<li>指向静态方法的方法引用(例如Integer的parseInt方法, 写作Integer::parseInt)</li>
+<li>指向任意类型实例方法的方法引用(例如String的length方法，写作String::length)</li>
+<li>指向现有对象的实例方法的方法引用(假设有一个局部变量t用于存放Transaction类型的对象，它支持实例方法getVlaue,就可以写t::getValue)</li>
+</ol>
+<h2 id="构造函数引用">构造函数引用</h2>
+<p>对于一个现有构造函数，可以利用它的名称和关键字new来创建它的一个引用ClassName::new.它的功能与指向静态方法的引用类似
+例子:</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// 无参构造器: car()
+</span><span style="color:#998;font-style:italic"></span>Supplier<span style="color:#000;font-weight:bold">&lt;</span>Car<span style="color:#000;font-weight:bold">&gt;</span> s <span style="color:#000;font-weight:bold">=</span> Car<span style="color:#000;font-weight:bold">::</span><span style="color:#000;font-weight:bold">new</span><span style="color:#000;font-weight:bold">;</span>
+Car c1 <span style="color:#000;font-weight:bold">=</span> s<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">();</span>
+
+<span style="color:#998;font-style:italic">// 一个价格参数构造器: Car(Integer price)
+</span><span style="color:#998;font-style:italic"></span>Function<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">,</span> Car<span style="color:#000;font-weight:bold">&gt;</span> fn <span style="color:#000;font-weight:bold">=</span> Car<span style="color:#000;font-weight:bold">::</span><span style="color:#000;font-weight:bold">new</span><span style="color:#000;font-weight:bold">;</span>
+Car c2 <span style="color:#000;font-weight:bold">=</span> fn<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">apply</span><span style="color:#000;font-weight:bold">(</span>100<span style="color:#000;font-weight:bold">);</span>
+
+<span style="color:#998;font-style:italic">// Car(Integer price, String color)
+</span><span style="color:#998;font-style:italic"></span>BiFunction<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">,</span> String<span style="color:#000;font-weight:bold">,</span> Car<span style="color:#000;font-weight:bold">&gt;</span> biFn <span style="color:#000;font-weight:bold">=</span> Car<span style="color:#000;font-weight:bold">::</span><span style="color:#000;font-weight:bold">new</span><span style="color:#000;font-weight:bold">;</span>
+Car c3 <span style="color:#000;font-weight:bold">=</span> biFn<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">apply</span><span style="color:#000;font-weight:bold">(</span>100<span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;red&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="lambda表达式类型检查与推断">Lambda表达式类型检查与推断</h2>
+<ol>
+<li>类型检查
+Lambda的类型是从使用Lambda的上下文推断出来的
+上下文(接受传递方法的参数或变量) 中 Lambda表达式需要的类型称为目标类型</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// cars是接受传递方法的变量，cars的类型即为目标类型
+</span><span style="color:#998;font-style:italic"></span>List<span style="color:#000;font-weight:bold">&lt;</span>Car<span style="color:#000;font-weight:bold">&gt;</span> cars <span style="color:#000;font-weight:bold">=</span> filter<span style="color:#000;font-weight:bold">(</span>store<span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span>Car c<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPrice</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">&gt;</span> 100<span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="类型推断">类型推断</h2>
+<p>Java编译器会从目标类型推断出用什么函数式接口来配合Lambda表达式, 所以也可以推断出适合Lambda的签名,引物函数描述符可以通过目标类型来得到.</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// filter -&gt; 找到第一个匹配的就返回
+</span><span style="color:#998;font-style:italic"></span>Car car <span style="color:#000;font-weight:bold">=</span> filter<span style="color:#000;font-weight:bold">(</span>store<span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span>Car c<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPrice</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">&gt;</span> 100<span style="color:#000;font-weight:bold">);</span>
+Car car <span style="color:#000;font-weight:bold">=</span> filter<span style="color:#000;font-weight:bold">(</span>store<span style="color:#000;font-weight:bold">,</span> c<span style="color:#000;font-weight:bold">-&gt;</span> c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPrice</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">&gt;</span> 100<span style="color:#000;font-weight:bold">);</span>
+
+Comparator<span style="color:#000;font-weight:bold">&lt;</span>Apple<span style="color:#000;font-weight:bold">&gt;</span> c <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>Apple a1<span style="color:#000;font-weight:bold">,</span> Apple a2<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> a1<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">compareTo</span><span style="color:#000;font-weight:bold">(</span>a2<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">());</span>
+Comparator<span style="color:#000;font-weight:bold">&lt;</span>Apple<span style="color:#000;font-weight:bold">&gt;</span> c <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>a1<span style="color:#000;font-weight:bold">,</span> a2<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> a1<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">compareTo</span><span style="color:#000;font-weight:bold">(</span>a2<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getWeight</span><span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8EJava8%E6%96%B0%E7%89%B9%E6%80%A7/">函数式编程与Java8新特性</a></li>
+        
+        <li><a href="/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/">Java包管理</a></li>
+        
+        <li><a href="/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">Git常用命令</a></li>
+        
+        <li><a href="/posts/first-blood/">First Blood</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/kongmu373"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://kongmu373.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://kongmu373.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3/" title="Lambda表达式与函数接口">Lambda表达式与函数接口</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8EJava8%E6%96%B0%E7%89%B9%E6%80%A7/" title="函数式编程与Java8新特性">函数式编程与Java8新特性</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/" title="Java包管理">Java包管理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Git常用命令">Git常用命令</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/first-blood/" title="First Blood">First Blood</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://kongmu373.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://kongmu373.github.io/">kongmu373的博客 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
+</html>

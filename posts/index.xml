@@ -6,10 +6,28 @@
     <description>Recent content in Posts on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 25 May 2020 14:29:03 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 May 2020 14:05:22 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lambda表达式与函数接口</title>
+      <link>https://kongmu373.github.io/posts/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3/</link>
+      <pubDate>Tue, 26 May 2020 14:05:22 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3/</guid>
+      <description>Lambda表达式与函数式接口 Lambda表达式 Lambda 是什么? 可以把Lambda表达式理解为 简洁地表示可传递匿名函数的一种方式 Lambda表达式没有名称，但它有参数列表，函数主体，返回类型，有时还可以抛出的异常列表。 有以下特性: 匿名:与匿名函数一样不需要方法名 函数:有参数列表，函数主</description>
+    </item>
+    
+    <item>
+      <title>函数式编程与Java8新特性</title>
+      <link>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8EJava8%E6%96%B0%E7%89%B9%E6%80%A7/</link>
+      <pubDate>Tue, 26 May 2020 08:45:15 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8EJava8%E6%96%B0%E7%89%B9%E6%80%A7/</guid>
+      <description>函数 就是 参数 映射成返回值. 函数式编程 &amp;ldquo;函数式编程&amp;rdquo; 是一种 &amp;ldquo;编程范式&amp;rdquo; 主要思想: 把运算过程尽量写成一系列嵌套的函数调用 -&amp;gt; y= f(g(x)) &amp;lt;=&amp;gt; y= g(x).f(). 惰性计算: 并不立刻算，只有在需要产生表达式的值才开始进行运算 函数是 &amp;ldquo;第一等公民&amp;rdquo;</description>
+    </item>
     
     <item>
       <title>Java包管理</title>
