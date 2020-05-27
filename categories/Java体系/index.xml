@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Java体系 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/</link>
+    <description>Recent content in Java体系 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 May 2020 10:55:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Collection</title>
+      <link>https://kongmu373.github.io/posts/Collection/</link>
+      <pubDate>Wed, 27 May 2020 10:55:23 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Collection/</guid>
+      <description>Collection 简介 Collection是什么？(root interface) 是接口，不是类，不能被new 一组东西，一篮子鸡蛋,只包含一种元素 Collection 体系 (root interface) 例如,ArrayList的Diagrams Collection 常使用的方法: new: new ArrayList(Collection), new ArrayList() 1 2 3 4 5 6 7 8 9 10 11 12 13 Collection&amp;lt;Integer&amp;gt; c = new LinkedHashSet(); // IntegerList List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(c); // == List&amp;lt;Integer&amp;gt; list2 = new ArrayList&amp;lt;&amp;gt;(); list2.addAll(); // == List&amp;lt;Integer&amp;gt; list3 = new ArrayList&amp;lt;&amp;gt;(); for(Integer i : c) { list3.add(i);</description>
+    </item>
+    
+    <item>
+      <title>Java包管理</title>
+      <link>https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/</link>
+      <pubDate>Mon, 25 May 2020 14:29:03 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
+      <description>包是什么? 就是把许多类放在一起打的压缩包 什么是包管理 包管理的本质就是告诉JVM如何找到所需的第三方类库 为什么要用包管理呢？ 从运行一个JAVA程序说起： JVM的工作内容: 执行一个类的字节码 加入这个过程中碰到了新的类， 加载它 那么，去哪里加载这些类呢?(通过类路径) 类路径 (Classpath) 在哪可以找到</description>
+    </item>
+    
+  </channel>
+</rss>

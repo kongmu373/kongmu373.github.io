@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Collection on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/Collection/</link>
+    <description>Recent content in Collection on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 May 2020 10:55:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/Collection/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Collection</title>
+      <link>https://kongmu373.github.io/posts/Collection/</link>
+      <pubDate>Wed, 27 May 2020 10:55:23 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Collection/</guid>
+      <description>Collection 简介 Collection是什么？(root interface) 是接口，不是类，不能被new 一组东西，一篮子鸡蛋,只包含一种元素 Collection 体系 (root interface) 例如,ArrayList的Diagrams Collection 常使用的方法: new: new ArrayList(Collection), new ArrayList() 1 2 3 4 5 6 7 8 9 10 11 12 13 Collection&amp;lt;Integer&amp;gt; c = new LinkedHashSet(); // IntegerList List&amp;lt;Integer&amp;gt; list = new ArrayList&amp;lt;&amp;gt;(c); // == List&amp;lt;Integer&amp;gt; list2 = new ArrayList&amp;lt;&amp;gt;(); list2.addAll(); // == List&amp;lt;Integer&amp;gt; list3 = new ArrayList&amp;lt;&amp;gt;(); for(Integer i : c) { list3.add(i);</description>
+    </item>
+    
+  </channel>
+</rss>

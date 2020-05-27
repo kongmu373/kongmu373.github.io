@@ -6,10 +6,19 @@
     <description>Recent content in Tags on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 27 May 2020 10:27:22 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 27 May 2020 10:55:23 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Collection</title>
+      <link>https://kongmu373.github.io/tags/Collection/</link>
+      <pubDate>Wed, 27 May 2020 10:55:23 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/Collection/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>数据结构</title>
