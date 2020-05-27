@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kongmu373.github.io/categories/</loc>
+    <lastmod>2020-05-27T10:27:22+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kongmu373.github.io/</loc>
     <lastmod>2020-05-27T10:27:22+08:00</lastmod>
   </url>
@@ -13,8 +18,33 @@
   </url>
   
   <url>
+    <loc>https://kongmu373.github.io/tags/</loc>
+    <lastmod>2020-05-27T10:27:22+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kongmu373.github.io/posts/%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/</loc>
     <lastmod>2020-05-27T10:27:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2020-05-27T10:27:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</loc>
+    <lastmod>2020-05-27T10:27:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/tags/Java8/</loc>
+    <lastmod>2020-05-26T14:05:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/categories/Java8/</loc>
+    <lastmod>2020-05-26T14:05:22+08:00</lastmod>
   </url>
   
   <url>
@@ -33,6 +63,26 @@
   </url>
   
   <url>
+    <loc>https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2020-05-25T14:29:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/categories/%E5%8C%85%E7%AE%A1%E7%90%86/</loc>
+    <lastmod>2020-05-25T14:29:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/tags/git/</loc>
+    <lastmod>2020-05-25T14:00:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/categories/git/</loc>
+    <lastmod>2020-05-25T14:00:44+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2020-05-25T14:00:44+08:00</lastmod>
   </url>
@@ -40,14 +90,6 @@
   <url>
     <loc>https://kongmu373.github.io/posts/first-blood/</loc>
     <lastmod>2020-05-25T10:44:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kongmu373.github.io/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://kongmu373.github.io/tags/</loc>
   </url>
   
 </urlset>

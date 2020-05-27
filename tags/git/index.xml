@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/git/</link>
+    <description>Recent content in git on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 25 May 2020 14:00:44 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git常用命令</title>
+      <link>https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 25 May 2020 14:00:44 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>git git 六行配置 git config --global user.name 你的英文名 git config --global user.email 你的邮箱 git config --global push.default simple git config --global core.quotepath false git config --global core.editor &amp;quot;code --wait&amp;quot; git config --global core.autocrlf input git 常用命令 - git config - git add 路径 - git status -sb - git commit -v - git branch x - git checkout x - git merge - git commit - git branch -d x - git log - git relog - git reset --hard XXXXX GitHub 存储代码 常用两行命令 git remote add origin git@xxxxxx git push -u origin master SSH key 验证身份 生成 SSH key 测试 SSH key 上传和下载代码 git pull /</description>
+    </item>
+    
+  </channel>
+</rss>
