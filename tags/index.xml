@@ -6,10 +6,28 @@
     <description>Recent content in Tags on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 27 May 2020 10:55:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 14:28:21 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTP</title>
+      <link>https://kongmu373.github.io/tags/HTTP/</link>
+      <pubDate>Thu, 28 May 2020 14:28:21 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/HTTP/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>爬虫</title>
+      <link>https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Wed, 27 May 2020 23:15:03 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Collection</title>

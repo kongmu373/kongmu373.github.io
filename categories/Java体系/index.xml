@@ -6,10 +6,28 @@
     <description>Recent content in Java体系 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 27 May 2020 10:55:23 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 28 May 2020 14:28:21 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HTTP协议</title>
+      <link>https://kongmu373.github.io/posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Thu, 28 May 2020 14:28:21 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</guid>
+      <description>HTTP协议 互联网所有东西都是基于HTTP协议 HTTP 方法 GET 和 POST 的区别 GET 所有数据全部都放在 HTTP Request header 里面 POST 真正的数据放在 HTTP Request body 里面 (登录，上传文件) DELETE PUT &amp;hellip; HTTP 状态码 2XX 成功 3XX 重定向 4XX 客户端出问题 405 客户端请求的方法被禁止 5XX HTTP状态码的博客 HTTP 请求header 重要的header Accept* Cookie User-Agent Referer 当前页面是</description>
+    </item>
+    
+    <item>
+      <title>Web前后端基础结构原理</title>
+      <link>https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 27 May 2020 23:15:03 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/</guid>
+      <description>计算机网络的术语 主机 每个主机会有一个地址(IPV4地址为32位，4个字节,如115.118.112.3 2^32=42亿个数字,不够用了) (网络，主机，IP地址(Internet Protocol &amp;ndash; 网络协议)) IPV6(128位，为地球的每一颗沙子分配地址) 域名与DNS 知道与哪台主机通信，即必须知</description>
+    </item>
     
     <item>
       <title>Collection</title>

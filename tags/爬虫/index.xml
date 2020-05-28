@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>爬虫 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/</link>
+    <description>Recent content in 爬虫 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 27 May 2020 23:15:03 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Web前后端基础结构原理</title>
+      <link>https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Wed, 27 May 2020 23:15:03 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/</guid>
+      <description>计算机网络的术语 主机 每个主机会有一个地址(IPV4地址为32位，4个字节,如115.118.112.3 2^32=42亿个数字,不够用了) (网络，主机，IP地址(Internet Protocol &amp;ndash; 网络协议)) IPV6(128位，为地球的每一颗沙子分配地址) 域名与DNS 知道与哪台主机通信，即必须知</description>
+    </item>
+    
+  </channel>
+</rss>
