@@ -6,10 +6,19 @@
     <description>Recent content in Java8 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 29 May 2020 09:08:47 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2020 13:47:41 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Java8/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>函数式数据处理 流</title>
+      <link>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E6%B5%81/</link>
+      <pubDate>Sat, 30 May 2020 13:47:41 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E6%B5%81/</guid>
+      <description>流(Stream) 什么是流? 为什么需要流? 流的使用与流管道的构成: Stream pipeline Java中集合与流的关系 总结 1.什么是流? java.util.stream(java8 的新成员) 以声明性方式处理数据集合 有关计算的(像一个高级版本的Iterator) Stream 与 Iterator 的比较 Iterator只能显式地一个一个遍历元素，Stream只需给出对包含的元</description>
+    </item>
     
     <item>
       <title>Lambda实战</title>

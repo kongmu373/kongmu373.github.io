@@ -6,10 +6,55 @@
     <description>Recent content on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 29 May 2020 09:08:47 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2020 16:10:15 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>流的基础和使用</title>
+      <link>https://kongmu373.github.io/posts/%E6%B5%81%E7%9A%84%E5%9F%BA%E7%A1%80%E5%92%8C%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Sat, 30 May 2020 16:10:15 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E6%B5%81%E7%9A%84%E5%9F%BA%E7%A1%80%E5%92%8C%E4%BD%BF%E7%94%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>函数式数据处理 流</title>
+      <link>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E6%B5%81/</link>
+      <pubDate>Sat, 30 May 2020 13:47:41 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E6%B5%81/</guid>
+      <description>流(Stream) 什么是流? 为什么需要流? 流的使用与流管道的构成: Stream pipeline Java中集合与流的关系 总结 1.什么是流? java.util.stream(java8 的新成员) 以声明性方式处理数据集合 有关计算的(像一个高级版本的Iterator) Stream 与 Iterator 的比较 Iterator只能显式地一个一个遍历元素，Stream只需给出对包含的元</description>
+    </item>
+    
+    <item>
+      <title>数据库详解</title>
+      <link>https://kongmu373.github.io/posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Sat, 30 May 2020 11:53:00 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AF%A6%E8%A7%A3/</guid>
+      <description>数据库基本概念 什么是SQL 数据库/表 约束/索引 数据库 数据库提供结构化数据的持久化存储 索引保证数据查询的速度 事务的原子性保证数据不丢失 要么都发生,要么都不发生 数据库的基本结构 数据库的实际使用 Schema: 设计一个数据库 数据库的类型与SQL语句 整数类型： int/bigint 字符串类型:varchar(100) (变</description>
+    </item>
+    
+    <item>
+      <title>Java异常</title>
+      <link>https://kongmu373.github.io/posts/Java%E5%BC%82%E5%B8%B8/</link>
+      <pubDate>Fri, 29 May 2020 19:41:08 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Java%E5%BC%82%E5%B8%B8/</guid>
+      <description>Java的异常体系 Throwable - 可以被抛出的东西(有毒) Exception - checked execption(受检异常，有毒) 预期之内的异常 IOException RuntimeException(运行时异常， 无毒) 预期之外的异常 不应该出现的 Error(错误，无毒) OutOfMemoryError 没办法处理的 catch的级联与合并 有毒(checked exception) 无毒(unche</description>
+    </item>
+    
+    <item>
+      <title>Java的IO</title>
+      <link>https://kongmu373.github.io/posts/Java%E7%9A%84IO/</link>
+      <pubDate>Fri, 29 May 2020 11:45:59 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Java%E7%9A%84IO/</guid>
+      <description>Java的IO IO就是输入输出 什么是IO呢？ InputStream/OutputStream IO的使用 计算机体系原理 计算机分三级 CPU 频率 3GHz -&amp;gt; 每秒30亿次（每秒运行30亿条指令 10亿换算成 1纳秒） 即1条指令大约要0.3纳秒 内存 memory 存数据 断电丢失 硬盘 (Hard Disk &amp;ndash; HDD) 固态 SSD 存数据 容量大，断电不丢失 比内存慢 文件的本质 一段字节流: 文本文件(txt</description>
+    </item>
     
     <item>
       <title>Lambda实战</title>

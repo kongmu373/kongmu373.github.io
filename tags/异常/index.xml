@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>异常 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/</link>
+    <description>Recent content in 异常 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 29 May 2020 19:41:08 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java异常</title>
+      <link>https://kongmu373.github.io/posts/Java%E5%BC%82%E5%B8%B8/</link>
+      <pubDate>Fri, 29 May 2020 19:41:08 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Java%E5%BC%82%E5%B8%B8/</guid>
+      <description>Java的异常体系 Throwable - 可以被抛出的东西(有毒) Exception - checked execption(受检异常，有毒) 预期之内的异常 IOException RuntimeException(运行时异常， 无毒) 预期之外的异常 不应该出现的 Error(错误，无毒) OutOfMemoryError 没办法处理的 catch的级联与合并 有毒(checked exception) 无毒(unche</description>
+    </item>
+    
+  </channel>
+</rss>
