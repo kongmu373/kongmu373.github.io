@@ -6,10 +6,19 @@
     <description>Recent content in Java体系 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 30 May 2020 11:53:00 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 10:41:18 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>多线程基本原理</title>
+      <link>https://kongmu373.github.io/posts/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</link>
+      <pubDate>Mon, 01 Jun 2020 10:41:18 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</guid>
+      <description>为什么需要多线程? Thread线程 Java中线程的表示 多线程问题的来源 多线程的应用场景 一、为什么需要多线程? Java的执行模型是同步/阻塞的 如果你执行非常耗时的操作，当前方法的执行流会阻塞，等待耗时的操作执行完 1 2 3 4 5 6 7 8 9 10 11 12 13 14 // main方法要打印&amp;#34;main&amp;#</description>
+    </item>
     
     <item>
       <title>数据库详解</title>

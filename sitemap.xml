@@ -3,23 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kongmu373.github.io/categories/</loc>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/</loc>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kongmu373.github.io/</loc>
-    <lastmod>2020-05-30T16:10:15+08:00</lastmod>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kongmu373.github.io/posts/</loc>
-    <lastmod>2020-05-30T16:10:15+08:00</lastmod>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/tags/</loc>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kongmu373.github.io/posts/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <lastmod>2020-06-01T10:41:18+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kongmu373.github.io/posts/%E6%B5%81%E7%9A%84%E5%9F%BA%E7%A1%80%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
     <lastmod>2020-05-30T16:10:15+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kongmu373.github.io/categories/</loc>
-    <lastmod>2020-05-30T13:47:41+08:00</lastmod>
   </url>
   
   <url>
@@ -33,18 +53,8 @@
   </url>
   
   <url>
-    <loc>https://kongmu373.github.io/tags/</loc>
-    <lastmod>2020-05-30T13:47:41+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86-%E6%B5%81/</loc>
     <lastmod>2020-05-30T13:47:41+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/</loc>
-    <lastmod>2020-05-30T11:53:00+08:00</lastmod>
   </url>
   
   <url>
