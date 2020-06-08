@@ -6,10 +6,19 @@
     <description>Recent content in 数据结构 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 27 May 2020 10:27:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2020 08:14:31 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>基础算法与数据结构</title>
+      <link>https://kongmu373.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
+      <pubDate>Mon, 08 Jun 2020 08:14:31 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description>程序=算法+数据结构 (程序如何执行 + 怎么存储数据) 为什么我们需要算法和数据结构呢？ 计算机世界的基石， 是程序员的内功 对代码效率的提升是本质的 面试需要&amp;hellip; 算法的复杂度 时间复杂度 O(1) - 哈希桶/数组随机寻址 (常数) 和问题的规模无关 O(n) - 遍历 (线性) 在数组中找某个元素 解决问题的时间</description>
+    </item>
     
     <item>
       <title>几种排序算法的实现</title>

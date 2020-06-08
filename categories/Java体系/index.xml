@@ -6,10 +6,28 @@
     <description>Recent content in Java体系 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 01 Jun 2020 19:09:43 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2020 14:33:15 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stream</title>
+      <link>https://kongmu373.github.io/posts/stream/</link>
+      <pubDate>Sun, 07 Jun 2020 14:33:15 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/stream/</guid>
+      <description>什么是Stream 一个 &amp;ldquo;流&amp;rdquo; 好处: 不容易出错 简化代码 可读性/可维护性++ // 请把姓张的用户挑出来，把他们按照年龄排序,然后把它们的名单报告给我 List&amp;lt;User&amp;gt; users = getUsers(); List&amp;lt;String&amp;gt; list = users.stream(). filter(user -&amp;gt; user.name.startsWith(&amp;quot;张&amp;quot;)) .sorted((Comparator.comparing(User::getAge))) .map(User::getName) .collect(Collectors.toList()); 使用idea的pl</description>
+    </item>
+    
+    <item>
+      <title>线程池</title>
+      <link>https://kongmu373.github.io/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</link>
+      <pubDate>Tue, 02 Jun 2020 08:28:19 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/</guid>
+      <description>线程池与Callable/Future 什么是线程池 线程时昂贵的 (Java线程模型的缺陷) 线程池时预先定义好的若干个线程 Java中的线程池 不用频繁创建线程 Callable/Future 类比Runnable, Callable可以返回值，抛出异常 Future代表一个&amp;quot;未来才会返回的结果&amp;rdquo; 实战</description>
+    </item>
     
     <item>
       <title>生产者与消费者模型</title>
