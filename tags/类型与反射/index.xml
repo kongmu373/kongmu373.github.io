@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>类型与反射 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/</link>
+    <description>Recent content in 类型与反射 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 09 Jun 2020 11:19:47 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>类型与反射</title>
+      <link>https://kongmu373.github.io/posts/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/</link>
+      <pubDate>Tue, 09 Jun 2020 11:19:47 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/</guid>
+      <description>Spring全家桶，任何上规模的框架,都使用了框架 Java的类与Class RTTI(Run-Time Type Identification) 运行时类型识别 将子类赋值给父类,调用子类的方法报错 1 2 Object obj = new WhiteCat(); obj.catchMouse(); // catchMouse()是猫的方法，Object类没有这个方法，所以编译报错 Object.getClass 实体方法拿到类型信息 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17</description>
+    </item>
+    
+  </channel>
+</rss>
