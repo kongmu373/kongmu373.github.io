@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/Spring/</link>
+    <description>Recent content in Spring on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 12 Jun 2020 08:57:48 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/Spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring</title>
+      <link>https://kongmu373.github.io/posts/Spring/</link>
+      <pubDate>Fri, 12 Jun 2020 08:57:48 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/Spring/</guid>
+      <description>Spring是什么? Java世界应用的事实标准 Spring容器 - 一个 IoC容器 Spring MVC - 基于Spring和Servlet的Web应用框架 Spring Boot - 集成度和自动化程序更高 没有Spring,我们会怎么做呢? 选择一: 一个main程序打天下 非常轻量，适用于非常简单的场景 一旦规模上来之后 难以维护 是</description>
+    </item>
+    
+  </channel>
+</rss>

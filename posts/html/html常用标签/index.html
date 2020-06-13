@@ -1,0 +1,962 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Html常用标签 | kongmu373的博客</title>
+    <meta property="og:title" content="Html常用标签 - kongmu373的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-06-13T14:03:41&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-06-13T14:03:41&#43;08:00'>
+        
+    <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
+    <meta name="description" content="Html常用标签">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://kongmu373.github.io/">
+                        kongmu373的博客
+                    </a>
+                
+                <p class="description">专注于Java、移动互联网、项目管理、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://kongmu373.github.io/">首页</a>
+                    
+                    <a  href="https://kongmu373.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://kongmu373.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://kongmu373.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-标签">a 标签</a></li>
+    <li><a href="#iframe-标签">iframe 标签</a></li>
+    <li><a href="#table-标签">table 标签</a></li>
+    <li><a href="#img-标签">img 标签</a></li>
+    <li><a href="#form-标签">form 标签</a></li>
+    <li><a href="#input-标签">input 标签</a></li>
+    <li><a href="#注意事项">注意事项</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Html常用标签</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月13日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/HTML'>HTML</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="a-标签">a 标签</h2>
+<ul>
+<li>属性
+<ul>
+<li>href (hyper ref 超引用或者超链接)
+<ul>
+<li>可以选择的取值
+<ul>
+<li>外部页面
+<ul>
+<li>网址(跳转到别人的页面上)
+<ul>
+<li><a href="https://google.com">https://google.com</a></li>
+<li><a href="http://google.com">http://google.com</a></li>
+<li>//google.com (继承当前的协议)</li>
+</ul>
+</li>
+<li>路径(在自己http服务进行跳转)
+<ul>
+<li>/a/b/c 以及 a/b/c
+<ul>
+<li>开启http服务之后，(&quot;/&quot;)根目录就不再是硬盘的根目录</li>
+<li>(&quot;/&quot;)根目录的位置在于你在哪里开启了http服务</li>
+<li>不是(&quot;/&quot;)根目录开头的就是相对路径</li>
+</ul>
+</li>
+<li>index.html 以及 ./index.html
+<ul>
+<li>都是到当前目录去找&quot;index.html&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内部页面:
+<ul>
+<li>伪协议
+<ul>
+<li>javscript:代码;</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#998;font-style:italic">&lt;!-- 点击a标签弹出窗口输出&#34;1&#34; --&gt;</span>
+&lt;<span style="color:#000080">a</span> <span style="color:#008080">href</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;javascript:alert(1);&#34;</span>&gt;JavaScript伪协议&lt;/<span style="color:#000080">a</span>&gt;
+<span style="color:#998;font-style:italic">&lt;!-- a标签什么都不做，也不想要页面刷新的常用做法 --&gt;</span>
+&lt;<span style="color:#000080">a</span> <span style="color:#008080">href</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;javascript:;&#34;</span>&gt;查看&lt;/<span style="color:#000080">a</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>锚点
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">    &lt;<span style="color:#000080">div</span> <span style="color:#008080">id</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;xxx&#34;</span>&gt;锚点&lt;/<span style="color:#000080">div</span>&gt;
+    <span style="color:#998;font-style:italic">&lt;!-- a标签跳转到id为&#34;xxx&#34;的地方 --&gt;</span>
+    &lt;<span style="color:#000080">a</span> <span style="color:#008080">href</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;#xxx&#34;</span>&gt;查看&lt;/<span style="color:#000080">a</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+</li>
+<li>其他:
+<ul>
+<li>mailto:邮箱;  发邮件</li>
+<li>tel:手机号   打电话</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>target
+<ul>
+<li>
+<p>在哪个窗口打开这个超链接</p>
+</li>
+<li>
+<p>内置名字</p>
+<ul>
+<li>_blank 在新的空白标签页打开链接</li>
+<li>_self 在当前标签(或iframe层)打开链接</li>
+<li>_top 用于iframe 在最外层打开链接</li>
+<li>_parent 用于iframe 在上一层打开链接</li>
+</ul>
+</li>
+<li>
+<p>程序员命名</p>
+<ul>
+<li>window的name</li>
+<li>ifram的name</li>
+<li>例如<code>target=&quot;xxx&quot;</code> 在name叫xxx的窗口(如果没有,则新建一个name叫xxx的窗口)打开链接</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="iframe-标签">iframe 标签</h2>
+<ul>
+<li>内嵌窗口，很少使用了</li>
+</ul>
+<h2 id="table-标签">table 标签</h2>
+<p>表格</p>
+<ul>
+<li>相关的标签如下:
+<ul>
+<li>table</li>
+<li>thead</li>
+<li>tbody</li>
+<li>tfoot</li>
+<li>tr</li>
+<li>td</li>
+<li>th</li>
+</ul>
+</li>
+<li>它们各自的关系如下:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">table</span>&gt;
+    <span style="color:#998;font-style:italic">&lt;!-- table里的常用三个标签 --&gt;</span>
+    &lt;<span style="color:#000080">thead</span>&gt;&lt;/<span style="color:#000080">thead</span>&gt;
+        <span style="color:#998;font-style:italic">&lt;!-- table row --&gt;</span>
+        &lt;<span style="color:#000080">tr</span>&gt;
+            <span style="color:#998;font-style:italic">&lt;!-- 表头 --&gt;</span>
+            &lt;<span style="color:#000080">th</span>&gt;&lt;/<span style="color:#000080">th</span>&gt;
+            ...
+        &lt;/<span style="color:#000080">tr</span>&gt;
+        &lt;<span style="color:#000080">tr</span>&gt;
+            <span style="color:#998;font-style:italic">&lt;!-- table data --&gt;</span>
+            &lt;<span style="color:#000080">td</span>&gt;&lt;/<span style="color:#000080">td</span>&gt;
+            ...
+        &lt;/<span style="color:#000080">tr</span>&gt;
+        ...
+    &lt;<span style="color:#000080">tbody</span>&gt;&lt;/<span style="color:#000080">tbody</span>&gt;
+    &lt;<span style="color:#000080">tfoot</span>&gt;&lt;/<span style="color:#000080">tfoot</span>&gt;
+&lt;/<span style="color:#000080">table</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>相关的样式
+<ul>
+<li>table-layout
+<ul>
+<li>值
+<ul>
+<li>auto 个性化定制 如:字数多，比字数小的宽</li>
+<li>fixed 等宽</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>border-collapse
+<ul>
+<li>值
+<ul>
+<li>collapse 合并边框</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>border-spacing
+<ul>
+<li>值设为0 也是合并边框</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#000080">table</span> {
+    <span style="color:#000;font-weight:bold">table-layout</span>:<span style="color:#000;font-weight:bold">auto</span>;
+    <span style="color:#a61717;background-color:#e3d2d2">//</span> <span style="color:#a61717;background-color:#e3d2d2">合并边框</span> 
+    <span style="color:#000;font-weight:bold">border-collapse</span>: <span style="color:#000;font-weight:bold">collapse</span>;
+    <span style="color:#000;font-weight:bold">border-spacing</span>: <span style="color:#099">0</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="img-标签">img 标签</h2>
+<ul>
+<li>默认用法</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">img</span> <span style="color:#008080">src</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;图片地址&#34;</span> <span style="color:#008080">alt</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;图片描述信息&#34;</span> /&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>作用</p>
+<ul>
+<li>发出get请求,展示一张图片</li>
+</ul>
+</li>
+<li>
+<p>属性</p>
+<ul>
+<li>alt</li>
+<li>src</li>
+<li>height
+<ul>
+<li>只写高度，宽度会自适应 <code>height=400</code></li>
+</ul>
+</li>
+<li>width
+<ul>
+<li>只写宽度，高度会自适应 <code>width=400</code></li>
+</ul>
+</li>
+<li>注意:永远不要让图片变形
+<ul>
+<li>同时随意写height,width 容易造成图片变形</li>
+<li>所以写的时候，可以只选width去写.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>事件</p>
+<ul>
+<li>onload</li>
+<li>onerror</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#998;font-style:italic">// xxx 为img标签的id
+</span><span style="color:#998;font-style:italic"></span>xxx.onload <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>() {
+    console.log(<span style="color:#d14">&#34;图片加载成功&#34;</span>);
+}
+<span style="color:#998;font-style:italic">// 加载失败使用替换的404图片
+</span><span style="color:#998;font-style:italic"></span>xxx.onerror <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">function</span>() {
+    console.log(<span style="color:#d14">&#34;图片加载失败&#34;</span>);
+    xxx.src <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;/404.png&#34;</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>响应式
+<ul>
+<li>max-width:100%</li>
+<li>适用任意设备</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-css" data-lang="css"><span style="color:#000080">img</span> {
+    <span style="color:#000;font-weight:bold">max-width</span>:<span style="color:#099">100</span><span style="color:#458;font-weight:bold">%</span>;
+}
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h2 id="form-标签">form 标签</h2>
+<ul>
+<li>默认用法:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#998;font-style:italic">&lt;!-- /xxx 请求页面 --&gt;</span>
+&lt;<span style="color:#000080">form</span> <span style="color:#008080">action</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;/xxx&#34;</span> <span style="color:#008080">method </span><span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;POST&#34;</span> 
+<span style="color:#008080">autocomplete</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;on&#34;</span>
+&gt;
+...
+    &lt;<span style="color:#000080">input</span> <span style="color:#008080">type </span><span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;text&#34;</span>/&gt;
+    &lt;<span style="color:#000080">input</span> <span style="color:#008080">type </span><span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;submit&#34;</span> /&gt;
+&lt;/<span style="color:#000080">form</span>&gt; 
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>作用
+<ul>
+<li>发get 或 post 请求, 然后刷新页面</li>
+</ul>
+</li>
+<li>属性
+<ul>
+<li>action
+<ul>
+<li>值 请求的路径</li>
+</ul>
+</li>
+<li>autocomplete
+<ul>
+<li>值
+<ul>
+<li>on</li>
+<li>off</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>method
+<ul>
+<li>值
+<ul>
+<li>get</li>
+<li>post</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>target
+<ul>
+<li>与a标签的target一样</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件
+<ul>
+<li>onsubmit (提交)</li>
+</ul>
+</li>
+<li>form标签下 input 与 button 的区别</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="color:#998;font-style:italic">&lt;!-- button里面可以做很多嵌套 --&gt;</span>
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;submit&#34;</span> <span style="color:#008080">value</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;提交&#34;</span> /&gt;
+&lt;<span style="color:#000080">button</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;submit&#34;</span> &gt;&lt;<span style="color:#000080">strong</span>&gt;提交&lt;/<span style="color:#000080">strong</span>&gt;&lt;/<span style="color:#000080">button</span>&gt;
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>只写button 默认该button的type就是&quot;submit&rdquo;</li>
+</ul>
+<h2 id="input-标签">input 标签</h2>
+<ul>
+<li>作用
+<ul>
+<li>让用户输入内容</li>
+</ul>
+</li>
+<li>属性
+<ul>
+<li>type:
+<ul>
+<li>值
+<ul>
+<li>button</li>
+<li>checkbox</li>
+<li>email</li>
+<li>file</li>
+<li>hidden</li>
+<li>number</li>
+<li>password</li>
+<li>radio</li>
+<li>search</li>
+<li>submit</li>
+<li>tel</li>
+<li>text</li>
+</ul>
+</li>
+<li>代码例子</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html">&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;text&#34;</span> /&gt;
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;color&#34;</span> /&gt;
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;password&#34;</span> /&gt;
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;radio&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;gender&#34;</span> /&gt; 男
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;radio&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;gender&#34;</span> /&gt; 女
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;checkbox&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;hobby&#34;</span>/&gt;唱
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;checkbox&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;hobby&#34;</span>/&gt;跳
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;checkbox&#34;</span> <span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;hobby&#34;</span>/&gt;RAP
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;file&#34;</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;file&#34;</span> <span style="color:#008080">multiple</span>/&gt;
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">input</span> <span style="color:#008080">type</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;hidden&#34;</span>/&gt;
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">textarea</span>&gt;&lt;/<span style="color:#000080">textarea</span>&gt;
+&lt;<span style="color:#000080">hr</span> /&gt;
+&lt;<span style="color:#000080">select</span>&gt;
+    &lt;<span style="color:#000080">option</span> <span style="color:#008080">value</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;1&#34;</span>&gt;星期一&lt;/<span style="color:#000080">option</span>&gt;
+    &lt;<span style="color:#000080">option</span> <span style="color:#008080">value</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;
+</span><span style="color:#d14">    2&#34;</span>&gt;星期二&lt;/<span style="color:#000080">option</span>&gt;
+&lt;/<span style="color:#000080">select</span>&gt;
+...
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>其他属性:
+<ul>
+<li>name/autofocus/checked/disabled/maxlength/pattern/value/placeholder</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>事件
+<ul>
+<li>onchange/onfocus/onblur</li>
+</ul>
+</li>
+</ul>
+<h2 id="注意事项">注意事项</h2>
+<ul>
+<li>一般不监听input的click事件</li>
+<li>form里面的input要有name</li>
+<li>form里要放一个type=submit才能触发submit事件</li>
+</ul>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/effective-java/item7/">Item7</a></li>
+        
+        <li><a href="/posts/effective-java/item6/">Item6</a></li>
+        
+        <li><a href="/posts/effective-java/item4-5/">Item4 5</a></li>
+        
+        <li><a href="/posts/Spring/">Spring</a></li>
+        
+        <li><a href="/posts/java/Mybatis/">Mybatis</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://kongmu373.github.io/tags/HTML'>HTML</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/kongmu373"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://kongmu373.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://kongmu373.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" title="Html常用标签">Html常用标签</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item7/" title="Item7">Item7</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item6/" title="Item6">Item6</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item4-5/" title="Item4 5">Item4 5</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/Spring/" title="Spring">Spring</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/Mybatis/" title="Mybatis">Mybatis</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/Java%E7%9A%84%E6%B3%A8%E8%A7%A3/" title="Java的注解">Java的注解</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item3/" title="Item3">Item3</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item2/" title="Item2">Item2</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item1/" title="Item1">Item1</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (7)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (16)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://kongmu373.github.io/tags/Collection/">Collection</a>
+    
+    <a href="https://kongmu373.github.io/tags/Effective-Java/">Effective Java</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTML/">HTML</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTTP/">HTTP</a>
+    
+    <a href="https://kongmu373.github.io/tags/HashMap/">HashMap</a>
+    
+    <a href="https://kongmu373.github.io/tags/IO/">IO</a>
+    
+    <a href="https://kongmu373.github.io/tags/Java8/">Java8</a>
+    
+    <a href="https://kongmu373.github.io/tags/SQL/">SQL</a>
+    
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/git/">git</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/">异常</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%B3%A8%E8%A7%A3/">注解</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://kongmu373.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://kongmu373.github.io/">kongmu373的博客 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
+</html>

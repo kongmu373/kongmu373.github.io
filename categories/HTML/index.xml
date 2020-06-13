@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HTML on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/categories/HTML/</link>
+    <description>Recent content in HTML on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 13 Jun 2020 14:03:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/categories/HTML/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Html常用标签</title>
+      <link>https://kongmu373.github.io/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</link>
+      <pubDate>Sat, 13 Jun 2020 14:03:41 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/</guid>
+      <description>a 标签 属性 href (hyper ref 超引用或者超链接) 可以选择的取值 外部页面 网址(跳转到别人的页面上) https://google.com http://google.com //google.com (继承当前的协议) 路径(在自己http服务进行跳转) /a/b/c 以及 a/b/c 开启http服务之后，(&amp;quot;/&amp;quot;)根目录就不再是硬盘的根目录 (&amp;quot;/&amp;quot;)根目录的位置在于你在哪里</description>
+    </item>
+    
+  </channel>
+</rss>
