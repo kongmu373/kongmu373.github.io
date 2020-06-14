@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>HashMap源码分析 | kongmu373的博客</title>
-    <meta property="og:title" content="HashMap源码分析 - kongmu373的博客">
+    <title>浅析URL | kongmu373的博客</title>
+    <meta property="og:title" content="浅析URL - kongmu373的博客">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2020-06-08T10:09:46&#43;08:00'>
+    <meta property="article:published_time" content='2020-06-14T08:30:32&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2020-06-08T10:09:46&#43;08:00'>
+    <meta property="article:modified_time" content='2020-06-14T08:30:32&#43;08:00'>
         
     <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
-    <meta name="description" content="HashMap源码分析">
+    <meta name="description" content="浅析URL">
         
     <meta name="author" content="">
-    <meta property="og:url" content="https://kongmu373.github.io/posts/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/html/%E6%B5%85%E6%9E%90URL/">
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -139,10 +139,16 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#常见面试问题">常见面试问题</a></li>
-    <li><a href="#哈希表的简介">哈希表的简介</a></li>
-    <li><a href="#java-7-hashmap">Java 7 HashMap</a></li>
-    <li><a href="#java8-hashmap的改进">Java8 HashMap的改进</a></li>
+    <li><a href="#什么是ip">什么是IP</a></li>
+    <li><a href="#什么是端口port">什么是端口(port)?</a></li>
+    <li><a href="#什么是域名">什么是域名?</a></li>
+    <li><a href="#dns将域名和ip对应起来">DNS(将域名和IP对应起来)</a></li>
+    <li><a href="#路径">路径</a></li>
+    <li><a href="#查询参数">查询参数</a></li>
+    <li><a href="#锚点">锚点</a></li>
+    <li><a href="#注意">注意</a></li>
+    <li><a href="#url">URL</a></li>
+    <li><a href="#curl-命令">curl 命令</a></li>
   </ul>
 </nav>
     </div>
@@ -176,16 +182,16 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">HashMap源码分析</h1>
+            <h1 class="post-title">浅析URL</h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月8日
+            2020年6月14日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB'>java8体系</a></span>
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/HTML'>HTML</a></span>
             
         </div>
         
@@ -197,104 +203,103 @@
         
         
         <div class="post-content">
-            <h2 id="常见面试问题">常见面试问题</h2>
+            <blockquote>
+<p>WWW = URL + HTTP + HTML，本篇主要讲的是URL</p>
+</blockquote>
+<p>URL举例:
+<a href="https://www.baidu.com">https://www.baidu.com</a>:443/s?wd=hi&amp;rsv_spt=1#5</p>
 <ul>
-<li>HashMap默认容量?</li>
-<li>HashMap如何扩容?</li>
-<li>HashMap的数组大小为什么一定要是2的幂?</li>
-<li>HashMap为什么是线程不安全的</li>
-<li>Java 7到8做了哪些改进? 为什么?</li>
-<li>&hellip;</li>
+<li>https 协议</li>
+<li><a href="http://www.baidu.com">www.baidu.com</a> 域名(ip)</li>
+<li>:443 https的端口</li>
+<li>/s 路径</li>
+<li>?wd=hi&amp;rsv_spt=1 查询参数</li>
+<li>#5 锚点</li>
 </ul>
-<h2 id="哈希表的简介">哈希表的简介</h2>
+<h2 id="什么是ip">什么是IP</h2>
 <ul>
-<li>核心是基于哈希值的桶和链表
-<ul>
-<li>将一个元素映射成一个便于搜索的哈希值</li>
-</ul>
+<li>Internet Protocal</li>
+<li>约定了两件事:
+<ol>
+<li>如何定位一台设备</li>
+<li>如何封装数据报文，以跟其他设备交流</li>
+</ol>
 </li>
-<li>O(1)的平均查找,插入 删除时间
+<li>几个特殊的IP
 <ul>
-<li>桶底层使用数组实现，数组查找哈希值便是O(1)</li>
-<li>而插入元素是在链表或树中插入的，所以插入/删除也是O(1)</li>
-</ul>
-</li>
-<li>致命缺陷是哈希值的碰撞(collision)</li>
-</ul>
-<h2 id="java-7-hashmap">Java 7 HashMap</h2>
-<ul>
-<li>经典的哈希表实现: 数组+链表</li>
-<li>重要知识点:
-<ul>
-<li>初始容量
-<ul>
-<li><code>DEFAULT_INITIAL_CAPACITY = 1&lt;&lt;4; // aka 16</code></li>
-<li>为什么 Must be a power of two?
-<ul>
-<li><code>newTab[e.hash &amp; (newCap - 1)] = e;</code></li>
-<li>newCap是2的幂 - 1 得到 二进制全部是111&hellip;,让它与某个元素进行&amp;操作，得到数组下标。</li>
-<li>如果newCap不是2的幂，那么 newCap - 1,二进制得到的就不全是111&hellip;了，不是0的位就不可能分配得到元素,整个数组就没有得到平均分配。</li>
+<li>127.0.0.1表示自己</li>
+<li>localhost通过hosts文件指定为自己</li>
+<li>0.0.0.0不表示任何设备</li>
 </ul>
 </li>
 </ul>
-</li>
-<li>负载因子
+<h2 id="什么是端口port">什么是端口(port)?</h2>
 <ul>
-<li><code>DEFAULT_LOAD_FACTOR = 0.75f;</code></li>
-</ul>
-</li>
-<li>哈希算法</li>
-<li>哈希桶
+<li>每个服务一个号码，这个号码就叫端口号 port</li>
+<li>为什么需要端口？
 <ul>
-<li><code>transient Node&lt;K,V&gt;[] table;</code></li>
-<li>数组</li>
+<li>一台机器可以提供不同的服务</li>
+<li>HTTP -&gt; 80 port</li>
+<li>HTTPS -&gt; 443 port</li>
+<li>FTP -&gt; 21 port</li>
+<li>一台机器一共有65535个端口</li>
 </ul>
 </li>
-<li>扩容
+<li>端口的使用规则
 <ul>
-<li>大于 容量 * 负载因子 就开始扩容 (16*0.75=12 超过12就开始扩容了)</li>
-<li>低效</li>
-<li>线程不安全</li>
+<li>0-1023 号端口留给系统用</li>
+<li>一个端口如果被占用，就只能换一个端口</li>
 </ul>
 </li>
-<li>并发环境中易死锁
+</ul>
+<h2 id="什么是域名">什么是域名?</h2>
 <ul>
-<li>死锁问题分析
+<li>域名就是对IP的别称</li>
+<li>一个域名可以对应不同IP(负载均衡)</li>
+<li>一个ip可以对应不同的域名(共享主机)</li>
+</ul>
+<h2 id="dns将域名和ip对应起来">DNS(将域名和IP对应起来)</h2>
 <ul>
-<li>(resize中的transfer，发生链表死循环)</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>可以通过精心构造的恶意请求引发DoS
+<li>例子(过程)
 <ul>
-<li>链表性能退化分析</li>
+<li>在浏览器输入baidu.com会向电信/联通提供的DNS服务器询问baidu.com对应什么IP</li>
+<li>等DNS服务器返回IP,浏览器才会相对应IP的80/443端口发送请求，得到baidu.com的首页内容</li>
 </ul>
 </li>
-<li>ReSize效率很低
+</ul>
+<h2 id="路径">路径</h2>
 <ul>
-<li>根据问题规模调节初始容量</li>
+<li>在同一个服务器上使用不同的路径就得到不同的页面</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML">https://developer.mozilla.org/zh-CN/docs/Web/HTML</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS">https://developer.mozilla.org/zh-CN/docs/Web/CSS</a></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="java8-hashmap的改进">Java8 HashMap的改进</h2>
+<h2 id="查询参数">查询参数</h2>
 <ul>
-<li>数组+链表/红黑树</li>
-<li>扩容时插入顺序的改进</li>
-<li>函数方法
-<ul>
-<li>forEach</li>
-<li>compute系列</li>
+<li>同一个页面，不同的内容</li>
+<li><a href="http://www.baidu.com/s?wd=hi">www.baidu.com/s?wd=hi</a></li>
+<li><a href="http://www.baidu.com/s?wd=hello">www.baidu.com/s?wd=hello</a></li>
 </ul>
-</li>
-<li>Map的新API
+<h2 id="锚点">锚点</h2>
 <ul>
-<li>merge</li>
-<li>replace</li>
+<li>同一个内容的不同位置</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS#">https://developer.mozilla.org/zh-CN/docs/Web/CSS#</a>参考书</li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS#">https://developer.mozilla.org/zh-CN/docs/Web/CSS#</a>教程</li>
+<li>锚点不会传给服务器，锚点只跟浏览器有关</li>
 </ul>
-</li>
+<h2 id="注意">注意</h2>
+<ul>
+<li>URL中看起来支持中文，实际不支持中文</li>
+<li>中文变成%E5%..</li>
+</ul>
+<h2 id="url">URL</h2>
+<ul>
+<li>Uniform Resource Locator</li>
+<li>协议+域名(ip)+端口+路径+查询参数+锚点</li>
+</ul>
+<h2 id="curl-命令">curl 命令</h2>
+<ul>
+<li>用curl 可以发送http请求</li>
+<li>curl -v <a href="http://baidu.com">http://baidu.com</a></li>
 </ul>
 
         </div>
@@ -308,15 +313,15 @@
     <h2>See Also</h2>
     <ul class="listing">
         
-        <li><a href="/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">基础算法与数据结构</a></li>
+        <li><a href="/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/">Html常用标签</a></li>
         
-        <li><a href="/posts/stream/">Stream</a></li>
+        <li><a href="/posts/effective-java/item7/">Item7</a></li>
         
-        <li><a href="/posts/%E6%A1%B6%E6%8E%92%E5%BA%8F/">进阶算法</a></li>
+        <li><a href="/posts/effective-java/item6/">Item6</a></li>
         
-        <li><a href="/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a></li>
+        <li><a href="/posts/effective-java/item4-5/">Item4 5</a></li>
         
-        <li><a href="/posts/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/">生产者与消费者模型</a></li>
+        <li><a href="/posts/Spring/">Spring</a></li>
         
     </ul>
 </div>
@@ -326,7 +331,7 @@
             
             <ul class="clearfix">
                 
-                <li><a href='https://kongmu373.github.io/tags/HashMap'>HashMap</a></li>
+                <li><a href='https://kongmu373.github.io/tags/HTML'>HTML</a></li>
                 
             </ul>
             

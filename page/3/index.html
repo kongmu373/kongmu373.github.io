@@ -73,6 +73,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/" title="多线程带来的问题">多线程带来的问题</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            线程不安全的表现 数据错误 i++问题 死锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 // 死锁代码 public class Main { private static final Object lock1 = new Object(); private static final Object lock2 = new Object(); public static void main(String[] args) throws InterruptedException { new Thread1().start(); new Thread2().start(); } private static class Thread1 extends Thread { @Override public void run() { synchronized (lock1) { try { Thread.sleep(500); } catch (InterruptedException ignored) { } synchronized (lock2) { System.out.println(); } } } } private static class Thread2 extends……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="多线程基本原理">多线程基本原理</a>
             </h1>
         </header>
@@ -270,29 +293,6 @@
         <p class="readmore"><a href="https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/Collection/" title="Collection">Collection</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年5月27日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Collection 简介 Collection是什么？(root interface) 是接口，不是类，不能被new 一组东西，一篮子鸡蛋,只包含一种元素 Collection 体系 (root interface) 例如,ArrayList的Diagrams Collection 常使用的方法: new: new ArrayList(Collection), new ArrayList() 1 2 3 4 5 6 7 8 9 10 11 12 13 Collection&lt;Integer&gt; c = new LinkedHashSet(); // IntegerList List&lt;Integer&gt; list = new ArrayList&lt;&gt;(c); // == List&lt;Integer&gt; list2 = new ArrayList&lt;&gt;(); list2.addAll(); // == List&lt;Integer&gt; list3 = new ArrayList&lt;&gt;(); for(Integer i : c) { list3.add(i);……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/Collection/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -350,6 +350,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/html/%E6%B5%85%E6%9E%90URL/" title="浅析URL">浅析URL</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" title="Html常用标签">Html常用标签</a>
     </li>
     
@@ -385,10 +389,6 @@
         <a href="https://kongmu373.github.io/posts/effective-java/item2/" title="Item2">Item2</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/effective-java/item1/" title="Item1">Item1</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -400,7 +400,7 @@
     
     <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (7)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (1)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
