@@ -82,6 +82,75 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item11-12/">Item11 12</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 11: Always override hashCode when you override equals（当覆盖 equals 时，始终覆盖 hashCode） equals相同的，hascodes也必须相同· equals不相同的，hashcodes也可以相同 没有hashCode的实现将破坏基于hash实现的集合的功能 不好的hashCode实现会降低基于hash实现的性能……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item11-12/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item10/">Item10</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 10: Obey the general contract when overriding equals（覆盖 equals 方法时应遵守的约定） 覆盖 equals 方法似乎很简单，但是有很多覆盖的方式会导致出错，而且后果可能非常严重。 equals 约定 &ndash; equivalence relation 覆盖equals 应该遵守(equivalence relation) 自反性(Reflexive), x.equals(x) == true 对称性(Symmetric), x.equals(y) == y.equals(x) 传递性(Tra……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item10/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item9/">Item9</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 9: Prefer try-with-resources to try-finally（使用 try-with-resources 优于 try-finally） try-finally 从历史上看，try-finally 语句是确保正确关闭资源的最佳方法 1 2 3 4 5 6 7 8 9 // try-finally - No longer the best way to close resources! static String firstLineOfFile(String path) throws IOException { BufferedReader br = new BufferedReader(new FileReader(path)); try { return br.readLine(); } finally { br.close(); } } 但添加第二个资源时，情况会变得更糟： 1 2 3 4 5 6 7 8 9 10 11……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item9/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/effective-java/item7/">Item7</a>
             </h1>
         </header>
@@ -266,6 +335,30 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java正则表达式">Java正则表达式</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/" title="动态代理与AOP">动态代理与AOP</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item11-12/" title="Item11 12">Item11 12</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item10/" title="Item10">Item10</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/effective-java/item9/" title="Item9">Item9</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/" title="浅析SpringWeb应用">浅析SpringWeb应用</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/html/%E6%B5%85%E6%9E%90URL/" title="浅析URL">浅析URL</a>
     </li>
     
@@ -281,30 +374,6 @@
         <a href="https://kongmu373.github.io/posts/effective-java/item6/" title="Item6">Item6</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/effective-java/item4-5/" title="Item4 5">Item4 5</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/Spring/" title="Spring">Spring</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/java/Mybatis/" title="Mybatis">Mybatis</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/java/Java%E7%9A%84%E6%B3%A8%E8%A7%A3/" title="Java的注解">Java的注解</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/effective-java/item3/" title="Item3">Item3</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/effective-java/item2/" title="Item2">Item2</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -314,13 +383,15 @@
         <h3 class="widget-title">分类</h3>
 <ul class="widget-list">
     
-    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (7)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (10)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (16)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (17)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
     

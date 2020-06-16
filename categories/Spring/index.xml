@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spring on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/categories/Spring/</link>
+    <description>Recent content in Spring on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 15 Jun 2020 16:08:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/categories/Spring/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>动态代理与AOP</title>
+      <link>https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/</link>
+      <pubDate>Mon, 15 Jun 2020 16:08:15 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/</guid>
+      <description>什么是AOP Aspect-Oriented Programming 面向切面编程 相对于OOP (面向对象编程) AOP是面向切面编程，关注一个统一的切面 AOP和Spring是不同的东西 AOP适合于哪些场景 需要统一处理的场景 日志 缓存 鉴权 如果用OOP来做需要怎么办? 装饰器模式 装饰器模式 Decorator pattern 动态地为一个对象增加功能，但是不改变其结构 本质上是</description>
+    </item>
+    
+    <item>
+      <title>浅析SpringWeb应用</title>
+      <link>https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Sun, 14 Jun 2020 09:51:00 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/</guid>
+      <description>Web应用 处理HTTP请求 从HTTP请求中提取query string(查询字符串) 从HTTP请求中接收payload(负载)中的参数 返回HTTP响应 status code HTTP resonse header HTTP response body JSON HTML &amp;hellip; HTTP GET Query string ?param1=value1&amp;amp;param2=value2 通常用来传递非敏感信息 使用@RequestParam进行接收 RESTful API 使用HTTP动词来代表动作 GET: 获取资源</description>
+    </item>
+    
+  </channel>
+</rss>

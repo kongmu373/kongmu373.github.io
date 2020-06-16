@@ -6,10 +6,19 @@
     <description>Recent content in Java体系 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 12 Jun 2020 08:57:48 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 14:18:27 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java正则表达式</title>
+      <link>https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Tue, 16 Jun 2020 14:18:27 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>常用的元字符 元字符 描述 ^ 开始位置 $ 结束位置 . 单个任意字符(不一定包含换行符) \w 单个&amp;quot;word&amp;quot;字符 字母/数字/下划线/汉字 \s 单个空白字符 (\r\n\t) \d 单个数字字符 \b 单词的开始或结束 用到它们的原来的意思的时候，需要转义 (?s).* . 包括匹配换行符 重复 重复字符 描述 * 0次或多次 + 1次或</description>
+    </item>
     
     <item>
       <title>Spring</title>

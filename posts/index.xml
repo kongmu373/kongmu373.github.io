@@ -6,10 +6,64 @@
     <description>Recent content in Posts on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 14 Jun 2020 08:30:32 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jun 2020 14:18:27 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Java正则表达式</title>
+      <link>https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</link>
+      <pubDate>Tue, 16 Jun 2020 14:18:27 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
+      <description>常用的元字符 元字符 描述 ^ 开始位置 $ 结束位置 . 单个任意字符(不一定包含换行符) \w 单个&amp;quot;word&amp;quot;字符 字母/数字/下划线/汉字 \s 单个空白字符 (\r\n\t) \d 单个数字字符 \b 单词的开始或结束 用到它们的原来的意思的时候，需要转义 (?s).* . 包括匹配换行符 重复 重复字符 描述 * 0次或多次 + 1次或</description>
+    </item>
+    
+    <item>
+      <title>动态代理与AOP</title>
+      <link>https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/</link>
+      <pubDate>Mon, 15 Jun 2020 16:08:15 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/</guid>
+      <description>什么是AOP Aspect-Oriented Programming 面向切面编程 相对于OOP (面向对象编程) AOP是面向切面编程，关注一个统一的切面 AOP和Spring是不同的东西 AOP适合于哪些场景 需要统一处理的场景 日志 缓存 鉴权 如果用OOP来做需要怎么办? 装饰器模式 装饰器模式 Decorator pattern 动态地为一个对象增加功能，但是不改变其结构 本质上是</description>
+    </item>
+    
+    <item>
+      <title>Item11 12</title>
+      <link>https://kongmu373.github.io/posts/effective-java/item11-12/</link>
+      <pubDate>Sun, 14 Jun 2020 18:47:20 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/effective-java/item11-12/</guid>
+      <description>Item 11: Always override hashCode when you override equals（当覆盖 equals 时，始终覆盖 hashCode） equals相同的，hascodes也必须相同· equals不相同的，hashcodes也可以相同 没有hashCode的实现将破坏基于hash实现的集合的功能 不好的hashCode实现会降低基于hash实现的性能</description>
+    </item>
+    
+    <item>
+      <title>Item10</title>
+      <link>https://kongmu373.github.io/posts/effective-java/item10/</link>
+      <pubDate>Sun, 14 Jun 2020 17:21:00 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/effective-java/item10/</guid>
+      <description>Item 10: Obey the general contract when overriding equals（覆盖 equals 方法时应遵守的约定） 覆盖 equals 方法似乎很简单，但是有很多覆盖的方式会导致出错，而且后果可能非常严重。 equals 约定 &amp;ndash; equivalence relation 覆盖equals 应该遵守(equivalence relation) 自反性(Reflexive), x.equals(x) == true 对称性(Symmetric), x.equals(y) == y.equals(x) 传递性(Tra</description>
+    </item>
+    
+    <item>
+      <title>Item9</title>
+      <link>https://kongmu373.github.io/posts/effective-java/item9/</link>
+      <pubDate>Sun, 14 Jun 2020 14:35:29 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/effective-java/item9/</guid>
+      <description>Item 9: Prefer try-with-resources to try-finally（使用 try-with-resources 优于 try-finally） try-finally 从历史上看，try-finally 语句是确保正确关闭资源的最佳方法 1 2 3 4 5 6 7 8 9 // try-finally - No longer the best way to close resources! static String firstLineOfFile(String path) throws IOException { BufferedReader br = new BufferedReader(new FileReader(path)); try { return br.readLine(); } finally { br.close(); } } 但添加第二个资源时，情况会变得更糟： 1 2 3 4 5 6 7 8 9 10 11</description>
+    </item>
+    
+    <item>
+      <title>浅析SpringWeb应用</title>
+      <link>https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Sun, 14 Jun 2020 09:51:00 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/</guid>
+      <description>Web应用 处理HTTP请求 从HTTP请求中提取query string(查询字符串) 从HTTP请求中接收payload(负载)中的参数 返回HTTP响应 status code HTTP resonse header HTTP response body JSON HTML &amp;hellip; HTTP GET Query string ?param1=value1&amp;amp;param2=value2 通常用来传递非敏感信息 使用@RequestParam进行接收 RESTful API 使用HTTP动词来代表动作 GET: 获取资源</description>
+    </item>
     
     <item>
       <title>浅析URL</title>
@@ -63,15 +117,6 @@
       
       <guid>https://kongmu373.github.io/posts/Spring/</guid>
       <description>Spring是什么? Java世界应用的事实标准 Spring容器 - 一个 IoC容器 Spring MVC - 基于Spring和Servlet的Web应用框架 Spring Boot - 集成度和自动化程序更高 没有Spring,我们会怎么做呢? 选择一: 一个main程序打天下 非常轻量，适用于非常简单的场景 一旦规模上来之后 难以维护 是</description>
-    </item>
-    
-    <item>
-      <title>Mybatis</title>
-      <link>https://kongmu373.github.io/posts/java/Mybatis/</link>
-      <pubDate>Thu, 11 Jun 2020 11:15:28 +0800</pubDate>
-      
-      <guid>https://kongmu373.github.io/posts/java/Mybatis/</guid>
-      <description></description>
     </item>
     
     <item>
