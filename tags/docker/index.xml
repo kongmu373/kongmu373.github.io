@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/docker/</link>
+    <description>Recent content in docker on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 17 Jun 2020 13:59:25 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker</title>
+      <link>https://kongmu373.github.io/posts/java/docker/</link>
+      <pubDate>Wed, 17 Jun 2020 13:59:25 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/docker/</guid>
+      <description>Docker能做什么? 保证开发，测试，交付，部署的环境完全一致 保证资源的隔离 启动临时的，用完即弃的环境，例如测试 迅速 (秒级)超大规模和扩容 Docker 与 Virtual Machines 相比 Docker的基本概念 镜像 imgage 一个预先定义好的模板文件， Docker引擎可以按照这个摸板文件启动无数个一模一样，互不干扰的容器 容器 container</description>
+    </item>
+    
+  </channel>
+</rss>

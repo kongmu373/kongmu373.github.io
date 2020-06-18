@@ -75,6 +75,56 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item7/" title="Item7">Item7</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月12日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item7: Eliminate obsolete object references （排除过时的对象引用） 自实现的栈可能存在忽略的内存泄露 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 mport java.util.Arrays; import java.util.EmptyStackException; // Can you spot the &#34;memory leak&#34;? public class Stack { private Object[] elements; private int size = 0; private static final int DEFAULT_INITIAL_CAPACITY = 16; public Stack() { elements = new Object[DEFAULT_INITIAL_CAPACITY]; } public void push(Object e) { ensureCapacity(); elements[size++] = e; } public Object pop() { if (size == 0) throw new EmptyStackException(); return elements[--size]; } /** * Ensure space for at least one more element, roughly * doubling……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item7/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item6/" title="Item6">Item6</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月12日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item6 Avoid creating unecessary objects(避免创建不必要的对象) 重用对象从而提高性能 exmaple1: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 // Reusing expensive object for improved performance (Pages 22 and 23) public class RomanNumerals { // Performance can be greatly improved! (Page 22) static boolean isRomanNumeralSlow(String s) { return s.matches(&#34;^(?=.)M*(C[MD]|D?C{0,3})&#34; + &#34;(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$&#34;); } // Reusing expensive object for improved performance (Page 23) private static final Pattern ROMAN = Pattern.compile( &#34;^(?=.)M*(C[MD]|D?C{0,3})&#34; + &#34;(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$&#34;); static boolean isRomanNumeralFast(String s) { return ROMAN.matcher(s).matches(); } public static void main(String[] args) { int numSets = Integer.parseInt(args[0]);……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item6/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/effective-java/item4-5/" title="Item4 5">Item4 5</a>
             </h1>
         </header>
@@ -265,56 +315,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%9F%E7%90%86/" title="字符串原理">字符串原理</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月8日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            字符串是最重要的引用类型 互联网基本上只干一件事: 处理字符串 能处理好字符串是Web服务器的基本要求 字符串的不可变性 字符串的不可变是如何保证的? String是final class不能被继承 保存字符的数组是final的，不能改变指向 String的所有公开API都不能改变这个value的……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%9F%E7%90%86/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" title="HashMap源码分析">HashMap源码分析</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月8日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB'>java8体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            常见面试问题 HashMap默认容量? HashMap如何扩容? HashMap的数组大小为什么一定要是2的幂? HashMap为什么是线程不安全的 Java 7到8做了哪些改进? 为什么? &hellip; 哈希表的简介 核心是基于哈希值的桶和链表 将一个元素映射成一个便于搜索的哈希值 O(1)的平均查找,插入 删除时间 桶……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -375,6 +375,14 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/spring/Web%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/" title="Web应用原理浅析与架构分析">Web应用原理浅析与架构分析</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/docker/" title="Docker">Docker</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java正则表达式">Java正则表达式</a>
     </li>
     
@@ -406,14 +414,6 @@
         <a href="https://kongmu373.github.io/posts/html/html%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE/" title="Html常用标签">Html常用标签</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/effective-java/item7/" title="Item7">Item7</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/effective-java/item6/" title="Item6">Item6</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -429,9 +429,9 @@
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (17)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (18)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
     
@@ -463,6 +463,8 @@
     <a href="https://kongmu373.github.io/tags/SQL/">SQL</a>
     
     <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/docker/">docker</a>
     
     <a href="https://kongmu373.github.io/tags/git/">git</a>
     

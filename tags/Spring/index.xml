@@ -6,10 +6,19 @@
     <description>Recent content in Spring on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 15 Jun 2020 16:08:15 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2020 15:10:50 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/tags/Spring/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Web应用原理浅析与架构分析</title>
+      <link>https://kongmu373.github.io/posts/spring/Web%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/</link>
+      <pubDate>Wed, 17 Jun 2020 15:10:50 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/spring/Web%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/</guid>
+      <description>HTTP Hyper Text Transport Protocol 超文本传输协议 基于TCP(全双工协议，65536端口) 电脑之间遵循HTTP协议，发送字节流，如B电脑向A服务器发送一个GET请求： A服务器&amp;lt;-GET / HTTP 1.1 \r\n... B电脑 A服务器接收请求后并处理后发送响应回-&amp;gt;B电脑 HTTP协议的默认端口是80 HTTPS协议的默认端</description>
+    </item>
     
     <item>
       <title>动态代理与AOP</title>
