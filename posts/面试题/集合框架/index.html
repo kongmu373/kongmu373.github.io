@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>集合框架 | kongmu373的博客</title>
+    <meta property="og:title" content="集合框架 - kongmu373的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-07-04T19:11:14&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-07-04T19:11:14&#43;08:00'>
+        
+    <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
+    <meta name="description" content="集合框架">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://kongmu373.github.io/">
+                        kongmu373的博客
+                    </a>
+                
+                <p class="description">专注于Java、移动互联网、项目管理、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://kongmu373.github.io/">首页</a>
+                    
+                    <a  href="https://kongmu373.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://kongmu373.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://kongmu373.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hashmap原理">HashMap原理</a></li>
+    <li><a href="#listsetmap-区别">List/Set/Map 区别</a></li>
+    <li><a href="#hashmap和hashtable的区别">HashMap和HashTable的区别?</a></li>
+    <li><a href="#concurrenthashmap-原理">ConcurrentHashMap 原理?</a></li>
+    <li><a href="#hashset原理">HashSet原理</a></li>
+    <li><a href="#treeset原理">TreeSet原理</a></li>
+    <li><a href="#equalshashcode区别--何时使用呢">equals/hashCode区别 / 何时使用呢?</a></li>
+    <li><a href="#arraylistlinkedlist的区别">ArrayList/LinkedList的区别?</a></li>
+    <li><a href="#哪线集合类是线程安全的">哪线集合类是线程安全的?</a></li>
+    <li><a href="#如何保证一个集合类不被修改">如何保证一个集合类不被修改</a></li>
+    <li><a href="#arraylistvector区别">ArrayList/Vector区别?</a></li>
+    <li><a href="#常见的listsetmap实现">常见的List/Set/Map实现?</a></li>
+    <li><a href="#collection和collections的区别">Collection和Collections的区别?</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">集合框架</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="hashmap原理">HashMap原理</h2>
+<p>详情在另一篇博客<a href="https://kongmu373.github.io/posts/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">HashMap源码分析</a></p>
+<h2 id="listsetmap-区别">List/Set/Map 区别</h2>
+<ul>
+<li>List
+<ul>
+<li>有位置顺序，因此可以通过下标获取对应的值,get(index)</li>
+<li>存储有顺序的东西</li>
+</ul>
+</li>
+<li>Set
+<ul>
+<li>无序的</li>
+<li>元素不同</li>
+<li>当我们需要去重的时候，就可以使用它</li>
+</ul>
+</li>
+<li>Map
+<ul>
+<li>映射</li>
+</ul>
+</li>
+</ul>
+<h2 id="hashmap和hashtable的区别">HashMap和HashTable的区别?</h2>
+<ul>
+<li>HashTable基本不用</li>
+<li>相同点: 都是基于哈希表的</li>
+<li>不同点: HashTable可以接受null,而且是线程安全的，而HashMap不是线程安全的，
+但实际上可以选择ConcurrentHashMap</li>
+</ul>
+<h2 id="concurrenthashmap-原理">ConcurrentHashMap 原理?</h2>
+<ul>
+<li>无脑使用ConccurenttHashMap 并发的，安全的</li>
+<li>Concurrent把内部的Hash桶分区，每个区叫分段(segment)</li>
+<li>因此，每当调用put方法时候，只需把一个分区锁住，其他线程可以操作其他没被锁的分区</li>
+</ul>
+<h2 id="hashset原理">HashSet原理</h2>
+<ul>
+<li>HashMap的key集合就是set</li>
+<li>HashSet内部有一个HashMap</li>
+<li>每次往里面丢东西，就是丢到hashMap中，然后丢一个占位符给value值</li>
+</ul>
+<h2 id="treeset原理">TreeSet原理</h2>
+<ul>
+<li>NavigableSet 可以导航的Set集合,元素是可以从小到大排好的，基于TreeMap实现</li>
+<li>而TreeMap基于AVL树(红黑树,即自平衡二叉树)</li>
+<li>二叉平衡树的查找插入都是对数时间的</li>
+<li>使用场景:
+<ul>
+<li>元素有排序</li>
+<li>插入/删除高效</li>
+</ul>
+</li>
+</ul>
+<h2 id="equalshashcode区别--何时使用呢">equals/hashCode区别 / 何时使用呢?</h2>
+<ul>
+<li>hashCode 返回一个对象的hashCode值，可以让基于hash表实现的集合变得高效，例如:HashMap</li>
+<li>当hashCode相同的时候，就需要使用equals来进行判定两个对象是否相同或者相等</li>
+</ul>
+<h2 id="arraylistlinkedlist的区别">ArrayList/LinkedList的区别?</h2>
+<ul>
+<li>ArrayList,基于数组实现，但是可以动态扩容的(创建一个新的扩容空间，把旧的数据全部复制到新空间中),添加/删除O(n), 查找O(1)</li>
+<li>LinkedList,基于双向链表的实现(deque),添加/删除都是O(1)，查找O(n)
+<ul>
+<li>使用场景: 队列，栈都可以用</li>
+</ul>
+</li>
+</ul>
+<h2 id="哪线集合类是线程安全的">哪线集合类是线程安全的?</h2>
+<ul>
+<li>ConcurrentHashMap/Set</li>
+</ul>
+<h2 id="如何保证一个集合类不被修改">如何保证一个集合类不被修改</h2>
+<ul>
+<li>Collections.unmodifiableXXX</li>
+<li>Guava的ImmutableXXX</li>
+</ul>
+<h2 id="arraylistvector区别">ArrayList/Vector区别?</h2>
+<ul>
+<li>Vector基本不用,效率低，线程安全</li>
+<li>ArrayList不安全，但是效率高</li>
+</ul>
+<h2 id="常见的listsetmap实现">常见的List/Set/Map实现?</h2>
+<ul>
+<li>ArrayList/LinkedList</li>
+<li>HashSet/LinkedHashSet/TreeSet</li>
+<li>HashMap/LinkedHashMap/TreeMap/ConcurrentHashMap</li>
+</ul>
+<h2 id="collection和collections的区别">Collection和Collections的区别?</h2>
+<ul>
+<li>Collection是一个类</li>
+<li>Collections是Collection相应的工具方法集合</li>
+</ul>
+
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">Java面向对象</a></li>
+        
+        <li><a href="/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/java%E5%9F%BA%E7%A1%80/">Java基础</a></li>
+        
+        <li><a href="/posts/java/stream-%E5%9F%BA%E7%A1%80/">Stream-常见使用</a></li>
+        
+        <li><a href="/posts/spring/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">微店项目部署</a></li>
+        
+        <li><a href="/posts/java/TCP%E4%B8%8Esocket-2/">TCP与socket 2</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://kongmu373.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/kongmu373"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://kongmu373.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://kongmu373.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" title="操作系统于计算机原理">操作系统于计算机原理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/spring/" title="Spring">Spring</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8F%8D%E5%B0%84/" title="类型与反射">类型与反射</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/web/" title="Web">Web</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="基本数据结构和算法">基本数据结构和算法</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" title="计算机体系原理">计算机体系原理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/redis/" title="Redis">Redis</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/" title="Java的异常体系">Java的异常体系</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (14)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (24)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (10)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://kongmu373.github.io/tags/Collection/">Collection</a>
+    
+    <a href="https://kongmu373.github.io/tags/Effective-Java/">Effective Java</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTML/">HTML</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTTP/">HTTP</a>
+    
+    <a href="https://kongmu373.github.io/tags/HashMap/">HashMap</a>
+    
+    <a href="https://kongmu373.github.io/tags/IO/">IO</a>
+    
+    <a href="https://kongmu373.github.io/tags/Java8/">Java8</a>
+    
+    <a href="https://kongmu373.github.io/tags/SQL/">SQL</a>
+    
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/docker/">docker</a>
+    
+    <a href="https://kongmu373.github.io/tags/git/">git</a>
+    
+    <a href="https://kongmu373.github.io/tags/redis/">redis</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/">异常</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%B3%A8%E8%A7%A3/">注解</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://kongmu373.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://kongmu373.github.io/">kongmu373的博客 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
+</html>

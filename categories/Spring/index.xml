@@ -6,18 +6,27 @@
     <description>Recent content in Spring on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 17 Jun 2020 15:10:50 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2020 08:21:49 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Spring/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Web应用原理浅析与架构分析</title>
-      <link>https://kongmu373.github.io/posts/spring/Web%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/</link>
-      <pubDate>Wed, 17 Jun 2020 15:10:50 +0800</pubDate>
+      <title>微店项目部署</title>
+      <link>https://kongmu373.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Wed, 01 Jul 2020 08:21:49 +0800</pubDate>
       
-      <guid>https://kongmu373.github.io/posts/spring/Web%E5%BA%94%E7%94%A8%E5%8E%9F%E7%90%86%E6%B5%85%E6%9E%90%E4%B8%8E%E6%9E%B6%E6%9E%84%E5%88%86%E6%9E%90/</guid>
-      <description>HTTP Hyper Text Transport Protocol 超文本传输协议 基于TCP(全双工协议，65536端口) 电脑之间遵循HTTP协议，发送字节流，如B电脑向A服务器发送一个GET请求： A服务器&amp;lt;-GET / HTTP 1.1 \r\n... B电脑 A服务器接收请求后并处理后发送响应回-&amp;gt;B电脑 HTTP协议的默认端口是80 HTTPS协议的默认端</description>
+      <guid>https://kongmu373.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/</guid>
+      <description>本文章主要将一个微信小商店的后端部署到服务器上的步骤过程记录下来，方便以后的部署。 项目地址:https://github.com/kongmu373/wxshop 以及前端地址: https://github.com/kongmu373/westore-react-1 步骤 在阿里云上买一台ECS服务器 部署模型 服务器对外暴露一个nginx(80port), 所有外部连接都经</description>
+    </item>
+    
+    <item>
+      <title>Spring原理</title>
+      <link>https://kongmu373.github.io/posts/spring/spring%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Thu, 18 Jun 2020 16:41:11 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/spring/spring%E5%8E%9F%E7%90%86/</guid>
+      <description>为什么需要Spring呢？ 开发一个应用要把它分成很多个模块 模块之间用约定进行通信 模块分成很多个子模块 如果是java应用程序，那么模块可以理解为一个个对象(Object,在Spring中命名为Bean) 模块之间存在相互依赖,如：当A模块必须使用B模块才能完成A模块提供的服务(A依赖</description>
     </item>
     
     <item>

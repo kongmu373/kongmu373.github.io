@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Stream-常见使用 | kongmu373的博客</title>
+    <meta property="og:title" content="Stream-常见使用 - kongmu373的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-07-02T16:00:20&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-07-02T16:00:20&#43;08:00'>
+        
+    <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
+    <meta name="description" content="Stream-常见使用">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://kongmu373.github.io/">
+                        kongmu373的博客
+                    </a>
+                
+                <p class="description">专注于Java、移动互联网、项目管理、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://kongmu373.github.io/">首页</a>
+                    
+                    <a  href="https://kongmu373.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://kongmu373.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://kongmu373.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#常见使用">常见使用</a>
+      <ul>
+        <li><a href="#筛选过滤">筛选过滤</a></li>
+        <li><a href="#映射mapflatmap">映射(map,flatMap)</a></li>
+        <li><a href="#查找和匹配">查找和匹配</a></li>
+        <li><a href="#归约reduce">归约(reduce)</a></li>
+        <li><a href="#数值流">数值流</a></li>
+      </ul>
+    </li>
+    <li><a href="#构建流的方法">构建流的方法</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">Stream-常见使用</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月2日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p>本文章主要介绍了Stream使用的常见方法以及Java样例代码.</p>
+<h2 id="常见使用">常见使用</h2>
+<hr>
+<h3 id="筛选过滤">筛选过滤</h3>
+<ul>
+<li>filter方法
+接受一个判定(Predicate),并返回一个符合判定的元素流</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>Car<span style="color:#000;font-weight:bold">&gt;</span> carList <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>Car<span style="color:#000;font-weight:bold">::</span>isElectric<span style="color:#000;font-weight:bold">)</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>toList<span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>distinct方法
+返回一个没有重复的元素流(用元素的equals方法来判断)</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> number <span style="color:#000;font-weight:bold">=</span> Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">asList</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">,</span> 2<span style="color:#000;font-weight:bold">,</span> 3<span style="color:#000;font-weight:bold">,</span> 3<span style="color:#000;font-weight:bold">,</span> 5<span style="color:#000;font-weight:bold">,</span> 5<span style="color:#000;font-weight:bold">);</span>
+numbers<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">distinct</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">forEach</span><span style="color:#000;font-weight:bold">(</span>System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">::</span>println<span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>limit方法
+返回一个不超过给定长度的流。所需的长度作为参数传递给limit。
+如果流是有序的，则最多返回前n个元素。</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>Car<span style="color:#000;font-weight:bold">&gt;</span> carList <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>c<span style="color:#000;font-weight:bold">-&gt;</span> c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPrice</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">&gt;</span> 100<span style="color:#000;font-weight:bold">)</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">limit</span><span style="color:#000;font-weight:bold">(</span>3<span style="color:#000;font-weight:bold">)</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>toList<span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>skip方法
+返回一个扔掉了前n个元素的流.如果流中元素不足n个，则返回一个空流</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>Car<span style="color:#000;font-weight:bold">&gt;</span> carList <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>c<span style="color:#000;font-weight:bold">-&gt;</span>c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPrice</span><span style="color:#000;font-weight:bold">()&gt;</span>100<span style="color:#000;font-weight:bold">)</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">skip</span><span style="color:#000;font-weight:bold">(</span>2<span style="color:#000;font-weight:bold">)</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>toList<span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="映射mapflatmap">映射(map,flatMap)</h3>
+<p>从元素流中选择某些信息，并将其映射成一个新元素流</p>
+<ul>
+<li>map方法
+接收一个函数(Functional)作为参数，这个函数应用到每个元素上,
+并映射成一个新元素</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> carList <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>Car<span style="color:#000;font-weight:bold">::</span>getName<span style="color:#000;font-weight:bold">)</span>
+			<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>toList<span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>flatMap方法
+合并，如:输入单词列表[&ldquo;Hello&rdquo;,&ldquo;World&rdquo;], 返回列表[&ldquo;H&rdquo;,&ldquo;e&rdquo;&hellip;]</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">words<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>word <span style="color:#000;font-weight:bold">-&gt;</span> word<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;&#34;</span><span style="color:#000;font-weight:bold">))</span> <span style="color:#998;font-style:italic">// stream&lt;String[]&gt;
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">distinct</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>toList<span style="color:#000;font-weight:bold">());</span>
+words<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>word <span style="color:#000;font-weight:bold">-&gt;</span> word<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;&#34;</span><span style="color:#000;font-weight:bold">))</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>Arrays<span style="color:#000;font-weight:bold">::</span>stream<span style="color:#000;font-weight:bold">)</span> <span style="color:#998;font-style:italic">// Stream&lt;String[]&gt; -&gt; Stream&lt;Stream&lt;string&gt;&gt;
+</span><span style="color:#998;font-style:italic"></span>	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">distinct</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>toList<span style="color:#000;font-weight:bold">());</span>
+List<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> uniqueCaracters <span style="color:#000;font-weight:bold">=</span> words<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+		<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>w<span style="color:#000;font-weight:bold">-&gt;</span> w<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;&#34;</span><span style="color:#000;font-weight:bold">))</span>
+		<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">(</span>Arrays<span style="color:#000;font-weight:bold">::</span>stream<span style="color:#000;font-weight:bold">)</span>  <span style="color:#998;font-style:italic">// 将每个元素换成流 进行合并
+</span><span style="color:#998;font-style:italic"></span>		<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">distinct</span><span style="color:#000;font-weight:bold">()</span>
+		<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">collect</span><span style="color:#000;font-weight:bold">(</span>Collectors<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">toList</span><span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="查找和匹配">查找和匹配</h3>
+<ul>
+<li>anyMatch方法
+检查元素六种是否有一个元素匹配判定(Predicate) 返回boolean</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">if</span><span style="color:#000;font-weight:bold">(</span>store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">anyMatch</span><span style="color:#000;font-weight:bold">(</span>c<span style="color:#000;font-weight:bold">-&gt;</span>c<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPrice</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">&gt;</span> 100<span style="color:#000;font-weight:bold">))</span> <span style="color:#000;font-weight:bold">{</span>
+    System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;There is the luxury car&#34;</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>allMatch方法
+检查流中是否全部元素都能匹配给定的判定(Predicate) 返回boolean</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">boolean</span> isOil <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+                    <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">allMatch</span><span style="color:#000;font-weight:bold">(</span>c <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#d14">&#34;oil&#34;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">equals</span><span style="color:#000;font-weight:bold">(</span>car<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPower</span><span style="color:#000;font-weight:bold">()));</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>noneMatch方法
+检查流中是否全部元素都不能匹配给定的判定(Predicate) 返回boolean</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">boolean</span> noneOil <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+                    <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">noneMatch</span><span style="color:#000;font-weight:bold">(</span>c <span style="color:#000;font-weight:bold">-&gt;</span> <span style="color:#d14">&#34;oil&#34;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">equals</span><span style="color:#000;font-weight:bold">.(</span>car<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getPower</span><span style="color:#000;font-weight:bold">()));</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>findAny方法
+返回当前流中的任意元素，通常与filter搭配使用</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> nums <span style="color:#000;font-weight:bold">=</span> Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">asList</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">,</span> 2<span style="color:#000;font-weight:bold">,</span> 3<span style="color:#000;font-weight:bold">,</span> 4<span style="color:#000;font-weight:bold">,</span> 5<span style="color:#000;font-weight:bold">);</span>
+Optional<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> numOptional <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">-&gt;</span>x<span style="color:#000;font-weight:bold">*</span>x<span style="color:#000;font-weight:bold">)</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">-&gt;</span> x<span style="color:#000;font-weight:bold">%</span>3 <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">)</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">findAny</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>findFirst方法</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">List<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> nums <span style="color:#000;font-weight:bold">=</span> Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">asList</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">,</span> 2<span style="color:#000;font-weight:bold">,</span> 3<span style="color:#000;font-weight:bold">,</span> 4<span style="color:#000;font-weight:bold">,</span> 5<span style="color:#000;font-weight:bold">);</span>
+Optional<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> numOptional <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">map</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">-&gt;</span>x<span style="color:#000;font-weight:bold">*</span>x<span style="color:#000;font-weight:bold">)</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>x<span style="color:#000;font-weight:bold">-&gt;</span> x<span style="color:#000;font-weight:bold">%</span>3 <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">)</span>
+                                <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">findFirst</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>注意:
+<ul>
+<li>像noneMatch,findFirst,findAny以及limit的操作都是短路操作,不用处理整个流就能得到结果.</li>
+<li>如果碰到无限流的时候，短路求值(Short Cutting)就能将其变成有限流</li>
+</ul>
+</li>
+</ul>
+<h3 id="归约reduce">归约(reduce)</h3>
+<p>reduce须臾接受两个参数:</p>
+<ol>
+<li>一个初始值</li>
+<li>一个Lambda表达式把两个流元素结合起来并产生一个新值</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">int</span> sum <span style="color:#000;font-weight:bold">=</span> 0<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">for</span> <span style="color:#000;font-weight:bold">(</span><span style="color:#458;font-weight:bold">int</span> x <span style="color:#000;font-weight:bold">:</span> sum<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+    sum <span style="color:#000;font-weight:bold">+=</span> x<span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">}</span>
+
+<span style="color:#998;font-style:italic">// 等价于
+</span><span style="color:#998;font-style:italic"></span><span style="color:#458;font-weight:bold">int</span> sum <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">reduce</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">,</span> <span style="color:#000;font-weight:bold">(</span>a<span style="color:#000;font-weight:bold">,</span> b<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> a<span style="color:#000;font-weight:bold">+</span>b<span style="color:#000;font-weight:bold">);</span>
+<span style="color:#998;font-style:italic">// 无初始值，只有Lambda表达式的方法
+</span><span style="color:#998;font-style:italic"></span>Optional<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> sum <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">reduce</span><span style="color:#000;font-weight:bold">((</span>a<span style="color:#000;font-weight:bold">,</span>b<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">-&gt;</span> a<span style="color:#000;font-weight:bold">+</span>b<span style="color:#000;font-weight:bold">);</span>
+Optional<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> max <span style="color:#000;font-weight:bold">=</span> nums<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">reduce</span><span style="color:#000;font-weight:bold">(</span>Integer<span style="color:#000;font-weight:bold">::</span>max<span style="color:#000;font-weight:bold">);</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="数值流">数值流</h3>
+<ul>
+<li>
+<p>原始类型流特化
+三大特化接口: IntStream, DoubleStream 和 LongStream分别将流中的元素特化为int, double 和long.
+目的: 避免了装箱成本</p>
+</li>
+<li>
+<p>将普通流Stream转化到数值流
+将流转换为特化版本: mapToInt, mapToDouble 和 mapToLong</p>
+</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">int</span> sum <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">()</span>
+            <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">mapToInt</span><span style="color:#000;font-weight:bold">(</span>Car<span style="color:#000;font-weight:bold">::</span>getPrice<span style="color:#000;font-weight:bold">)</span> <span style="color:#998;font-style:italic">// .mapToLong mapToDouble
+</span><span style="color:#998;font-style:italic"></span>            <span style="color:#000;font-weight:bold">.</span><span style="color:#008080">sum</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>数值流转化到普通流Stream
+boxed()</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">IntStream intStream <span style="color:#000;font-weight:bold">=</span> store<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">mapToInt</span><span style="color:#000;font-weight:bold">(</span>Car<span style="color:#000;font-weight:bold">::</span>getPrice<span style="color:#000;font-weight:bold">);</span>
+Stream<span style="color:#000;font-weight:bold">&lt;</span>Integer<span style="color:#000;font-weight:bold">&gt;</span> stream <span style="color:#000;font-weight:bold">=</span> intStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">boxed</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>产生有范围的数值流
+range方法(不含右边界)</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">IntStream evenNumbers <span style="color:#000;font-weight:bold">=</span> IntStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">range</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">,</span> 100<span style="color:#000;font-weight:bold">)</span>
+							<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>n <span style="color:#000;font-weight:bold">-&gt;</span> n<span style="color:#000;font-weight:bold">%</span>2 <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">);</span>
+System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span>evenNumbers<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">count</span><span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>rangeClose方法(包含右边界)</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">IntStream evenNumbers <span style="color:#000;font-weight:bold">=</span> IntStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">rangeClose</span><span style="color:#000;font-weight:bold">(</span>1<span style="color:#000;font-weight:bold">,</span> 100<span style="color:#000;font-weight:bold">)</span>
+							<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">filter</span><span style="color:#000;font-weight:bold">(</span>n <span style="color:#000;font-weight:bold">-&gt;</span> n<span style="color:#000;font-weight:bold">%</span>2 <span style="color:#000;font-weight:bold">==</span> 0<span style="color:#000;font-weight:bold">);</span>
+System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span>evenNumbers<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">count</span><span style="color:#000;font-weight:bold">());</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="构建流的方法">构建流的方法</h2>
+<ul>
+<li>从值构建流</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> fruits <span style="color:#000;font-weight:bold">=</span> Stream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">of</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Apple&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;Orange&#34;</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#d14">&#34;Pear&#34;</span><span style="color:#000;font-weight:bold">);</span>
+Stream<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> emptyStream <span style="color:#000;font-weight:bold">=</span> Stream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">empty</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>由数组/集合创建流</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">(</span>nums<span style="color:#000;font-weight:bold">);</span> <span style="color:#998;font-style:italic">// 数组
+</span><span style="color:#998;font-style:italic"></span>Collection<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">();</span> <span style="color:#998;font-style:italic">// 集合
+</span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>从文件创建流
+java.nio.file.Files 中的很多静态方法都会返回一个流
+Files.lines: 返回一个由指定文件中的各行构成的字符串流</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#458;font-weight:bold">long</span> uniqueWords <span style="color:#000;font-weight:bold">=</span> 0 <span style="color:#000;font-weight:bold">;</span>
+<span style="color:#000;font-weight:bold">try</span><span style="color:#000;font-weight:bold">(</span>Stream<span style="color:#000;font-weight:bold">&lt;</span>String<span style="color:#000;font-weight:bold">&gt;</span> lines <span style="color:#000;font-weight:bold">=</span> Files<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">lines</span><span style="color:#000;font-weight:bold">(</span>Paths<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">get</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;data.csv&#34;</span><span style="color:#000;font-weight:bold">),</span> 
+Charset<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">defaultCharset</span><span style="color:#000;font-weight:bold">()))</span> <span style="color:#000;font-weight:bold">{</span>
+	uniqueWords <span style="color:#000;font-weight:bold">=</span> lines<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">flatMap</span><span style="color:#000;font-weight:bold">(</span>line <span style="color:#000;font-weight:bold">-&gt;</span> Arrays<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">stream</span><span style="color:#000;font-weight:bold">(</span>line<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">split</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;&#34;</span><span style="color:#000;font-weight:bold">)))</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">distinct</span><span style="color:#000;font-weight:bold">()</span>
+	<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">count</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">catch</span><span style="color:#000;font-weight:bold">(</span>IOException e<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+	<span style="color:#998;font-style:italic">// ...
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>从函数创建流
+Stream API提供了两个静态方法来从函数生成流: Stream.iterate和Stream.generate.
+这两个操作可以创建所谓的无限流: 不像固定集合创建的流那样由固定大小的流
+迭代: iterate</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">iterate</span><span style="color:#000;font-weight:bold">(</span>0<span style="color:#000;font-weight:bold">,</span> n<span style="color:#000;font-weight:bold">-&gt;</span>n<span style="color:#000;font-weight:bold">*</span>2<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">limit</span><span style="color:#000;font-weight:bold">(</span>2<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">forEach</span><span style="color:#000;font-weight:bold">(</span>System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">::</span>println<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>生成: generate</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Stream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">generate</span><span style="color:#000;font-weight:bold">(</span>Math<span style="color:#000;font-weight:bold">::</span>random<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">limit</span><span style="color:#000;font-weight:bold">(</span>5<span style="color:#000;font-weight:bold">)</span>
+<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">forEach</span><span style="color:#000;font-weight:bold">(</span>System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">::</span>println<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/spring/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">微店项目部署</a></li>
+        
+        <li><a href="/posts/java/TCP%E4%B8%8Esocket-2/">TCP与socket 2</a></li>
+        
+        <li><a href="/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a></li>
+        
+        <li><a href="/posts/java/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</a></li>
+        
+        <li><a href="/posts/java/TCP%E4%B8%8Esocket/">TCP与socket</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/kongmu373"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://kongmu373.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://kongmu373.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" title="操作系统于计算机原理">操作系统于计算机原理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/spring/" title="Spring">Spring</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8F%8D%E5%B0%84/" title="类型与反射">类型与反射</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/web/" title="Web">Web</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="基本数据结构和算法">基本数据结构和算法</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" title="计算机体系原理">计算机体系原理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/redis/" title="Redis">Redis</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/" title="Java的异常体系">Java的异常体系</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (14)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (24)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (10)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://kongmu373.github.io/tags/Collection/">Collection</a>
+    
+    <a href="https://kongmu373.github.io/tags/Effective-Java/">Effective Java</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTML/">HTML</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTTP/">HTTP</a>
+    
+    <a href="https://kongmu373.github.io/tags/HashMap/">HashMap</a>
+    
+    <a href="https://kongmu373.github.io/tags/IO/">IO</a>
+    
+    <a href="https://kongmu373.github.io/tags/Java8/">Java8</a>
+    
+    <a href="https://kongmu373.github.io/tags/SQL/">SQL</a>
+    
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/docker/">docker</a>
+    
+    <a href="https://kongmu373.github.io/tags/git/">git</a>
+    
+    <a href="https://kongmu373.github.io/tags/redis/">redis</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/">异常</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%B3%A8%E8%A7%A3/">注解</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://kongmu373.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://kongmu373.github.io/">kongmu373的博客 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>TCP与socket | kongmu373的博客</title>
+    <meta property="og:title" content="TCP与socket - kongmu373的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-06-22T20:29:53&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-06-22T20:29:53&#43;08:00'>
+        
+    <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
+    <meta name="description" content="TCP与socket">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://kongmu373.github.io/">
+                        kongmu373的博客
+                    </a>
+                
+                <p class="description">专注于Java、移动互联网、项目管理、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://kongmu373.github.io/">首页</a>
+                    
+                    <a  href="https://kongmu373.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://kongmu373.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://kongmu373.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#通信协议没有100可靠的">通信协议没有100%可靠的</a></li>
+    <li><a href="#计算机网络与传统电信网络">计算机网络与传统电信网络</a></li>
+    <li><a href="#ip协议">IP协议</a></li>
+    <li><a href="#计算机网络的分层模型">计算机网络的分层模型</a></li>
+    <li><a href="#tcp">TCP</a></li>
+    <li><a href="#udp-用户数据包协议">UDP (用户数据包协议)</a></li>
+    <li><a href="#从数据链路层到传输层">从数据链路层到传输层</a></li>
+    <li><a href="#socket">Socket</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">TCP与socket</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月22日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="通信协议没有100可靠的">通信协议没有100%可靠的</h2>
+<ul>
+<li>经典的红军/蓝军问题
+<ul>
+<li>红军 - 敌人  - 蓝军</li>
+<li>红军与蓝军交换信息都要经过敌人</li>
+<li>因此无论怎么发，都没有100%可靠的通信协议</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机网络与传统电信网络">计算机网络与传统电信网络</h2>
+<ul>
+<li>传统电信网络 (电话网络)
+<ul>
+<li>电路交换网路 (震动-电信号)</li>
+</ul>
+</li>
+<li>计算机网络
+<ul>
+<li>目标:实现全球的连接，并且物理无法毁坏的网络</li>
+<li>分组交换(在不同的中间设备中交换,每台设备都遵守IP协议)</li>
+<li>虚电路 (感觉报文沿着某条电路传输，实际该电路不存在)</li>
+</ul>
+</li>
+</ul>
+<h2 id="ip协议">IP协议</h2>
+<ul>
+<li>IP长度4个字节(1个字节 0-255,总共32位)</li>
+</ul>
+<h2 id="计算机网络的分层模型">计算机网络的分层模型</h2>
+<ul>
+<li>广泛使用的 &ndash; TCP/IP五层模型
+<ul>
+<li>应用层 qq brower steam ..</li>
+<li>传输层 (transport layer)  TCP/UDP</li>
+<li>网络层  IP</li>
+<li>数据链路层</li>
+<li>物理层</li>
+</ul>
+</li>
+<li>QQ Browser Steam 的通信
+<ul>
+<li>每个机器只有一个ip</li>
+<li>数据包抵达网络层 通过端口分发到不同的应用中(多路复用 multiplexing)</li>
+</ul>
+</li>
+<li>端口
+<ul>
+<li>0 - 65535</li>
+</ul>
+</li>
+</ul>
+<h2 id="tcp">TCP</h2>
+<ul>
+<li>Transport Control Protocol</li>
+<li>特点:
+<ul>
+<li>面向连接</li>
+<li>点对点</li>
+<li>可靠交付</li>
+<li>面向字节流</li>
+</ul>
+</li>
+<li>TCP的握手与断开
+<ul>
+<li>三次握手
+<ul>
+<li>CONNECT (x,y位随机数)</li>
+<li>client  发送 SYN x</li>
+<li>server  发送 ACK x+1 y</li>
+<li>client  发送 ACK y+1</li>
+<li>ESTABLISHED</li>
+</ul>
+</li>
+<li>建立了一条基于流的双向高速通路(TCP)</li>
+<li>断开
+<ul>
+<li>client FIN seq = x+2, ACK = y+1</li>
+<li>server ack = x + 3</li>
+<li>server FIN seq = y+ 1</li>
+<li>client ACK = y+2</li>
+</ul>
+</li>
+<li>不正常断开 （措施:超时断开 心跳检测)</li>
+</ul>
+</li>
+<li>粘包/拆包方式
+<ul>
+<li>定长</li>
+<li>设计协议</li>
+<li>规定结束符</li>
+</ul>
+</li>
+<li>HTTP(S) FTP DUBBO 都建立在TCP之上</li>
+</ul>
+<h2 id="udp-用户数据包协议">UDP (用户数据包协议)</h2>
+<ul>
+<li>把数据分成一个个数据包，然后丢出去(不管是否可达)</li>
+<li>特点:
+<ul>
+<li>无连接的</li>
+<li>尽最大可能交付</li>
+<li>面向报文的</li>
+<li>比TCP速度快</li>
+</ul>
+</li>
+<li>场景:
+<ul>
+<li>视频,直播</li>
+</ul>
+</li>
+</ul>
+<h2 id="从数据链路层到传输层">从数据链路层到传输层</h2>
+<ul>
+<li>以太网首部  + (IP包首部) + (TCP包首部) + (数据)      &ndash; 以太网数据</li>
+<li>(IP包首部) + (TCP包首部) + (数据)   &ndash; IP数据</li>
+<li>(TCP包首部) + (数据) &ndash; TCP数据</li>
+</ul>
+<h2 id="socket">Socket</h2>
+<ul>
+<li>翻译: 插座,套接字</li>
+<li>代表建立从client到server的这条TCP通道</li>
+<li>四元组:
+<ul>
+<li>src ip</li>
+<li>src port</li>
+<li>des ip</li>
+<li>des port</li>
+</ul>
+</li>
+<li>四元组确定一个Socket, 确定一个程序</li>
+<li>如何建立一个Socket连接?</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// 106.11.208.37:443
+</span><span style="color:#998;font-style:italic"></span>    <span style="color:#3c5d5d;font-weight:bold">@Test</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">testSocket</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">throws</span> IOException <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#000;font-weight:bold">try</span> <span style="color:#000;font-weight:bold">(</span>Socket socket <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> Socket<span style="color:#000;font-weight:bold">())</span> <span style="color:#000;font-weight:bold">{</span>
+            socket<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">connect</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">new</span> InetSocketAddress<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;106.11.208.37&#34;</span><span style="color:#000;font-weight:bold">,</span> 443<span style="color:#000;font-weight:bold">));</span>
+            System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;连接成功&#34;</span><span style="color:#000;font-weight:bold">);</span>
+        <span style="color:#000;font-weight:bold">}</span> <span style="color:#000;font-weight:bold">catch</span> <span style="color:#000;font-weight:bold">(</span>IOException e<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+            System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;连接失败&#34;</span><span style="color:#000;font-weight:bold">);</span>
+        <span style="color:#000;font-weight:bold">}</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>展示从socket 到http 协议</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// 浏览器访问 localhost:8080 返回一个 `hello` 页面
+</span><span style="color:#998;font-style:italic"></span><span style="color:#3c5d5d;font-weight:bold">@Test</span>
+    <span style="color:#000;font-weight:bold">public</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">writeAHttpServer</span><span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">throws</span> IOException<span style="color:#000;font-weight:bold">,</span> InterruptedException <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#458;font-weight:bold">int</span> port <span style="color:#000;font-weight:bold">=</span> 8080<span style="color:#000;font-weight:bold">;</span>
+        ServerSocket serverSocket <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> ServerSocket<span style="color:#000;font-weight:bold">();</span>
+        serverSocket<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">bind</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">new</span> InetSocketAddress<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;127.0.0.1&#34;</span><span style="color:#000;font-weight:bold">,</span> port<span style="color:#000;font-weight:bold">));</span>
+        Socket from <span style="color:#000;font-weight:bold">=</span> serverSocket<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">accept</span><span style="color:#000;font-weight:bold">();</span>
+
+        BufferedReader reader <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> BufferedReader<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">new</span> InputStreamReader<span style="color:#000;font-weight:bold">(</span>from<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getInputStream</span><span style="color:#000;font-weight:bold">()));</span>
+        String s <span style="color:#000;font-weight:bold">=</span> reader<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">readLine</span><span style="color:#000;font-weight:bold">();</span>
+        System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">out</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">println</span><span style="color:#000;font-weight:bold">(</span>s<span style="color:#000;font-weight:bold">);</span>
+        <span style="color:#998;font-style:italic">// HTTP response header
+</span><span style="color:#998;font-style:italic"></span>        from<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getOutputStream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">write</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;HTTP/1.1 200 OK\r\n&#34;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getBytes</span><span style="color:#000;font-weight:bold">());</span>
+        <span style="color:#998;font-style:italic">// 分隔符
+</span><span style="color:#998;font-style:italic"></span>        from<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getOutputStream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">write</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;\r\n&#34;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getBytes</span><span style="color:#000;font-weight:bold">());</span>
+        <span style="color:#998;font-style:italic">// HTTp response body
+</span><span style="color:#998;font-style:italic"></span>        from<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getOutputStream</span><span style="color:#000;font-weight:bold">().</span><span style="color:#008080">write</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Hello&#34;</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getBytes</span><span style="color:#000;font-weight:bold">());</span>
+        <span style="color:#998;font-style:italic">// 清空缓冲区
+</span><span style="color:#998;font-style:italic"></span>        from<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">close</span><span style="color:#000;font-weight:bold">();</span>
+        socket<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">close</span><span style="color:#000;font-weight:bold">();</span>
+    <span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/effective-java/item16/">Item16</a></li>
+        
+        <li><a href="/posts/effective-java/item15/">Item15</a></li>
+        
+        <li><a href="/posts/effective-java/item14/">Item14</a></li>
+        
+        <li><a href="/posts/spring/spring%E5%8E%9F%E7%90%86/">Spring原理</a></li>
+        
+        <li><a href="/posts/effective-java/item13/">Item13</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            <ul class="clearfix">
+                
+                <li><a href='https://kongmu373.github.io/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F'>日志系统</a></li>
+                
+            </ul>
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/kongmu373"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://kongmu373.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://kongmu373.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" title="操作系统于计算机原理">操作系统于计算机原理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/spring/" title="Spring">Spring</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8F%8D%E5%B0%84/" title="类型与反射">类型与反射</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/web/" title="Web">Web</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="基本数据结构和算法">基本数据结构和算法</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" title="计算机体系原理">计算机体系原理</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/java/redis/" title="Redis">Redis</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/" title="Java的异常体系">Java的异常体系</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (14)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (24)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (10)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://kongmu373.github.io/tags/Collection/">Collection</a>
+    
+    <a href="https://kongmu373.github.io/tags/Effective-Java/">Effective Java</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTML/">HTML</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTTP/">HTTP</a>
+    
+    <a href="https://kongmu373.github.io/tags/HashMap/">HashMap</a>
+    
+    <a href="https://kongmu373.github.io/tags/IO/">IO</a>
+    
+    <a href="https://kongmu373.github.io/tags/Java8/">Java8</a>
+    
+    <a href="https://kongmu373.github.io/tags/SQL/">SQL</a>
+    
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/docker/">docker</a>
+    
+    <a href="https://kongmu373.github.io/tags/git/">git</a>
+    
+    <a href="https://kongmu373.github.io/tags/redis/">redis</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/">异常</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%B3%A8%E8%A7%A3/">注解</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://kongmu373.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://kongmu373.github.io/">kongmu373的博客 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>微服务 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+    <description>Recent content in 微服务 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 24 Jun 2020 08:24:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>微服务</title>
+      <link>https://kongmu373.github.io/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Wed, 24 Jun 2020 08:24:50 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/</guid>
+      <description>什么是微服务 传统开发与微服务的对比图 传统大应用的缺点 难以扩展 scale(水平扩展) &amp;laquo;淘宝技术这十年&amp;raquo; 交付时间长，开发慢 (焦油坑) &amp;laquo;人月神话&amp;raquo; 复杂，维护困难 故障率高 微服务 整个应用按照业务拆分，互相使用RPC/HTTP/REST通信 松散</description>
+    </item>
+    
+  </channel>
+</rss>

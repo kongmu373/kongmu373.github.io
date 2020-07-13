@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自动化测试 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 自动化测试 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 13 Jul 2020 14:04:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>自动化测试</title>
+      <link>https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Mon, 13 Jul 2020 14:04:50 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/</guid>
+      <description>互联网软件的开发和发布，已经形成了一套标准流程，最重要的组成部分就是持续集成（Continuous integration，简称CI），其中自动化测试也是尤为重要. 自动化测试 什么是自动化测试 一段程序代码，不提供具体的程序功能，只保证主要程序功能符合预期 后勤保证 编写需要(很高的)成本</description>
+    </item>
+    
+  </channel>
+</rss>

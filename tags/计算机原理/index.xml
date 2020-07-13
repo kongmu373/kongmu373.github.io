@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机原理 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</link>
+    <description>Recent content in 计算机原理 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 13 Jul 2020 08:47:04 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>操作系统于计算机原理</title>
+      <link>https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Mon, 13 Jul 2020 08:47:04 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/</guid>
+      <description>计算机体系原理 CPU,寄存器,内存与汇编指令 CPU:相当于人的大脑，通过执行来自内存的指令，来控制整个电脑稳定的运行。 寄存器：临时存储,进行数据的存储，就是你的口袋 内存: 也是进行数据的存储，但是比寄存器要慢，就是你的背包 汇编指令: 是助记符，因为人要自己去记机器码实在太伤了，所以用</description>
+    </item>
+    
+  </channel>
+</rss>

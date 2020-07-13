@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>redis on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/redis/</link>
+    <description>Recent content in redis on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 05 Jul 2020 09:53:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis</title>
+      <link>https://kongmu373.github.io/posts/java/redis/</link>
+      <pubDate>Sun, 05 Jul 2020 09:53:34 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/redis/</guid>
+      <description>分布式与redis 当服务器不止一台的时候，就不能将会话状态信息放在服务器的内存里了 用redis集中存储状态信息，就可以在分布式中维持登录状态信息. Redis为什么这么快? redis相当于一个HashMap 运行在内存中(因为运行在内存中相对于MySQL就很贵了) IO多路复用机制 单线</description>
+    </item>
+    
+  </channel>
+</rss>
