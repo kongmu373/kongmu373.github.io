@@ -82,6 +82,29 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">自动化构建</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月14日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a>
+            
+        </div>
+        
+        <div class="post-content">
+            为什么需要自动化构建? 假设只能使用手工构建，我们要做的步骤: git checkout 编译代码 手工运行测试 执行打包命令 拷贝到(多台)服务器上 避免单点故障 更新的时候服务不中断 负载均衡 手工杀掉旧java进程,启动新进程 自动化构建带来的好处 减少出错的可能 减少重复劳动 提高工作效率 持续集成(Continuous……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
             </h1>
         </header>
@@ -122,6 +145,29 @@
         <div class="post-content">
             分布式与redis 当服务器不止一台的时候，就不能将会话状态信息放在服务器的内存里了 用redis集中存储状态信息，就可以在分布式中维持登录状态信息. Redis为什么这么快? redis相当于一个HashMap 运行在内存中(因为运行在内存中相对于MySQL就很贵了) IO多路复用机制 单线……
             <p class="readmore"><a href="https://kongmu373.github.io/posts/java/redis/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/">Stream-常见使用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月2日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a>
+            
+        </div>
+        
+        <div class="post-content">
+            本文章主要介绍了Stream使用的常见方法以及Java样例代码. 常见使用 筛选过滤 filter方法 接受一个判定(Predicate),并返回一个符合判定的元素流 1 2 3 List&lt;Car&gt; carList = store.stream() .filter(Car::isElectric) .collect(toList()); distinct方法 返回一个没有重复的元素流(用元素的equals方法来判断) 1 2 3 4 List&lt;Integer&gt; number = Arrays.asList(1, 2, 3, 3, 5, 5);……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/">阅读全文</a></p>
         </div>
     </article>
     
@@ -263,52 +309,6 @@
         </div>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/Spring/">Spring</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月12日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a>
-            
-        </div>
-        
-        <div class="post-content">
-            Spring是什么? Java世界应用的事实标准 Spring容器 - 一个 IoC容器 Spring MVC - 基于Spring和Servlet的Web应用框架 Spring Boot - 集成度和自动化程序更高 没有Spring,我们会怎么做呢? 选择一: 一个main程序打天下 非常轻量，适用于非常简单的场景 一旦规模上来之后 难以维护 是……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/Spring/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/Java%E7%9A%84%E6%B3%A8%E8%A7%A3/">Java的注解</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月10日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a>
-            
-        </div>
-        
-        <div class="post-content">
-            什么是注解? Class是什么？ Class是Java类的说明书 你或者JVM阅读该说明书，创建类的实例 注解就是说明书中的一小段信息/文本/标记 Annotation 可以携带参数 可以在运行时被阅读 注解怎么写? 新建一个类选择注解 元注解 @Rentention 保留,RetentionPolicy 默认CLASS 2 @Target ElementType @Documented @Inherited @Repeatable 注解的属性……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/java/Java%E7%9A%84%E6%B3%A8%E8%A7%A3/">阅读全文</a></p>
-        </div>
-    </article>
-    
 
     
 
@@ -359,6 +359,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/" title="自动化构建">自动化构建</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/spring/spring-boot-%E5%BC%80%E5%8F%91/" title="Spring Boot 开发">Spring Boot 开发</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/git/git-commit-message/" title="Git Commit Message">Git Commit Message</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a>
     </li>
     
@@ -386,18 +398,6 @@
         <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" title="计算机体系原理">计算机体系原理</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/java/redis/" title="Redis">Redis</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/" title="Java的异常体系">Java的异常体系</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -413,13 +413,15 @@
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (24)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (4)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
     
@@ -458,6 +460,12 @@
     
     <a href="https://kongmu373.github.io/tags/redis/">redis</a>
     
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/spring-boot/">spring boot</a>
+    
+    <a href="https://kongmu373.github.io/tags/stream/">stream</a>
+    
     <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
     
     <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
@@ -479,6 +487,8 @@
     <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
     
     <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">自动化构建</a>
     
     <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
     

@@ -6,10 +6,19 @@
     <description>Recent content in git on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 25 May 2020 14:00:44 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2020 09:17:31 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git Commit Message</title>
+      <link>https://kongmu373.github.io/posts/git/git-commit-message/</link>
+      <pubDate>Tue, 14 Jul 2020 09:17:31 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/git/git-commit-message/</guid>
+      <description>格式 &amp;lt;类型&amp;gt;(&amp;lt;范围&amp;gt;) : &amp;lt;主题&amp;gt; &amp;lt;可选 内容&amp;gt; 如:开发完成用户管理模块 feat(manager): implement of the user manager to complete user rleated operation. 1. xxx 2. xxx 3. xxx 类型 feat: (新特性给功能模块，不是新的构建脚本) fix: (修复功能模块的bug,不是修复构建脚本的bug) refactor: (重构生产代码, 重命名一个变量</description>
+    </item>
     
     <item>
       <title>Git常用命令</title>

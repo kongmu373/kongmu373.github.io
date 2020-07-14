@@ -6,10 +6,46 @@
     <description>Recent content in Tags on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 13 Jul 2020 14:04:50 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2020 10:23:49 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>自动化构建</title>
+      <link>https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Tue, 14 Jul 2020 10:23:49 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://kongmu373.github.io/tags/Spring/</link>
+      <pubDate>Tue, 14 Jul 2020 10:18:27 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/Spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>spring boot</title>
+      <link>https://kongmu373.github.io/tags/spring-boot/</link>
+      <pubDate>Tue, 14 Jul 2020 10:18:27 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/spring-boot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://kongmu373.github.io/tags/git/</link>
+      <pubDate>Tue, 14 Jul 2020 09:17:31 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/tags/git/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>自动化测试</title>
@@ -48,11 +84,11 @@
     </item>
     
     <item>
-      <title>Spring</title>
-      <link>https://kongmu373.github.io/tags/Spring/</link>
-      <pubDate>Wed, 01 Jul 2020 08:21:49 +0800</pubDate>
+      <title>stream</title>
+      <link>https://kongmu373.github.io/tags/stream/</link>
+      <pubDate>Thu, 02 Jul 2020 16:00:20 +0800</pubDate>
       
-      <guid>https://kongmu373.github.io/tags/Spring/</guid>
+      <guid>https://kongmu373.github.io/tags/stream/</guid>
       <description></description>
     </item>
     
@@ -242,15 +278,6 @@
       <pubDate>Mon, 25 May 2020 14:29:03 +0800</pubDate>
       
       <guid>https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://kongmu373.github.io/tags/git/</link>
-      <pubDate>Mon, 25 May 2020 14:00:44 +0800</pubDate>
-      
-      <guid>https://kongmu373.github.io/tags/git/</guid>
       <description></description>
     </item>
     

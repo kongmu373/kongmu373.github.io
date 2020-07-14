@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>spring boot on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/spring-boot/</link>
+    <description>Recent content in spring boot on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 14 Jul 2020 10:18:27 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Spring Boot 开发</title>
+      <link>https://kongmu373.github.io/posts/spring/spring-boot-%E5%BC%80%E5%8F%91/</link>
+      <pubDate>Tue, 14 Jul 2020 10:18:27 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/spring/spring-boot-%E5%BC%80%E5%8F%91/</guid>
+      <description>Spring boot 开发四大步 添加相应依赖 添加相应注解 编写代码 添加相应配置</description>
+    </item>
+    
+  </channel>
+</rss>

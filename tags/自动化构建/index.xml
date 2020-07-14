@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>自动化构建 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</link>
+    <description>Recent content in 自动化构建 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 14 Jul 2020 10:23:49 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>自动化构建</title>
+      <link>https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Tue, 14 Jul 2020 10:23:49 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</guid>
+      <description>为什么需要自动化构建? 假设只能使用手工构建，我们要做的步骤: git checkout 编译代码 手工运行测试 执行打包命令 拷贝到(多台)服务器上 避免单点故障 更新的时候服务不中断 负载均衡 手工杀掉旧java进程,启动新进程 自动化构建带来的好处 减少出错的可能 减少重复劳动 提高工作效率 持续集成(Continuous</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,19 @@
     <description>Recent content in Java体系 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 13 Jul 2020 14:04:50 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2020 10:23:49 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>自动化构建</title>
+      <link>https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Tue, 14 Jul 2020 10:23:49 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/</guid>
+      <description>为什么需要自动化构建? 假设只能使用手工构建，我们要做的步骤: git checkout 编译代码 手工运行测试 执行打包命令 拷贝到(多台)服务器上 避免单点故障 更新的时候服务不中断 负载均衡 手工杀掉旧java进程,启动新进程 自动化构建带来的好处 减少出错的可能 减少重复劳动 提高工作效率 持续集成(Continuous</description>
+    </item>
     
     <item>
       <title>自动化测试</title>
@@ -27,6 +36,15 @@
       
       <guid>https://kongmu373.github.io/posts/java/redis/</guid>
       <description>分布式与redis 当服务器不止一台的时候，就不能将会话状态信息放在服务器的内存里了 用redis集中存储状态信息，就可以在分布式中维持登录状态信息. Redis为什么这么快? redis相当于一个HashMap 运行在内存中(因为运行在内存中相对于MySQL就很贵了) IO多路复用机制 单线</description>
+    </item>
+    
+    <item>
+      <title>Stream-常见使用</title>
+      <link>https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Thu, 02 Jul 2020 16:00:20 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/</guid>
+      <description>本文章主要介绍了Stream使用的常见方法以及Java样例代码. 常见使用 筛选过滤 filter方法 接受一个判定(Predicate),并返回一个符合判定的元素流 1 2 3 List&amp;lt;Car&amp;gt; carList = store.stream() .filter(Car::isElectric) .collect(toList()); distinct方法 返回一个没有重复的元素流(用元素的equals方法来判断) 1 2 3 4 List&amp;lt;Integer&amp;gt; number = Arrays.asList(1, 2, 3, 3, 5, 5);</description>
     </item>
     
     <item>

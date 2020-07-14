@@ -73,6 +73,75 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item11-12/" title="Item11 12">Item11 12</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 11: Always override hashCode when you override equals（当覆盖 equals 时，始终覆盖 hashCode） equals相同的，hascodes也必须相同· equals不相同的，hashcodes也可以相同 没有hashCode的实现将破坏基于hash实现的集合的功能 不好的hashCode实现会降低基于hash实现的性能……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item11-12/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item10/" title="Item10">Item10</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 10: Obey the general contract when overriding equals（覆盖 equals 方法时应遵守的约定） 覆盖 equals 方法似乎很简单，但是有很多覆盖的方式会导致出错，而且后果可能非常严重。 equals 约定 &ndash; equivalence relation 覆盖equals 应该遵守(equivalence relation) 自反性(Reflexive), x.equals(x) == true 对称性(Symmetric), x.equals(y) == y.equals(x) 传递性(Tra……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item10/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item9/" title="Item9">Item9</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 9: Prefer try-with-resources to try-finally（使用 try-with-resources 优于 try-finally） try-finally 从历史上看，try-finally 语句是确保正确关闭资源的最佳方法 1 2 3 4 5 6 7 8 9 // try-finally - No longer the best way to close resources! static String firstLineOfFile(String path) throws IOException { BufferedReader br = new BufferedReader(new FileReader(path)); try { return br.readLine(); } finally { br.close(); } } 但添加第二个资源时，情况会变得更糟： 1 2 3 4 5 6 7 8 9 10 11……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item9/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/" title="浅析SpringWeb应用">浅析SpringWeb应用</a>
             </h1>
         </header>
@@ -231,75 +300,6 @@
         <p class="readmore"><a href="https://kongmu373.github.io/posts/Spring/">阅读全文</a></p>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/Java%E7%9A%84%E6%B3%A8%E8%A7%A3/" title="Java的注解">Java的注解</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            什么是注解? Class是什么？ Class是Java类的说明书 你或者JVM阅读该说明书，创建类的实例 注解就是说明书中的一小段信息/文本/标记 Annotation 可以携带参数 可以在运行时被阅读 注解怎么写? 新建一个类选择注解 元注解 @Rentention 保留,RetentionPolicy 默认CLASS 2 @Target ElementType @Documented @Inherited @Repeatable 注解的属性……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/Java%E7%9A%84%E6%B3%A8%E8%A7%A3/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item3/" title="Item3">Item3</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 3:Enforce the singleton property with a private consturctor or an enum type 使用私有构造函数或枚举类型实施单例属性 Singleton with public final field (使用final字段实现单例) 不好使用单元测试 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 public class Elvis { public static final Elvis INSTANCE = new Elvis(); private Elvis() {} public void leaveTheBuiding() { // do something } // This code would normally appear outside the class! public static void main(String[] args) { Elvis elvis = Elvis.INSTANCE; elvis.leaveTheBuilding(); } } Single with static factory 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item3/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item2/" title="Item2">Item2</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 2: Consider a builder when faced with many constructor parameters. 都构造函数有多个参数时，考虑用builder. 当类的参数过多的时候,使用不同方法创建对象对应的情况 构造函数 过于啰嗦 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 // Telescoping constructor pattern - does not scale well! public class NutritionFacts { private final int servingSize; // (mL) required private final int servings; // (per container) required private final int calories; // (per serving) optional private final……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item2/">阅读全文</a></p>
-    </article>
-    
     
 
 
@@ -340,6 +340,10 @@
         <a href="https://kongmu373.github.io/page/7/">7</a>
     </li>
     
+    <li >
+        <a href="https://kongmu373.github.io/page/8/">8</a>
+    </li>
+    
 
     
     <li class="next">
@@ -369,6 +373,18 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/" title="自动化构建">自动化构建</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/spring/spring-boot-%E5%BC%80%E5%8F%91/" title="Spring Boot 开发">Spring Boot 开发</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/git/git-commit-message/" title="Git Commit Message">Git Commit Message</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a>
     </li>
     
@@ -396,18 +412,6 @@
         <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" title="计算机体系原理">计算机体系原理</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/java/redis/" title="Redis">Redis</a>
-    </li>
-    
-    <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E7%9A%84%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/" title="Java的异常体系">Java的异常体系</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -423,13 +427,15 @@
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (24)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (4)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/git/">git (1)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
     
@@ -468,6 +474,12 @@
     
     <a href="https://kongmu373.github.io/tags/redis/">redis</a>
     
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/spring-boot/">spring boot</a>
+    
+    <a href="https://kongmu373.github.io/tags/stream/">stream</a>
+    
     <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
     
     <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
@@ -489,6 +501,8 @@
     <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
     
     <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">自动化构建</a>
     
     <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
     
