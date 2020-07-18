@@ -6,10 +6,19 @@
     <description>Recent content in 面试题 on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 08 Jul 2020 17:09:31 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2020 09:27:10 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JVM</title>
+      <link>https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/JVM/</link>
+      <pubDate>Thu, 16 Jul 2020 09:27:10 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/JVM/</guid>
+      <description>JLS 与 JVMS Java Language Specification(Java语言规范) 定义Java语言的语法 (Java编译器) (Java Virtual Machine Specification)Java虚拟机规范 定义字节码如何在JVM中执行 两个没有必然联系(JLS是*.java 编译成 *.class的规范, JVMS是*.class在JVM中运行</description>
+    </item>
     
     <item>
       <title>Spring</title>
