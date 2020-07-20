@@ -6,10 +6,141 @@
     <description>Recent content in leetcode on kongmu373的博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 18 Jul 2020 14:51:38 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 13:38:28 +0800</lastBuildDate>
     
 	<atom:link href="https://kongmu373.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>198 HouseRobber</title>
+      <link>https://kongmu373.github.io/posts/leetcode/198-HouseRobber/</link>
+      <pubDate>Mon, 20 Jul 2020 13:38:28 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/198-HouseRobber/</guid>
+      <description>对应 leetCode 198题. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 package com.kongmu373.leetcode.editor.en; public class HouseRobber { public static void main(String[] args) { Solution solution = new HouseRobber().new Solution(); } /** * Recursion + Memorization * For a given house i, we have two options: * 1. Take the moeny if we didn&amp;#39;t robber house i - 1 * 2. Skip it * rob(n) = max(rob(n-2) + money[i], rob(n-1)) * Time complexity:O(n), Space complexity:O(n) * &amp;lt;p&amp;gt; * DP * &amp;lt;p&amp;gt; * dp[i]: Max money after * &amp;#34;visiting&amp;#34; house[i] * &amp;lt;p&amp;gt; * dp[i]: max(dp[i-2] + money[i],</description>
+    </item>
+    
+    <item>
+      <title>530 MiniumAbsoluteDifferentInBST</title>
+      <link>https://kongmu373.github.io/posts/leetcode/530-MiniumAbsoluteDifferentInBST/</link>
+      <pubDate>Mon, 20 Jul 2020 12:33:27 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/530-MiniumAbsoluteDifferentInBST/</guid>
+      <description>Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.
+Example:
+Input:
+1 3 / 2
+Output: 1
+Explanation: The minimum absolute difference is 1, which is the difference between 2 and 1 (or between 2 and 3).
+Note:
+There are at least two nodes in this BST. This question is the same as 783: https://leetcode.com/problems/minimum-dista nce-between-bst-nodes/
+Related Topics Tree
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69  package com.</description>
+    </item>
+    
+    <item>
+      <title>746 MinCostClimbingStairs</title>
+      <link>https://kongmu373.github.io/posts/leetcode/746-MinCostClimbingStairs/</link>
+      <pubDate>Mon, 20 Jul 2020 11:09:30 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/746-MinCostClimbingStairs/</guid>
+      <description>On a staircase, the i-th step has some non-negative cost cost[i] assigned (0 i ndexed).
+Once you pay the cost, you can either climb one or two steps. You need to find minimum cost to reach the top of the floor, and you can either start from the s tep with index 0, or the step with index 1.
+Example 1:
+Input: cost = [10, 15, 20] Output: 15 Explanation: Cheapest is start on cost[1], pay that cost and go to the top.
+Example 2:
+Input: cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1] Output: 6 Explanation: Cheapest is start on cost[0], and only step on 1s, skipping cost[ 3].
+Note:
+cost will have a length in the range [2, 1000]. Every cost[i] will be an integer in the range [0, 999].
+Related Topics Array Dynamic Programming</description>
+    </item>
+    
+    <item>
+      <title>748 ShortesCompletingWord</title>
+      <link>https://kongmu373.github.io/posts/leetcode/748-ShortesCompletingWord/</link>
+      <pubDate>Mon, 20 Jul 2020 10:40:42 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/748-ShortesCompletingWord/</guid>
+      <description>Find the minimum length word from a given dictionary words, which has all the letters from the string licensePlate. Such a word is said to complete the given string licensePlate
+Here, for letters we ignore case. For example, &amp;ldquo;P&amp;rdquo; on the licensePlate still m atches &amp;ldquo;p&amp;rdquo; on the word.
+It is guaranteed an answer exists. If there are multiple answers, return the o ne that occurs first in the array.
+The license plate might have the same letter occurring multiple times. For exa mple, given a licensePlate of &amp;ldquo;PP&amp;rdquo;, the word &amp;ldquo;pair&amp;rdquo; does not complete the licens ePlate, but the word &amp;ldquo;supper&amp;rdquo; does.
+Example 1:
+Input: licensePlate = &amp;ldquo;1s3 PSt&amp;rdquo;, words = [&amp;ldquo;step&amp;rdquo;, &amp;ldquo;steps&amp;rdquo;, &amp;ldquo;stripe&amp;rdquo;, &amp;ldquo;stepple&amp;rdquo; ] Output: &amp;ldquo;steps&amp;rdquo; Explanation: The smallest length word that contains the letters &amp;ldquo;S&amp;rdquo;, &amp;ldquo;P&amp;rdquo;, &amp;ldquo;S&amp;rdquo;, and &amp;ldquo;T&amp;rdquo;. Note that the answer is not &amp;ldquo;step&amp;rdquo;, because the letter &amp;ldquo;s&amp;rdquo; must occur in the w ord twice.</description>
+    </item>
+    
+    <item>
+      <title>69 Sqrt</title>
+      <link>https://kongmu373.github.io/posts/leetcode/69-sqrt/</link>
+      <pubDate>Mon, 20 Jul 2020 08:29:35 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/69-sqrt/</guid>
+      <description>Implement int sqrt(int x). Compute and return the square root of x, where x is guaranteed to be a non-ne gative integer. Since the return type is an integer, the decimal digits are truncated and onl y the integer part of the result is returned. Example 1: Input: 4 Output: 2 Example 2: Input: 8 Output: 2 Explanation: The square root of 8 is 2.82842&amp;hellip;, and since the decimal part is truncated, 2 is returned. Related Topics Math Binary Search 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 package com.kongmu373.leetcode.editor.en; public class Sqrtx { public static void main(String[] args) {</description>
+    </item>
+    
+    <item>
+      <title>762 PrimeNumberOfSetBitsInBinaryRepresentation</title>
+      <link>https://kongmu373.github.io/posts/leetcode/762-PrimeNumberOfSetBitsInBinaryRepresentation/</link>
+      <pubDate>Sun, 19 Jul 2020 23:59:02 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/762-PrimeNumberOfSetBitsInBinaryRepresentation/</guid>
+      <description>Given two integers L and R, find the count of numbers in the range [L, R] (inc lusive) having a prime number of set bits in their binary representation. (Recall that the number of set bits an integer has is the number of 1s present when written in binary. For example, 21 written in binary is 10101 which has 3 set bits. Also, 1 is not a prime.) Example 1: Input: L = 6, R = 10 Output: 4 Explanation: 6 -&amp;gt; 110 (2 set bits, 2 is prime) 7 -&amp;gt; 111 (3 set bits, 3 is prime) 9 -&amp;gt; 1001 (2 set bits , 2 is prime) 10-&amp;gt;1010 (2 set bits , 2 is prime) Example 2: Input: L = 10, R = 15 Output: 5 Explanation: 10 -&amp;gt; 1010 (2 set bits, 2 is prime) 11 -&amp;gt; 1011</description>
+    </item>
+    
+    <item>
+      <title>784 LetterCasePermutation</title>
+      <link>https://kongmu373.github.io/posts/leetcode/784-LetterCasePermutation/</link>
+      <pubDate>Sun, 19 Jul 2020 23:37:15 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/784-LetterCasePermutation/</guid>
+      <description>Given a string S, we can transform every letter individually to be lowercase o r uppercase to create another string. Return a list of all possible strings we c ould create. Examples: Input: S = &amp;ldquo;a1b2&amp;rdquo; Output: [&amp;ldquo;a1b2&amp;rdquo;, &amp;ldquo;a1B2&amp;rdquo;, &amp;ldquo;A1b2&amp;rdquo;, &amp;ldquo;A1B2&amp;rdquo;] Input: S = &amp;ldquo;3z4&amp;rdquo; Output: [&amp;ldquo;3z4&amp;rdquo;, &amp;ldquo;3Z4&amp;rdquo;] Input: S = &amp;ldquo;12345&amp;rdquo; Output: [&amp;ldquo;12345&amp;rdquo;] Note: S will be a string with length between 1 and 12. S will consist only of letters or digits. Related Topics Backtracking Bit Manipulation 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 package com.kongmu373.leetcode.editor.en; import java.util.ArrayList; import java.util.List;</description>
+    </item>
+    
+    <item>
+      <title>438 FindAllAngramsInAString</title>
+      <link>https://kongmu373.github.io/posts/leetcode/438-FindAllAngramsInAString/</link>
+      <pubDate>Sun, 19 Jul 2020 23:07:30 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/438-FindAllAngramsInAString/</guid>
+      <description>Given a string s and a non-empty string p, find all the start indices of p&amp;rsquo;s anagrams in s.
+Strings consists of lowercase English letters only and the length of both str ings s and p will not be larger than 20,100.
+The order of output does not matter.
+Example 1:
+Input: s: &amp;ldquo;cbaebabacd&amp;rdquo; p: &amp;ldquo;abc&amp;rdquo;
+Output: [0, 6]
+Explanation: The substring with start index = 0 is &amp;ldquo;cba&amp;rdquo;, which is an anagram of &amp;ldquo;abc&amp;rdquo;. The substring with start index = 6 is &amp;ldquo;bac&amp;rdquo;, which is an anagram of &amp;ldquo;abc&amp;rdquo;.
+Example 2:
+Input: s: &amp;ldquo;abab&amp;rdquo; p: &amp;ldquo;ab&amp;rdquo;
+Output: [0, 1, 2]
+Explanation: The substring with start index = 0 is &amp;ldquo;ab&amp;rdquo;, which is an anagram of &amp;ldquo;ab&amp;rdquo;. The substring with start index = 1 is &amp;ldquo;ba&amp;rdquo;, which is an anagram of &amp;ldquo;ab&amp;rdquo;. The substring with start index = 2 is &amp;ldquo;ab&amp;rdquo;, which is an anagram of &amp;ldquo;ab&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>707 DesignLinkedList</title>
+      <link>https://kongmu373.github.io/posts/leetcode/707-DesignLinkedList/</link>
+      <pubDate>Sun, 19 Jul 2020 22:24:59 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/707-DesignLinkedList/</guid>
+      <description>Design your implementation of the linked list. You can choose to use the singl y linked list or the doubly linked list. A node in a singly linked list should h ave two attributes: val and next. val is the value of the current node, and next is a pointer/reference to the next node. If you want to use the doubly linked l ist, you will need one more attribute prev to indicate the previous node in the linked list. Assume all nodes in the linked list are 0-indexed. Implement these functions in your linked list class: get(index) : Get the value of the index-th node in the linked list. If the in dex is invalid, return -1. addAtHead(val) : Add a node of value val before the first element of the link ed list. After the insertion, the new</description>
+    </item>
+    
+    <item>
+      <title>190 ReverseBits</title>
+      <link>https://kongmu373.github.io/posts/leetcode/190-ReverseBits/</link>
+      <pubDate>Sat, 18 Jul 2020 15:57:12 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/190-ReverseBits/</guid>
+      <description>Reverse bits of a given 32 bits unsigned integer. Example 1: Input: 00000010100101000001111010011100 Output: 00111001011110000010100101000000 Explanation: The input binary string 00000010100101000001111010011100 represents the unsigned integer 43261596, so return 964176192 which its binary representation is 00111001011110000010100101000000. Example 2: Input: 11111111111111111111111111111101 Output: 10111111111111111111111111111111 Explanation: The input binary string 11111111111111111111111111111101 represents the unsigned integer 4294967293, so return 3221225471 which its binary representation is 10111111111111111111111111111111. Note: Note that in some languages such as Java, there is no unsigned integer type. In this case, both input and output will be given as signed integer type and should not affect your implementation, as the internal binary representation of the integer is the same whether it is signed or unsigned. In Java, the compiler represents the signed integers using 2&amp;rsquo;s complement notation. Therefore, in Example 2 above the input represents the signed integer -3 and the output</description>
+    </item>
+    
+    <item>
+      <title>13 RomantoInteger</title>
+      <link>https://kongmu373.github.io/posts/leetcode/13-RomantoInteger/</link>
+      <pubDate>Sat, 18 Jul 2020 15:18:38 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/leetcode/13-RomantoInteger/</guid>
+      <description>Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M. Symbol Value I 1 V 5 X 10 L 50 C 100 D 500 M 1000 For example, two is written as II in Roman numeral, just two one&amp;rsquo;s added together. Twelve is written as, XII, which is simply X + II. The number twenty seven is written as XXVII, which is XX + V + II. Roman numerals are usually written largest to smallest from left to right. However, the numeral for four is not IIII. Instead, the number four is written as IV. Because the one is before the five we subtract it making four. The same principle applies to the number nine, which is written as IX. There are six instances where subtraction is used: I can be placed before V</description>
+    </item>
     
     <item>
       <title>108 ConvertSortedArraytoBinarySearchTree</title>

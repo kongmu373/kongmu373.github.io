@@ -73,149 +73,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务">微服务</a>
+                <a href="https://kongmu373.github.io/posts/spring/spring-boot-%E5%BC%80%E5%8F%91/" title="Spring Boot 开发">Spring Boot 开发</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月24日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            什么是微服务 传统开发与微服务的对比图 传统大应用的缺点 难以扩展 scale(水平扩展) &laquo;淘宝技术这十年&raquo; 交付时间长，开发慢 (焦油坑) &laquo;人月神话&raquo; 复杂，维护困难 故障率高 微服务 整个应用按照业务拆分，互相使用RPC/HTTP/REST通信 松散……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" title="日志系统">日志系统</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月23日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            日志系统 为什么需要日志系统? 查找bug,就需要看日志 线上服务器出bug，重点查看就是日志 sping中log如何工作? app -&gt; slf4j (运行时，动态完成与一系列日志框架的绑定(包括log4j logback jul)) slf4j(simple log facade for java) 并非一个日志框架，只是一个门面 设计模式 facade java的包中没有层级关系,但是logger是由……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket/" title="TCP与socket">TCP与socket</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月22日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            通信协议没有100%可靠的 经典的红军/蓝军问题 红军 - 敌人 - 蓝军 红军与蓝军交换信息都要经过敌人 因此无论怎么发，都没有100%可靠的通信协议 计算机网络与传统电信网络 传统电信网络 (电话网络) 电路交换网路 (震动-电信号) 计算机网络 目标:实现全球的连接，并且物理无法毁坏的网络 分组交换(在不……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item16/" title="Item16">Item16</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月21日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 16: In public classes, use accessor methods, not public fields（在公共类中，使用访问器方法，而不是公共字段） 退化类 1 2 3 4 5 // Degenerate classes like this should not be public! class Point { public double x; public double y; } 不好的地方: 由于此类的数据字段是直接访问的，因此这些类没有提供封装的好处 不能在不更改API的情况下更改表示形式 在访问或者设置字段的时候不能使用额外的……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item16/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item15/" title="Item15">Item15</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月20日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 13: Minimize the accessibility of classes and members(尽量减少类和成员的可访问性) 封装 封装的概念： 一个经过精心设计的模块将隐藏其所有实现细节，从而将其API与实现完全分开 然后，模块仅通过其API进行通信，而忽略了彼此的内部工作原理 为什么使用封装: 它使构成系统的模块脱钩，从而使它们可以独立开发，测试，优……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item15/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item14/" title="Item14">Item14</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月19日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 14: Consider implementing Comparable（考虑实现 Comparable 接口） Comparable实现的例子 Single-field Comparable with object reference field 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 public final class CaseInsensitiveString implements Comparable&lt;CaseInsensitiveString&gt; { private final String s; public CaseInsensitiveString(String s) { this.s = Objects.requiredNonNull() } ... public int compareTo(CaseInsensitiveString cis) { return String.CASE_INSENSITIVE_ORDER.compare(s, cis); } public static void main(String[] args) { Set&lt;CaseInsensitiveString&gt; s = new TreeSet&lt;&gt;(); for (String arg : args) { s.add(new CaseInsensitiveString(arg)); } System.out.println(s); } } Multiple-field Comparable with object reference field 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item14/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/spring/spring%E5%8E%9F%E7%90%86/" title="Spring原理">Spring原理</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月18日
+            2020年7月14日
         </date>
         
         <div class="post-meta">
@@ -226,65 +88,42 @@
         </div>
         
         <div class="post-content">
-            为什么需要Spring呢？ 开发一个应用要把它分成很多个模块 模块之间用约定进行通信 模块分成很多个子模块 如果是java应用程序，那么模块可以理解为一个个对象(Object,在Spring中命名为Bean) 模块之间存在相互依赖,如：当A模块必须使用B模块才能完成A模块提供的服务(A依赖……
+            Spring boot 开发四大步 添加相应依赖 添加相应注解 编写代码 添加相应配置……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/spring/spring%E5%8E%9F%E7%90%86/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/spring/spring-boot-%E5%BC%80%E5%8F%91/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item13/" title="Item13">Item13</a>
+                <a href="https://kongmu373.github.io/posts/git/git-commit-message/" title="Git Commit Message">Git Commit Message</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月18日
+            2020年7月14日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/git'>git</a></span>
             
         </div>
         
         <div class="post-content">
-            Item 13: Override clone judiciously（谨慎覆盖 clone 方法） Cloneable接口 跟Serializable接口一样，只是声明该对象可以被克隆，具体行为由类设计者决定。 如果一个类实现了Cloneable，Object的clone方法就返回该对象的拷贝，否则就会抛出CloneNotSuppor……
+            格式 &lt;类型&gt;(&lt;范围&gt;) : &lt;主题&gt; &lt;可选 内容&gt; 如:开发完成用户管理模块 feat(manager): implement of the user manager to complete user rleated operation. 1. xxx 2. xxx 3. xxx 类型 feat: (新特性给功能模块，不是新的构建脚本) fix: (修复功能模块的bug,不是修复构建脚本的bug) refactor: (重构生产代码, 重命名一个变量……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item13/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/git/git-commit-message/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/docker/" title="Docker">Docker</a>
+                <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" title="自动化测试">自动化测试</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月17日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Docker能做什么? 保证开发，测试，交付，部署的环境完全一致 保证资源的隔离 启动临时的，用完即弃的环境，例如测试 迅速 (秒级)超大规模和扩容 Docker 与 Virtual Machines 相比 Docker的基本概念 镜像 imgage 一个预先定义好的模板文件， Docker引擎可以按照这个摸板文件启动无数个一模一样，互不干扰的容器 容器 container……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/docker/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java正则表达式">Java正则表达式</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月16日
+            2020年7月13日
         </date>
         
         <div class="post-meta">
@@ -295,9 +134,170 @@
         </div>
         
         <div class="post-content">
-            常用的元字符 元字符 描述 ^ 开始位置 $ 结束位置 . 单个任意字符(不一定包含换行符) \w 单个&quot;word&quot;字符 字母/数字/下划线/汉字 \s 单个空白字符 (\r\n\t) \d 单个数字字符 \b 单词的开始或结束 用到它们的原来的意思的时候，需要转义 (?s).* . 包括匹配换行符 重复 重复字符 描述 * 0次或多次 + 1次或……
+            互联网软件的开发和发布，已经形成了一套标准流程，最重要的组成部分就是持续集成（Continuous integration，简称CI），其中自动化测试也是尤为重要. 自动化测试 什么是自动化测试 一段程序代码，不提供具体的程序功能，只保证主要程序功能符合预期 后勤保证 编写需要(很高的)成本……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/" title="操作系统于计算机原理">操作系统于计算机原理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月13日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86'>计算机原理</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            计算机体系原理 CPU,寄存器,内存与汇编指令 CPU:相当于人的大脑，通过执行来自内存的指令，来控制整个电脑稳定的运行。 寄存器：临时存储,进行数据的存储，就是你的口袋 内存: 也是进行数据的存储，但是比寄存器要慢，就是你的背包 汇编指令: 是助记符，因为人要自己去记机器码实在太伤了，所以用……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BA%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/spring/" title="Spring">Spring</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            什么是IoC容器， 为什么需要IoC 背景:一个应用要启动，可能有不同的组件,把不同职责的功能放在不同的类里面，类之间互相依赖,随着应用规模越来越大，这种依赖就越来越繁杂 IoC,Inverse of Control(控制反转) 不需要手动控制各种对象的创建和依赖,(由IoC容器完成)将依赖的装配权交给IoC容器……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/spring/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8F%8D%E5%B0%84/" title="类型与反射">类型与反射</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            什么是反射(Reflection)? 运行时行为，动态调用 动态代理 一般来说,JVM中创建每一个对象都需要一份说明书,创建多少个对象这份说明书是不会变的 我们把这份说明书称为class对象 class对象是由 xx.java源代码 通过 javac 编译成的(如果maven，.class文件放在targ……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%8F%8D%E5%B0%84/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/web/" title="Web">Web</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月7日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            常见的HTTP状态码 2XX 一切正常 3XX 代表跳转 4XX 代表客户端异常 5XX 代表服务端异常 常用状态码 200/201 created / 301 永久/ 302 临时 403/403 , 500/502/503/504 get/post的区别? get获取资源，而post用于发送数据 get参数在请求字符串里，post参数放在request body中 GET: 只有header POST: 把数据放在body get……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/web/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" title="基本数据结构和算法">基本数据结构和算法</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            集合类中常见的数据结构以及时间复杂度 ArrayList: 数组, 随机查找是常数 寻址O(1) 插入/删除 O(n) 有序的话，二分查找是O(logn) LinkedList: 双链表,可当作队列和栈 寻址O(n) 插入/删除 O(1) 查找O(n) HashSet/HashMap: 哈希表 都是O(1) TreeSet/TreeMap: 红黑树 都是O(lgn) ConcurrentHashMap: 分段+哈希表 LinkedHashMap:链表+哈希表 队列和……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" title="计算机网络">计算机网络</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            TCP/UDP 区别 TCP, Transmission control Protocol 稳定可靠，有纠错和重传 保证交付 应用对质量要求高的场景 UDP, User Datagram Protocol 快，质量低 尽最大可能交付 对质量要求不高的场景，如:直播 在浏览器中发起一个HTTP请求，底层都是TCP连接 TCP三次握手和四次挥手 从浏览器发出请求到服务器接收到请求发送了什么? 在浏览器输入https://ta……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/" title="计算机体系原理">计算机体系原理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月6日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            hardware(CPU, 硬盘，内存) -&gt; OS -&gt; software 进程和线程的区别? 进程和线程都是操作系统层面的概念 os-&gt; process(进程,拥有独立的内存空间以及文件描述符(FD,File Descriptor),是一个基本的程序单元,进程之间是互相独立的) 进程中所有的线程共享一块内存以及文件描述符等各类进程内的资源 共享资源……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%BD%93%E7%B3%BB%E5%8E%9F%E7%90%86/">阅读全文</a></p>
     </article>
     
     
@@ -348,6 +348,10 @@
         <a href="https://kongmu373.github.io/page/9/">9</a>
     </li>
     
+    <li >
+        <a href="https://kongmu373.github.io/page/10/">10</a>
+    </li>
+    
 
     
     <li class="next">
@@ -377,43 +381,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/io-overview/" title="Io Overview笔记">Io Overview笔记</a>
+        <a href="https://kongmu373.github.io/posts/io/14/" title="14">14</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/190-ReverseBits/" title="190 ReverseBits">190 ReverseBits</a>
+        <a href="https://kongmu373.github.io/posts/io/13/" title="13 Java InputStream">13 Java InputStream</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/13-RomantoInteger/" title="13 RomantoInteger">13 RomantoInteger</a>
+        <a href="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/" title="15 JavaIO: FileInputStream">15 JavaIO: FileInputStream</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/108-ConvertSortedArraytoBinarySearchTree/" title="108 ConvertSortedArraytoBinarySearchTree">108 ConvertSortedArraytoBinarySearchTree</a>
+        <a href="https://kongmu373.github.io/posts/io/10-12/" title="10-12笔记">10-12笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/1475-FinalPricesWithASpecialDiscountInAShop/" title="1475 FinalPricesWithASpecialDiscountInAShop">1475 FinalPricesWithASpecialDiscountInAShop</a>
+        <a href="https://kongmu373.github.io/posts/io/7-9/" title="7-9笔记">7-9笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/%E9%A1%B9%E7%9B%AE/%E4%BB%A3%E7%A0%81%E8%B4%A8%E9%87%8F%E6%8F%92%E4%BB%B6/" title="代码质量插件">代码质量插件</a>
+        <a href="https://kongmu373.github.io/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/" title="JavaIONetworking笔记">JavaIONetworking笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/%E9%A1%B9%E7%9B%AE/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" title="单元测试">单元测试</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/198-HouseRobber/" title="198 HouseRobber">198 HouseRobber</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/JVM/" title="JVM">JVM</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/530-MiniumAbsoluteDifferentInBST/" title="530 MiniumAbsoluteDifferentInBST">530 MiniumAbsoluteDifferentInBST</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/%E9%A1%B9%E7%9B%AE/API%E6%8E%A5%E5%8F%A3%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" title="API接口设计">API接口设计</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/746-MinCostClimbingStairs/" title="746 MinCostClimbingStairs">746 MinCostClimbingStairs</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/%E9%A1%B9%E7%9B%AE/docker%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93/" title="Docker连接数据库以及SpringBoot与Mybatis的集成">Docker连接数据库以及SpringBoot与Mybatis的集成</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/748-ShortesCompletingWord/" title="748 ShortesCompletingWord">748 ShortesCompletingWord</a>
     </li>
     
 </ul>
@@ -429,6 +433,8 @@
     
     <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
     
+    <li><a href="https://kongmu373.github.io/categories/IO/">IO (10)</a></li>
+    
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
@@ -437,11 +443,9 @@
     
     <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/io/">io (1)</a></li>
-    
     <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (2)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (13)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     
@@ -460,7 +464,11 @@
         <h3 class="widget-title">标签</h3>
 <div class="tagcloud">
     
+    <a href="https://kongmu373.github.io/tags/BST/">BST</a>
+    
     <a href="https://kongmu373.github.io/tags/Collection/">Collection</a>
+    
+    <a href="https://kongmu373.github.io/tags/DP/">DP</a>
     
     <a href="https://kongmu373.github.io/tags/Effective-Java/">Effective Java</a>
     

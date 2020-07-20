@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>15 JavaIO: FileInputStream | kongmu373的博客</title>
+    <meta property="og:title" content="15 JavaIO: FileInputStream - kongmu373的博客">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2020-07-20T17:47:35&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2020-07-20T17:47:35&#43;08:00'>
+        
+    <meta name="Keywords" content="java,博客,项目管理,python,软件架构">
+    <meta name="description" content="15 JavaIO: FileInputStream">
+        
+    <meta name="author" content="">
+    <meta property="og:url" content="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+
+
+    
+    
+        <link rel="stylesheet" href='/css/douban.css'>
+    
+        <link rel="stylesheet" href='/css/other.css'>
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://kongmu373.github.io/">
+                        kongmu373的博客
+                    </a>
+                
+                <p class="description">专注于Java、移动互联网、项目管理、软件架构</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://kongmu373.github.io/">首页</a>
+                    
+                    <a  href="https://kongmu373.github.io/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://kongmu373.github.io/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://kongmu373.github.io/about/" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#java-fileinputstream">Java FileInputStream</a>
+      <ul>
+        <li><a href="#java-fileinputstream-example">Java FileInputStream Example</a></li>
+        <li><a href="#fileinputstream-constructors">FileInputStream Constructors</a></li>
+        <li><a href="#read">read()</a></li>
+        <li><a href="#readbyte">read(byte[])</a></li>
+        <li><a href="#read-performance">Read Performance</a></li>
+        <li><a href="#transparent-buffering-via-bufferedinputstream">Transparent Buffering via BufferedInputStream</a></li>
+        <li><a href="#close-a-fileinputstream">Close a FileInputStream</a></li>
+        <li><a href="#convert-fileinputstream-to-reader">Convert FileInputStream to Reader</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">15 JavaIO: FileInputStream</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月20日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/IO'>IO</a></span>
+            
+        </div>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <p><a href="http://tutorials.jenkov.com/java-io">原文链接</a> 作者：Jakob Jenkov</p>
+<hr>
+<h2 id="java-fileinputstream">Java FileInputStream</h2>
+<ul>
+<li>Java FileInputStream类java.io.FileInputStream使得可以将文件的内容读取为字节流</li>
+<li>Java FileInputStream类是Java InputStream的子类</li>
+</ul>
+<hr>
+<h3 id="java-fileinputstream-example">Java FileInputStream Example</h3>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">InputStream input <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c:\\data\\input-text.txt&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+<span style="color:#458;font-weight:bold">int</span> data <span style="color:#000;font-weight:bold">=</span> input<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span>data <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+  <span style="color:#998;font-style:italic">//do something with data...
+</span><span style="color:#998;font-style:italic"></span>  doSomethingWithData<span style="color:#000;font-weight:bold">(</span>data<span style="color:#000;font-weight:bold">);</span>
+
+  data <span style="color:#000;font-weight:bold">=</span> input<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">}</span>
+input<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">close</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="fileinputstream-constructors">FileInputStream Constructors</h3>
+<ul>
+<li>FileInputStream主要有3个构造器，这里提及其中的两个:
+<ol>
+<li>构造函数将String作为参数,该String包含文件系统中要读取的文件所在的路径</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#998;font-style:italic">// On unix the file path could have looked like this:
+</span><span style="color:#998;font-style:italic">// String path = &#34;/home/jakobjenkov/data/thefile.txt&#34;;
+</span><span style="color:#998;font-style:italic">//windows
+</span><span style="color:#998;font-style:italic"></span>String path <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;C:\\user\\data\\thefile.txt&#34;</span><span style="color:#000;font-weight:bold">;</span>
+FileInputStream fileInputStream <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span>path<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>ileInputStream构造函数将File对象作为参数,File对象必须指向您要读取的文件.</li>
+</ol>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">String path <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;C:\\user\\data\\thefile.txt&#34;</span><span style="color:#000;font-weight:bold">;</span>
+File   file <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> File<span style="color:#000;font-weight:bold">(</span>path<span style="color:#000;font-weight:bold">);</span>
+
+FileInputStream fileInputStream <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span>file<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+<h3 id="read">read()</h3>
+<ul>
+<li>返回一个包含读取数据的字节int值</li>
+<li>如果返回的是-1，则表示没有更多的数据可以读取，可以关闭它了</li>
+<li>sample:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileInputStream fileInputStream <span style="color:#000;font-weight:bold">=</span> 
+    <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;a string.&#34;</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#458;font-weight:bold">int</span> data <span style="color:#000;font-weight:bold">=</span>fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span>data <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+    <span style="color:#998;font-style:italic">// do something with data variable
+</span><span style="color:#998;font-style:italic"></span>
+    data <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span> <span style="color:#998;font-style:italic">// read next byte
+</span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="readbyte">read(byte[])</h3>
+<ul>
+<li>作为InputStream的FileInputStream还具有两个read（）方法，可以将数据读入字节数组</li>
+<li>顺便说一下，这些方法是从Java InputStream类继承的</li>
+<li>包括:
+<ul>
+<li>int read(byte[])</li>
+<li>int read(byte[], int offset, int length)</li>
+</ul>
+</li>
+<li>sample:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileInputStream fileInputStream <span style="color:#000;font-weight:bold">=</span> 
+    <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;file path for string.&#34;</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#458;font-weight:bold">byte</span><span style="color:#000;font-weight:bold">[]</span> data <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> <span style="color:#458;font-weight:bold">byte</span><span style="color:#000;font-weight:bold">[</span>1024<span style="color:#000;font-weight:bold">];</span>
+<span style="color:#458;font-weight:bold">int</span> byteRead <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">(</span>data<span style="color:#000;font-weight:bold">,</span>0<span style="color:#000;font-weight:bold">,</span>data<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span>byteRead <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+  doSomethingWithData<span style="color:#000;font-weight:bold">(</span>data<span style="color:#000;font-weight:bold">,</span> bytesRead<span style="color:#000;font-weight:bold">);</span>
+
+  bytesRead <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">(</span>data<span style="color:#000;font-weight:bold">,</span> 0<span style="color:#000;font-weight:bold">,</span> data<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">length</span><span style="color:#000;font-weight:bold">);</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>注意:read(data, 0, data.length) 等价于 read(data)</li>
+</ul>
+<h3 id="read-performance">Read Performance</h3>
+<ul>
+<li>一次读取一个字节数组要比一次从Java FileInputStream读取单个字节快</li>
+<li>&hellip;</li>
+</ul>
+<h3 id="transparent-buffering-via-bufferedinputstream">Transparent Buffering via BufferedInputStream</h3>
+<ul>
+<li>可以使用Java BufferedInputStream从FileInputStream添加透明的自动读取和缓冲字节数组</li>
+<li>BufferedInputStream从FileInputStream读取字节块到字节数组</li>
+<li>可以从BufferedInputStream逐个读取字节，并且仍然可以通过读取字节数组而不是一次读取一个字节来获得很多加速</li>
+<li>sample:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">InputStream input <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> BufferedInputStream<span style="color:#000;font-weight:bold">(</span>
+    <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;file path.&#34;</span><span style="color:#000;font-weight:bold">),</span>
+    1024 <span style="color:#000;font-weight:bold">*</span> 1024 <span style="color:#998;font-style:italic">/* buffer size */</span>
+<span style="color:#000;font-weight:bold">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="close-a-fileinputstream">Close a FileInputStream</h3>
+<ul>
+<li>手动调用close()方法关闭</li>
+<li>sample:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">FileInputStream fileInputStream <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c:\\data\\input-text.txt&#34;</span><span style="color:#000;font-weight:bold">);</span>
+
+<span style="color:#458;font-weight:bold">int</span> data <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span>data <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+  data <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+<span style="color:#000;font-weight:bold">}</span>
+fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">close</span><span style="color:#000;font-weight:bold">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>用try-with-resources去自动关闭</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#000;font-weight:bold">try</span><span style="color:#000;font-weight:bold">(</span> FileInputStream fileInputStream <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;file.txt&#34;</span><span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">)</span> <span style="color:#000;font-weight:bold">{</span>
+
+    <span style="color:#458;font-weight:bold">int</span> data <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+    <span style="color:#000;font-weight:bold">while</span><span style="color:#000;font-weight:bold">(</span>data <span style="color:#000;font-weight:bold">!=</span> <span style="color:#000;font-weight:bold">-</span>1<span style="color:#000;font-weight:bold">){</span>
+        data <span style="color:#000;font-weight:bold">=</span> fileInputStream<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">read</span><span style="color:#000;font-weight:bold">();</span>
+    <span style="color:#000;font-weight:bold">}</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="convert-fileinputstream-to-reader">Convert FileInputStream to Reader</h3>
+<ul>
+<li>Java FileInputStream是基于字节的数据流</li>
+<li>Java IO API还具有一个基于字符的输入流<code>Reader</code>.</li>
+<li>可以使用Java InputStreamReader将Java FileInputStream转换为Java Reader</li>
+<li>sample:</li>
+</ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">InputStream inputStream       <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> FileInputStream<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;c:\\data\\input.txt&#34;</span><span style="color:#000;font-weight:bold">);</span>
+Reader      inputStreamReader <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> InputStreamReader<span style="color:#000;font-weight:bold">(</span>inputStream<span style="color:#000;font-weight:bold">);</span>
+</code></pre></td></tr></table>
+</div>
+</div>
+        </div>
+
+        
+
+
+        
+
+<div class="post-archive">
+    <h2>See Also</h2>
+    <ul class="listing">
+        
+        <li><a href="/posts/io/10-12/">10-12笔记</a></li>
+        
+        <li><a href="/posts/io/7-9/">7-9笔记</a></li>
+        
+        <li><a href="/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/">JavaIONetworking笔记</a></li>
+        
+        <li><a href="/posts/leetcode/198-HouseRobber/">198 HouseRobber</a></li>
+        
+        <li><a href="/posts/leetcode/530-MiniumAbsoluteDifferentInBST/">530 MiniumAbsoluteDifferentInBST</a></li>
+        
+    </ul>
+</div>
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "yourdiscussshortname" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+    
+    <div class="post bg-white">
+      <script src="https://utteranc.es/client.js"
+            repo= "https://github.com/kongmu373"
+            issue-term="pathname"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+      </script>
+    </div>
+    
+</div>
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://kongmu373.github.io/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://kongmu373.github.io/">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/io/14/" title="14">14</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/io/13/" title="13 Java InputStream">13 Java InputStream</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/" title="15 JavaIO: FileInputStream">15 JavaIO: FileInputStream</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/io/10-12/" title="10-12笔记">10-12笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/io/7-9/" title="7-9笔记">7-9笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/" title="JavaIONetworking笔记">JavaIONetworking笔记</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/leetcode/198-HouseRobber/" title="198 HouseRobber">198 HouseRobber</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/leetcode/530-MiniumAbsoluteDifferentInBST/" title="530 MiniumAbsoluteDifferentInBST">530 MiniumAbsoluteDifferentInBST</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/leetcode/746-MinCostClimbingStairs/" title="746 MinCostClimbingStairs">746 MinCostClimbingStairs</a>
+    </li>
+    
+    <li>
+        <a href="https://kongmu373.github.io/posts/leetcode/748-ShortesCompletingWord/" title="748 ShortesCompletingWord">748 ShortesCompletingWord</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">分类</h3>
+<ul class="widget-list">
+    
+    <li><a href="https://kongmu373.github.io/categories/Effective-Java/">Effective Java (14)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/IO/">IO (10)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (13)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (11)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E9%A1%B9%E7%9B%AE/">项目 (5)</a></li>
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title">标签</h3>
+<div class="tagcloud">
+    
+    <a href="https://kongmu373.github.io/tags/BST/">BST</a>
+    
+    <a href="https://kongmu373.github.io/tags/Collection/">Collection</a>
+    
+    <a href="https://kongmu373.github.io/tags/DP/">DP</a>
+    
+    <a href="https://kongmu373.github.io/tags/Effective-Java/">Effective Java</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTML/">HTML</a>
+    
+    <a href="https://kongmu373.github.io/tags/HTTP/">HTTP</a>
+    
+    <a href="https://kongmu373.github.io/tags/HashMap/">HashMap</a>
+    
+    <a href="https://kongmu373.github.io/tags/IO/">IO</a>
+    
+    <a href="https://kongmu373.github.io/tags/Java8/">Java8</a>
+    
+    <a href="https://kongmu373.github.io/tags/SQL/">SQL</a>
+    
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/docker/">docker</a>
+    
+    <a href="https://kongmu373.github.io/tags/git/">git</a>
+    
+    <a href="https://kongmu373.github.io/tags/redis/">redis</a>
+    
+    <a href="https://kongmu373.github.io/tags/Spring/">Spring</a>
+    
+    <a href="https://kongmu373.github.io/tags/spring-boot/">spring boot</a>
+    
+    <a href="https://kongmu373.github.io/tags/stream/">stream</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%8C%85%E7%AE%A1%E7%90%86/">包管理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BC%82%E5%B8%B8/">异常</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">微服务</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">日志系统</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E6%B3%A8%E8%A7%A3/">注解</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%88%AC%E8%99%AB/">爬虫</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">类型与反射</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%9E%84%E5%BB%BA/">自动化构建</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    
+    <a href="https://kongmu373.github.io/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+    
+</div>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://kongmu373.github.io/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+    <div class="container">
+        &copy; 2020 <a href="https://kongmu373.github.io/">kongmu373的博客 By </a>.
+        Powered by <a rel="nofollow noreferer noopener" href="https://gohugo.io" target="_blank">Hugo</a>.
+        <a href="https://www.flysnow.org/" target="_blank">Theme</a> based on <a href="https://github.com/flysnow-org/maupassant-hugo" target="_blank">maupassant</a>.
+        
+    </div>
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+    <script src='/js/douban.js'></script>
+
+</body>
+
+</html>
