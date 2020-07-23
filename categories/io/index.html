@@ -82,6 +82,213 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/34-Serializable/">34 Serializable</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月23日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov Java Serializable接口(java.io.Serializable是类要进行序列化和反序列化时必须实现的标记接口) Java对象序列化（写入）通过ObjectOutputStream完成，反序列化（读取）通过ObjectInputStream完成 Se……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/34-Serializable/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/32-ObjectInputStream/">32 ObjectInputStream</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月23日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov ObjectInputStream Example 1 2 3 4 5 6 7 ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(&#34;object.data&#34;)); MyClass object = (MyClass) objectInputStream.readObject(); //etc. objectInputStream.close(); Using an ObjectInputStream With an ObjectOutputStream 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 package com.kongmu373.leetcode.editor.en; import java.io.FileInputStream; import java.io.FileOutputStream; import java.io.ObjectInputStream; import java.io.ObjectOutputStream; import java.io.Serializable; public class ObjectInputStreamExample { public static class Person implements Serializable { public String name = null; public int age = 0; } public static void main(String[] args) throws Exception { FileOutputStream fileOutputStream = new FileOutputStream(&#34;person.bin&#34;); ObjectOutputStream outputStream = new ObjectOutputStream(fileOutputStream); Person person = new Person(); person.name = &#34;lili&#34;; person.age = 11; outputStream.writeObject(person); outputStream.close(); //……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/32-ObjectInputStream/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/29-DataInputStream/">29 DataInputStream</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月23日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov Java DataInputStream Example 1 2 3 4 5 6 7 8 9 10 DataInputStream dataInputStream = new DataInputStream( new FileInputStream(&#34;binary.data&#34;)); int aByte = input.read(); int anInt = input.readInt(); float aFloat = input.readFloat(); double aDouble = input.readDouble(); //etc. input.close(); Create a DataInputStream 1 2 3 DataInputStream dataInputStream = new DataInputStream( new FileInputStream(&#34;data/data.bin&#34;)); Using a DataInputStream With a DataOutputStream 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 public class DataInputStreamExample { public static void main(String[] args) throws IOException { DataOutputStream dataOutputStream = new DataOutputStream( new FileOutputStream(&#34;data.bin&#34;)); dataOutputStream.writeInt(123); dataOutputStream.writeFloat(123.45F); dataOutputStream.writeLong(789); dataOutputStream.close(); DataInputStream dataInputStream = new DataInputStream( new FileInputStream(&#34;data.bin&#34;)); int int123 = dataInputStream.readInt(); float float12345 = dataInputStream.readFloat(); long long789 = dataInputStream.readLong();……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/29-DataInputStream/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/25%E7%AC%94%E8%AE%B0/">25笔记</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月22日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov Java BufferedInputStream类java.io.BufferedInputStream为Java InputStream（包括InputStream的任何子类）提供字节块的透明读取和缓冲 Java BufferedInputStream Example 1 2 BufferedInputStream bufferedInputStream = new BufferedInputStream( new FileInputStream(&#34;c:\\data\\input-file.txt&#34;)); Setting Buffer Size of a BufferedInputStream 1 2 3 4 5 6 int bufferSize = 8 * 1024;……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/25%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/22%E7%AC%94%E8%AE%B0/">22笔记</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月22日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov 将数据写入ByteArrayOutputStream，完成后调用其toByteArray（）方法以获取字节数组中的所有写入数据 ByteArrayOutputStream Example 1 2 3 4 5 6 7 8 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); //write data to byteArrayOutputStream byteArrayOutputStream.write(xxx); byte[] bytes = byteArrayOutputStream.toByteArray(); // close Create a ByteArrayOutputStream 1 ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(); Write Bytes to ByteArrayOutputStream write(int byteToWrite) write(byte[] bytesToWrite, int offset, int length) toByteArray() 1 byte[] bytes = byteArrayOutputStream.toByteArray(); close 调用close方法 使……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/22%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/21%E7%AC%94%E8%AE%B0/">21笔记</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月22日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov ByteArrayInputStream类可以将字节数组转换为InputStream Create a ByteArrayInputStream sample 1 2 3 4 5 6 7 8 9 10 11 12 // 1. 一个数组参数 byte[] bytes = ... //get byte array from somewhere. ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes); // 2.数组参数，偏移参数，以及最大读入长度 byte[] bytes = ... //get byte array from somewhere. int offset = 20; int length = 45; ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes, offset, length); read() 与……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/21%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/18%E7%AC%94%E8%AE%B0/">18笔记</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月22日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov Java IO API中的Java File类java.io.File使您可以访问基础文件系统: 检查文件或目录是否存在。 如果目录不存在，请创建一个目录 读取文件的长度 重命名或移动文件 删除文件 检查路径是文件还是目录 读取目录中的文件列表 注意: Java File类仅使您可以访问文件和……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/18%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/17%E7%AC%94%E8%AE%B0/">17Java RandomAccessFile</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月22日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov RandomAccessFile允许你来回读写文件，也可以替换文件中的某些部分 FileInputStream和FileOutputStream没有这样的功能 Creating a RandomAccessFile 初始化 1 RandomAccessFile file = new RandomAccessFile(&#34;c:\\data\\file.txt&#34;, &#34;rw&#34;); 其中第二参数的&quot;rw&quot;表示读/写 Access Modes RandomAc……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/17%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/io/16%E7%AC%94%E8%AE%B0/">16Java FileOutputStream</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月22日
+        </date>
+        
+        <div class="post-meta meta-category">
+            |
+            
+            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
+            
+        </div>
+        
+        <div class="post-content">
+            原文链接 作者：Jakob Jenkov FileOutputStream可以往文件里写入字节流，它是OutputStream的子类，所以你可以像使用OutputStream那样使用FileOutputStream Java FileOutputStream Example sample 1 2 3 4 5 6 7 OutputStream output = new FileOutputStream(&#34;c:\\data\\output-text.txt&#34;); while(moreData) { int data = getMoreData(); output.write(data); } output.close(); Overwriting vs. Appending the File 当你创建了一个文件的时……
+            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/16%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
+        </div>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/io/14/">14</a>
             </h1>
         </header>
@@ -102,217 +309,30 @@
         </div>
     </article>
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/13/">13 Java InputStream</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月20日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者：Jakob Jenkov Java InputStream Java InputStream类java.io.InputStream表示字节的有序流 InputStream Subclasses InputStream 有以下子类: ByteArrayInputStream FileInputStream PipedInputStream BufferedInputStream FilterInputStream PushbackInputStream DataInputStream ObjectInputStream SequenceInputStream InputStreams and Sources Java InputStream通常连接到某些数据源，例如文件，网络连接，管道等 Java InputStream Example 从文件读取所有字节: 1 2 3 4 5 6 7 8 9 10 11 InputStream input = new……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/13/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/">15 JavaIO: FileInputStream</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月20日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者：Jakob Jenkov Java FileInputStream Java FileInputStream类java.io.FileInputStream使得可以将文件的内容读取为字节流 Java FileInputStream类是Java InputStream的子类 Java FileInputStream Example 1 2 3 4 5 6 7 8 9 10 InputStream input = new FileInputStream(&#34;c:\\data\\input-text.txt&#34;); int data = input.read(); while(data != -1) { //do something with data... doSomethingWithData(data); data =……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/10-12/">10-12笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月20日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者：Jakob Jenkov Java IO: Readers and Writers Java IO中的Java Reader（java.io.Reader）和Java Writer类（java.io.Writer）的工作方式与InputStream和OutputStream相似，不同之处在于Reader和Writer是基于字符的. Reader Rea……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/10-12/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/7-9/">7-9笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月20日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者：Jakob Jenkov Java IO: Byte &amp; Char Arrays 背景：字节数组&amp;字符数组是我们常用来在程序中作临时存储数据,那么我们是不是有一个已经设计好的，从`InputStream`或`Reader`的子类组件能将数据流转换到字节数组&amp;字符数组的呢? Reading Arrays via InputStream or Reader ByteArrayInp……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/7-9/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/">JavaIONetworking笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月20日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者: Jakob Jenkov Networking 一旦为两个进程建立网络连接，它们之间的网络通信就如同文件处理一样: 使用inputStream读取数据 使用ouputStream写入数据 即可以将文件处理的操作套用在网络连接的处理上(毕竟FileOutputStream is a subclass of OutputStream) sample 在下面的例子中process方法……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/Java-IO-Pipes%E7%AC%94%E8%AE%B0/">Java IO Pipes笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月18日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者: Jakob Jenkov Creating Pipes via Java IO 通过PipedOutputStream和PipedInputStream类使用Java IO创建管道 PipedInputStream应该被连接到PipedOutputStream sample: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/Java-IO-Pipes%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/Stream%E7%AC%94%E8%AE%B0/">Java IO Stream笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月18日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者: Jakob Jenkov InputStream 类java.io.InputStream是所有Java IO输入流的基类 如果你写的组件需要从流中读数据，最好让你的组件依赖于InputStream,而不是它的子类. sample: 1 2 3 4 5 6 7 InputStream input = new FileInputStream(&#34;xxxx&#34;); int data = input.read(); // return a int containing the byte value of the byte read. // If there is no more data to be read, the read() method typically returns -1; while(data != -1) {……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/Stream%E7%AC%94%E8%AE%B0/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/Files/">Java IO Files笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月18日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者：Jakob Jenkov Java IO File Classes Java IO API包含以下与在Java中处理文件有关的类： File RandomAccessFile FileInputStream FileReader FileOutputStream FileWriter Reading Files via Java IO you can use FileInputStream or FileReader to read a file 这两个类：要么一个字节一个字节读，或者一个数组去读 你需要按照文件的顺序去读 如果你需要跳读，你可以使用RandomAccessFile Writing Files via Java IO you can use a FileOutputStream or……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/Files/">阅读全文</a></p>
-        </div>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/io/io-overview/">Java IO Overview笔记</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月18日
-        </date>
-        
-        <div class="post-meta meta-category">
-            |
-            
-            <a href='https://kongmu373.github.io/categories/IO'>IO</a>
-            
-        </div>
-        
-        <div class="post-content">
-            原文链接 作者: Jakob Jenkov 输入与输出 - Source and Destination Java IO package 主要用于从source读取raw data,或者写一些raw data到一个destination. 其中source与 destination 主要有以下这些: Files Pipes Network Connections In-memory Buffers(e.g. arrays) System.in,out,error stream 流 stream是连续无限的数据流 能够从stream中读，或写数据 一个stream是连接于……
-            <p class="readmore"><a href="https://kongmu373.github.io/posts/io/io-overview/">阅读全文</a></p>
-        </div>
-    </article>
-    
 
     
 
 
+
+<ol class="page-navigator">
+    
+
+    
+    <li  class="current">
+        <a href="https://kongmu373.github.io/categories/IO/">1</a>
+    </li>
+    
+    <li >
+        <a href="https://kongmu373.github.io/categories/IO/page/2/">2</a>
+    </li>
+    
+
+    
+    <li class="next">
+        <a href="https://kongmu373.github.io/categories/IO/page/2/">下一页</a>
+    </li>
+    
+</ol>
 
 
 
@@ -335,43 +355,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/14/" title="14">14</a>
+        <a href="https://kongmu373.github.io/posts/io/34-Serializable/" title="34 Serializable">34 Serializable</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/13/" title="13 Java InputStream">13 Java InputStream</a>
+        <a href="https://kongmu373.github.io/posts/io/32-ObjectInputStream/" title="32 ObjectInputStream">32 ObjectInputStream</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/" title="15 JavaIO: FileInputStream">15 JavaIO: FileInputStream</a>
+        <a href="https://kongmu373.github.io/posts/io/29-DataInputStream/" title="29 DataInputStream">29 DataInputStream</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/10-12/" title="10-12笔记">10-12笔记</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/669-trim-a-binary-search/" title="669 Trim a Binary Search">669 Trim a Binary Search</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/7-9/" title="7-9笔记">7-9笔记</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/204-count-primes/" title="204 Count Primes">204 Count Primes</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/" title="JavaIONetworking笔记">JavaIONetworking笔记</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/682-Baseball-Game/" title="682 Baseball Game">682 Baseball Game</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/198-HouseRobber/" title="198 HouseRobber">198 HouseRobber</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/29-employee-importance/" title="29 Employee Importance">29 Employee Importance</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/530-MiniumAbsoluteDifferentInBST/" title="530 MiniumAbsoluteDifferentInBST">530 MiniumAbsoluteDifferentInBST</a>
+        <a href="https://kongmu373.github.io/posts/io/25%E7%AC%94%E8%AE%B0/" title="25笔记">25笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/746-MinCostClimbingStairs/" title="746 MinCostClimbingStairs">746 MinCostClimbingStairs</a>
+        <a href="https://kongmu373.github.io/posts/io/22%E7%AC%94%E8%AE%B0/" title="22笔记">22笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/748-ShortesCompletingWord/" title="748 ShortesCompletingWord">748 ShortesCompletingWord</a>
+        <a href="https://kongmu373.github.io/posts/io/21%E7%AC%94%E8%AE%B0/" title="21笔记">21笔记</a>
     </li>
     
 </ul>
@@ -387,7 +407,7 @@
     
     <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/IO/">IO (10)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/IO/">IO (19)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
@@ -399,7 +419,7 @@
     
     <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (13)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (18)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     

@@ -75,11 +75,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/" title="HTTP协议">HTTP协议</a>
+                <a href="https://kongmu373.github.io/posts/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/" title="类型与反射">类型与反射</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月28日
+            2020年6月9日
         </date>
         
         <div class="post-meta">
@@ -90,9 +90,9 @@
         </div>
         
         <div class="post-content">
-            HTTP协议 互联网所有东西都是基于HTTP协议 HTTP 方法 GET 和 POST 的区别 GET 所有数据全部都放在 HTTP Request header 里面 POST 真正的数据放在 HTTP Request body 里面 (登录，上传文件) DELETE PUT &hellip; HTTP 状态码 2XX 成功 3XX 重定向 4XX 客户端出问题 405 客户端请求的方法被禁止 5XX HTTP状态码的博客 HTTP 请求header 重要的header Accept* Cookie User-Agent Referer 当前页面是……
+            Spring全家桶，任何上规模的框架,都使用了框架 Java的类与Class RTTI(Run-Time Type Identification) 运行时类型识别 将子类赋值给父类,调用子类的方法报错 1 2 Object obj = new WhiteCat(); obj.catchMouse(); // catchMouse()是猫的方法，Object类没有这个方法，所以编译报错 Object.getClass 实体方法拿到类型信息 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/HTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%8F%8D%E5%B0%84/">阅读全文</a></p>
     </article>
     
     
@@ -100,11 +100,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/" title="Web前后端基础结构原理">Web前后端基础结构原理</a>
+                <a href="https://kongmu373.github.io/posts/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%9F%E7%90%86/" title="字符串原理">字符串原理</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月27日
+            2020年6月8日
         </date>
         
         <div class="post-meta">
@@ -115,9 +115,9 @@
         </div>
         
         <div class="post-content">
-            计算机网络的术语 主机 每个主机会有一个地址(IPV4地址为32位，4个字节,如115.118.112.3 2^32=42亿个数字,不够用了) (网络，主机，IP地址(Internet Protocol &ndash; 网络协议)) IPV6(128位，为地球的每一颗沙子分配地址) 域名与DNS 知道与哪台主机通信，即必须知……
+            字符串是最重要的引用类型 互联网基本上只干一件事: 处理字符串 能处理好字符串是Web服务器的基本要求 字符串的不可变性 字符串的不可变是如何保证的? String是final class不能被继承 保存字符的数组是final的，不能改变指向 String的所有公开API都不能改变这个value的……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/Web%E5%89%8D%E5%90%8E%E7%AB%AF%E5%9F%BA%E7%A1%80%E7%BB%93%E6%9E%84%E5%8E%9F%E7%90%86/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8E%9F%E7%90%86/">阅读全文</a></p>
     </article>
     
     
@@ -125,11 +125,61 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/Collection/" title="Collection">Collection</a>
+                <a href="https://kongmu373.github.io/posts/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" title="HashMap源码分析">HashMap源码分析</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月27日
+            2020年6月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB'>java8体系</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            常见面试问题 HashMap默认容量? HashMap如何扩容? HashMap的数组大小为什么一定要是2的幂? HashMap为什么是线程不安全的 Java 7到8做了哪些改进? 为什么? &hellip; 哈希表的简介 核心是基于哈希值的桶和链表 将一个元素映射成一个便于搜索的哈希值 O(1)的平均查找,插入 删除时间 桶……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/HashMap%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="基础算法与数据结构">基础算法与数据结构</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月8日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB'>java8体系</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            程序=算法+数据结构 (程序如何执行 + 怎么存储数据) 为什么我们需要算法和数据结构呢？ 计算机世界的基石， 是程序员的内功 对代码效率的提升是本质的 面试需要&hellip; 算法的复杂度 时间复杂度 O(1) - 哈希桶/数组随机寻址 (常数) 和问题的规模无关 O(n) - 遍历 (线性) 在数组中找某个元素 解决问题的时间……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/stream/" title="Stream">Stream</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月7日
         </date>
         
         <div class="post-meta">
@@ -140,9 +190,9 @@
         </div>
         
         <div class="post-content">
-            Collection 简介 Collection是什么？(root interface) 是接口，不是类，不能被new 一组东西，一篮子鸡蛋,只包含一种元素 Collection 体系 (root interface) 例如,ArrayList的Diagrams Collection 常使用的方法: new: new ArrayList(Collection), new ArrayList() 1 2 3 4 5 6 7 8 9 10 11 12 13 Collection&lt;Integer&gt; c = new LinkedHashSet(); // IntegerList List&lt;Integer&gt; list = new ArrayList&lt;&gt;(c); // == List&lt;Integer&gt; list2 = new ArrayList&lt;&gt;(); list2.addAll(); // == List&lt;Integer&gt; list3 = new ArrayList&lt;&gt;(); for(Integer i : c) { list3.add(i);……
+            什么是Stream 一个 &ldquo;流&rdquo; 好处: 不容易出错 简化代码 可读性/可维护性++ // 请把姓张的用户挑出来，把他们按照年龄排序,然后把它们的名单报告给我 List&lt;User&gt; users = getUsers(); List&lt;String&gt; list = users.stream(). filter(user -&gt; user.name.startsWith(&quot;张&quot;)) .sorted((Comparator.comparing(User::getAge))) .map(User::getName) .collect(Collectors.toList()); 使用idea的pl……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/Collection/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/stream/">阅读全文</a></p>
     </article>
     
     
@@ -150,24 +200,17 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/" title="几种排序算法的实现">几种排序算法的实现</a>
+                <a href="https://kongmu373.github.io/posts/%E6%A1%B6%E6%8E%92%E5%BA%8F/" title="进阶算法">进阶算法</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月27日
+            2020年6月2日
         </date>
         
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84'>数据结构</a></span>
-            
-        </div>
-        
         <div class="post-content">
-            冒泡排序 复杂度O(n^2) 空间复杂度(1) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 public class BubbleSort { public static void sort(int[] array) { for (int i = 0; i &lt; array.length; i++) { for (int j = 0; j &lt; array.length - i - 1; j++) { if (array[i] &gt; array[i + 1]) { swap(array, i, i + 1); } } } } private static void swap(int[] array, int i, int j) { int temp = array[i]; array[i] = array[j]; array[j] = temp; } } 快速排序(不是原地版本) 复杂度O(n(logn)) 空间复……
+            面试算法题套路 沟通和交流 得到算法题 沟通理解题意 给出暴力解(不动脑子的解法) 分析问题，沟通 给出正常的算法解题 优化(剪枝) 动态规划 找出状态转移方程 上台阶问题 有一楼梯共m级，若每次只能跨上一级或二级，要走上第m级,共有多少走法? f(m) = f(m-1) + f(m-2) 硬币问题……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%87%A0%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E7%9A%84%E5%AE%9E%E7%8E%B0/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E6%A1%B6%E6%8E%92%E5%BA%8F/">阅读全文</a></p>
     </article>
     
     
@@ -175,61 +218,11 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3/" title="Lambda表达式与函数接口">Lambda表达式与函数接口</a>
+                <a href="https://kongmu373.github.io/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/" title="线程池">线程池</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月26日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java8'>Java8</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Lambda表达式与函数式接口 Lambda表达式 Lambda 是什么? 可以把Lambda表达式理解为 简洁地表示可传递匿名函数的一种方式 Lambda表达式没有名称，但它有参数列表，函数主体，返回类型，有时还可以抛出的异常列表。 有以下特性: 匿名:与匿名函数一样不需要方法名 函数:有参数列表，函数主……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E4%B8%8E%E5%87%BD%E6%95%B0%E6%8E%A5%E5%8F%A3/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8EJava8%E6%96%B0%E7%89%B9%E6%80%A7/" title="函数式编程与Java8新特性">函数式编程与Java8新特性</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年5月26日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java8'>Java8</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            函数 就是 参数 映射成返回值. 函数式编程 &ldquo;函数式编程&rdquo; 是一种 &ldquo;编程范式&rdquo; 主要思想: 把运算过程尽量写成一系列嵌套的函数调用 -&gt; y= f(g(x)) &lt;=&gt; y= g(x).f(). 惰性计算: 并不立刻算，只有在需要产生表达式的值才开始进行运算 函数是 &ldquo;第一等公民&rdquo;……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B%E4%B8%8EJava8%E6%96%B0%E7%89%B9%E6%80%A7/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/" title="Java包管理">Java包管理</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年5月25日
+            2020年6月2日
         </date>
         
         <div class="post-meta">
@@ -240,9 +233,9 @@
         </div>
         
         <div class="post-content">
-            包是什么? 就是把许多类放在一起打的压缩包 什么是包管理 包管理的本质就是告诉JVM如何找到所需的第三方类库 为什么要用包管理呢？ 从运行一个JAVA程序说起： JVM的工作内容: 执行一个类的字节码 加入这个过程中碰到了新的类， 加载它 那么，去哪里加载这些类呢?(通过类路径) 类路径 (Classpath) 在哪可以找到……
+            线程池与Callable/Future 什么是线程池 线程时昂贵的 (Java线程模型的缺陷) 线程池时预先定义好的若干个线程 Java中的线程池 不用频繁创建线程 Callable/Future 类比Runnable, Callable可以返回值，抛出异常 Future代表一个&quot;未来才会返回的结果&rdquo; 实战……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java%E5%8C%85%E7%AE%A1%E7%90%86/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E7%BA%BF%E7%A8%8B%E6%B1%A0/">阅读全文</a></p>
     </article>
     
     
@@ -250,24 +243,24 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="Git常用命令">Git常用命令</a>
+                <a href="https://kongmu373.github.io/posts/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/" title="生产者与消费者模型">生产者与消费者模型</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月25日
+            2020年6月1日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/git'>git</a></span>
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
             
         </div>
         
         <div class="post-content">
-            git git 六行配置 git config --global user.name 你的英文名 git config --global user.email 你的邮箱 git config --global push.default simple git config --global core.quotepath false git config --global core.editor &quot;code --wait&quot; git config --global core.autocrlf input git 常用命令 - git config - git add 路径 - git status -sb - git commit -v - git branch x - git checkout x - git merge - git commit - git branch -d x - git log - git relog - git reset --hard XXXXX GitHub 存储代码 常用两行命令 git remote add origin git@xxxxxx git push -u origin master SSH key 验证身份 生成 SSH key 测试 SSH key 上传和下载代码 git pull /……
+            使用三种方法解决生产者与消费者模型 wait/notify/notifyAll Lock/Condition(JUC) BlockingQueue(JUC) wait/notify/notifyAll 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 public class Main { public static void main(String[] args) throws InterruptedException { final Object lock = new Object(); Optional&lt;Integer&gt; empty = Optional.empty(); Container container = new Container(empty); Producer producer = new Producer(container, lock); Consumer consumer = new Consumer(container, lock);……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E7%94%9F%E4%BA%A7%E8%80%85%E4%B8%8E%E6%B6%88%E8%B4%B9%E8%80%85%E6%A8%A1%E5%9E%8B/">阅读全文</a></p>
     </article>
     
     
@@ -275,42 +268,49 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/first-blood/" title="First Blood">First Blood</a>
+                <a href="https://kongmu373.github.io/posts/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/" title="多线程带来的问题">多线程带来的问题</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年5月25日
-        </date>
-        
-        <div class="post-content">
-            大家好 我的博客开通了!……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/first-blood/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item8/" title="Item8">Item8</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            1年1月1日
+            2020年6月1日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
             
         </div>
         
         <div class="post-content">
-            Item 8: Avoid finalizers and cleaners（避免使用终结器和清除器） 终结器和清除器的缺点 缺点: 不能保证它们会被立即执行(不仅不能保证终结器或清洁剂能及时运行；它并不能保证它们能运行。) 在终结期间抛出的未捕获异常被忽略，该对象的终结终止。 严重影响性能。使用 try-with-resources 比终结器快得多(50倍左右,清除器比终结……
+            线程不安全的表现 数据错误 i++问题 死锁 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 // 死锁代码 public class Main { private static final Object lock1 = new Object(); private static final Object lock2 = new Object(); public static void main(String[] args) throws InterruptedException { new Thread1().start(); new Thread2().start(); } private static class Thread1 extends Thread { @Override public void run() { synchronized (lock1) { try { Thread.sleep(500); } catch (InterruptedException ignored) { } synchronized (lock2) { System.out.println(); } } } } private static class Thread2 extends……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item8/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="多线程基本原理">多线程基本原理</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月1日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            为什么需要多线程? Thread线程 Java中线程的表示 多线程问题的来源 多线程的应用场景 一、为什么需要多线程? Java的执行模型是同步/阻塞的 如果你执行非常耗时的操作，当前方法的执行流会阻塞，等待耗时的操作执行完 1 2 3 4 5 6 7 8 9 10 11 12 13 14 // main方法要打印&#34;main&#……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java%E5%A4%9A%E7%BA%BF%E7%A8%8B/">阅读全文</a></p>
     </article>
     
     
@@ -326,49 +326,72 @@
     
 
     
-    <li >
-        <a href="https://kongmu373.github.io/posts/">1</a>
-    </li>
+
     
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/2/">2</a>
-    </li>
+        
+        
     
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/3/">3</a>
-    </li>
-    
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/4/">4</a>
-    </li>
-    
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/5/">5</a>
-    </li>
-    
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/6/">6</a>
-    </li>
-    
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/7/">7</a>
-    </li>
-    
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/8/">8</a>
-    </li>
-    
-    <li >
-        <a href="https://kongmu373.github.io/posts/page/9/">9</a>
-    </li>
-    
-    <li  class="current">
-        <a href="https://kongmu373.github.io/posts/page/10/">10</a>
-    </li>
     
 
     
+        
+        
+        <li >
+            <a href="https://kongmu373.github.io/posts/">1</a>
+        </li>
+        
+    
+        
+        <li>
+            <span>...</span>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://kongmu373.github.io/posts/page/8/">8</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://kongmu373.github.io/posts/page/9/">9</a>
+        </li>
+        
+    
+        
+        
+        <li  class="current">
+            <a href="https://kongmu373.github.io/posts/page/10/">10</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://kongmu373.github.io/posts/page/11/">11</a>
+        </li>
+        
+    
+        
+        
+        <li >
+            <a href="https://kongmu373.github.io/posts/page/12/">12</a>
+        </li>
+        
+    
+
+    
+    
+
+    <li class="next">
+        <a href="https://kongmu373.github.io/posts/page/11/">下一页</a>
+    </li>
+    
 </ol>
+
 
 
 
@@ -391,43 +414,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/14/" title="14">14</a>
+        <a href="https://kongmu373.github.io/posts/io/34-Serializable/" title="34 Serializable">34 Serializable</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/13/" title="13 Java InputStream">13 Java InputStream</a>
+        <a href="https://kongmu373.github.io/posts/io/32-ObjectInputStream/" title="32 ObjectInputStream">32 ObjectInputStream</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/15JavaIOFileInputStream/" title="15 JavaIO: FileInputStream">15 JavaIO: FileInputStream</a>
+        <a href="https://kongmu373.github.io/posts/io/29-DataInputStream/" title="29 DataInputStream">29 DataInputStream</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/10-12/" title="10-12笔记">10-12笔记</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/669-trim-a-binary-search/" title="669 Trim a Binary Search">669 Trim a Binary Search</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/7-9/" title="7-9笔记">7-9笔记</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/204-count-primes/" title="204 Count Primes">204 Count Primes</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/JavaIONetworking%E7%AC%94%E8%AE%B0/" title="JavaIONetworking笔记">JavaIONetworking笔记</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/682-Baseball-Game/" title="682 Baseball Game">682 Baseball Game</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/198-HouseRobber/" title="198 HouseRobber">198 HouseRobber</a>
+        <a href="https://kongmu373.github.io/posts/leetcode/29-employee-importance/" title="29 Employee Importance">29 Employee Importance</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/530-MiniumAbsoluteDifferentInBST/" title="530 MiniumAbsoluteDifferentInBST">530 MiniumAbsoluteDifferentInBST</a>
+        <a href="https://kongmu373.github.io/posts/io/25%E7%AC%94%E8%AE%B0/" title="25笔记">25笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/746-MinCostClimbingStairs/" title="746 MinCostClimbingStairs">746 MinCostClimbingStairs</a>
+        <a href="https://kongmu373.github.io/posts/io/22%E7%AC%94%E8%AE%B0/" title="22笔记">22笔记</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/748-ShortesCompletingWord/" title="748 ShortesCompletingWord">748 ShortesCompletingWord</a>
+        <a href="https://kongmu373.github.io/posts/io/21%E7%AC%94%E8%AE%B0/" title="21笔记">21笔记</a>
     </li>
     
 </ul>
@@ -443,7 +466,7 @@
     
     <li><a href="https://kongmu373.github.io/categories/HTML/">HTML (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/IO/">IO (10)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/IO/">IO (19)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
@@ -455,7 +478,7 @@
     
     <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (13)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (18)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     
