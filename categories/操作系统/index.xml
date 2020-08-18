@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>操作系统 on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
+    <description>Recent content in 操作系统 on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 07 Aug 2020 07:53:23 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>操作系统的部分问题</title>
+      <link>https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-3/</link>
+      <pubDate>Fri, 07 Aug 2020 07:53:23 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-3/</guid>
+      <description>什么是寄存器？ 寄存器在哪？ 存在于CPU中，存储数据 指令是什么? 指令由什么构成? 有什么用? 指令就是CPU执行的基本单元 由操作码+操作数构成,控制硬件执行相应的操作 操作码是什么? 操作数是什么? 32位机中操作码和操作数各占几位? 操作码就是要做的操作是什么类型 操作数也就是参与操作的元素 00000001</description>
+    </item>
+    
+  </channel>
+</rss>

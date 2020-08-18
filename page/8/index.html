@@ -73,11 +73,103 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/spring/spring%E5%8E%9F%E7%90%86/" title="Spring原理">Spring原理</a>
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/" title="集合框架">集合框架</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月18日
+            2020年7月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            HashMap原理 详情在另一篇博客HashMap源码分析 List/Set/Map 区别 List 有位置顺序，因此可以通过下标获取对应的值,get(index) 存储有顺序的东西 Set 无序的 元素不同 当我们需要去重的时候，就可以使用它 Map 映射 HashMap和HashTable的区别? HashTable基本不用 相同点: 都是基……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="Java面向对象">Java面向对象</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月4日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            ==/equals有什么区别? == 是判断是否为同一个对象 equals 是判断两个对象是否相等 深拷贝/浅拷贝有什么区别? 拷贝一个引用对象： 浅拷贝：拷贝该对象，但并不把该对象里面的引用链所有对象全部拷贝一份，只是把引用地址复制一份 深拷贝: 拷贝对象的时候，把该对象里面的引用链的对象都复制一份而不是单……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/java%E5%9F%BA%E7%A1%80/" title="Java基础">Java基础</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月3日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98'>面试题</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Java程序的运行原理 当点击编译器的运行按钮后，发生了什么呢?(分为编译过程和启动过程) .java文件执行编译(被Compiler的编译器处理)，生成.calss文件(字节码) .class文件被jvm识别和加载 即成链状: .java -(编译)-&gt; .class -(被识别)-&gt; jvm 编译后的代码……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/java%E5%9F%BA%E7%A1%80/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/" title="Stream-常见使用">Stream-常见使用</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月2日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            本文章主要介绍了Stream使用的常见方法以及Java样例代码. 常见使用 筛选过滤 filter方法 接受一个判定(Predicate),并返回一个符合判定的元素流 1 2 3 List&lt;Car&gt; carList = store.stream() .filter(Car::isElectric) .collect(toList()); distinct方法 返回一个没有重复的元素流(用元素的equals方法来判断) 1 2 3 4 List&lt;Integer&gt; number = Arrays.asList(1, 2, 3, 3, 5, 5);……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/stream-%E5%9F%BA%E7%A1%80/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/" title="微店项目部署">微店项目部署</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年7月1日
         </date>
         
         <div class="post-meta">
@@ -88,42 +180,19 @@
         </div>
         
         <div class="post-content">
-            为什么需要Spring呢？ 开发一个应用要把它分成很多个模块 模块之间用约定进行通信 模块分成很多个子模块 如果是java应用程序，那么模块可以理解为一个个对象(Object,在Spring中命名为Bean) 模块之间存在相互依赖,如：当A模块必须使用B模块才能完成A模块提供的服务(A依赖……
+            本文章主要将一个微信小商店的后端部署到服务器上的步骤过程记录下来，方便以后的部署。 项目地址:https://github.com/kongmu373/wxshop 以及前端地址: https://github.com/kongmu373/westore-react-1 步骤 在阿里云上买一台ECS服务器 部署模型 服务器对外暴露一个nginx(80port), 所有外部连接都经……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/spring/spring%E5%8E%9F%E7%90%86/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/spring/%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item13/" title="Item13">Item13</a>
+                <a href="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket-2/" title="TCP与socket 2">TCP与socket 2</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月18日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 13: Override clone judiciously（谨慎覆盖 clone 方法） Cloneable接口 跟Serializable接口一样，只是声明该对象可以被克隆，具体行为由类设计者决定。 如果一个类实现了Cloneable，Object的clone方法就返回该对象的拷贝，否则就会抛出CloneNotSuppor……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item13/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/docker/" title="Docker">Docker</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月17日
+            2020年6月27日
         </date>
         
         <div class="post-meta">
@@ -134,19 +203,19 @@
         </div>
         
         <div class="post-content">
-            Docker能做什么? 保证开发，测试，交付，部署的环境完全一致 保证资源的隔离 启动临时的，用完即弃的环境，例如测试 迅速 (秒级)超大规模和扩容 Docker 与 Virtual Machines 相比 Docker的基本概念 镜像 imgage 一个预先定义好的模板文件， Docker引擎可以按照这个摸板文件启动无数个一模一样，互不干扰的容器 容器 container……
+            Socket server与client传输数据 传输数据的例子(html或者js) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 public static void main(String[] args) throws Exception { int port = 8080; ServerSocket socket = new ServerSocket(); socket.bind(new InetSocketAddress(&#34;127.0.0.1&#34;, port)); while (true) { Socket from = socket.accept(); BufferedReader reader = new BufferedReader(new InputStreamReader(from.getInputStream())); String line; List&lt;String&gt; headers = new ArrayList&lt;&gt;(); while (!(line = reader.readLine()).isEmpty()) { System.out.println(line); headers.add(line); } String firstLine = headers.get(0); String[] s = firstLine.split(&#34; &#34;); System.out.println(s[1]); from.getOutputStream().write(&#34;HTTP/1.1 200 OK\r\n&#34;.getBytes()); if (s[1].endsWith(&#34;.js&#34;)) {……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/docker/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket-2/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="Java正则表达式">Java正则表达式</a>
+                <a href="https://kongmu373.github.io/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务">微服务</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月16日
+            2020年6月24日
         </date>
         
         <div class="post-meta">
@@ -157,88 +226,65 @@
         </div>
         
         <div class="post-content">
-            常用的元字符 元字符 描述 ^ 开始位置 $ 结束位置 . 单个任意字符(不一定包含换行符) \w 单个&quot;word&quot;字符 字母/数字/下划线/汉字 \s 单个空白字符 (\r\n\t) \d 单个数字字符 \b 单词的开始或结束 用到它们的原来的意思的时候，需要转义 (?s).* . 包括匹配换行符 重复 重复字符 描述 * 0次或多次 + 1次或……
+            什么是微服务 传统开发与微服务的对比图 传统大应用的缺点 难以扩展 scale(水平扩展) &laquo;淘宝技术这十年&raquo; 交付时间长，开发慢 (焦油坑) &laquo;人月神话&raquo; 复杂，维护困难 故障率高 微服务 整个应用按照业务拆分，互相使用RPC/HTTP/REST通信 松散……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/Java%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E5%BE%AE%E6%9C%8D%E5%8A%A1/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/" title="动态代理与AOP">动态代理与AOP</a>
+                <a href="https://kongmu373.github.io/posts/java/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/" title="日志系统">日志系统</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月15日
+            2020年6月23日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Spring'>Spring</a></span>
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
             
         </div>
         
         <div class="post-content">
-            什么是AOP Aspect-Oriented Programming 面向切面编程 相对于OOP (面向对象编程) AOP是面向切面编程，关注一个统一的切面 AOP和Spring是不同的东西 AOP适合于哪些场景 需要统一处理的场景 日志 缓存 鉴权 如果用OOP来做需要怎么办? 装饰器模式 装饰器模式 Decorator pattern 动态地为一个对象增加功能，但是不改变其结构 本质上是……
+            日志系统 为什么需要日志系统? 查找bug,就需要看日志 线上服务器出bug，重点查看就是日志 sping中log如何工作? app -&gt; slf4j (运行时，动态完成与一系列日志框架的绑定(包括log4j logback jul)) slf4j(simple log facade for java) 并非一个日志框架，只是一个门面 设计模式 facade java的包中没有层级关系,但是logger是由……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%E4%B8%8EAOP/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item11-12/" title="Item11 12">Item11 12</a>
+                <a href="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket/" title="TCP与socket">TCP与socket</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月14日
+            2020年6月22日
         </date>
         
         <div class="post-meta">
             <span>|</span>
             
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB'>Java体系</a></span>
             
         </div>
         
         <div class="post-content">
-            Item 11: Always override hashCode when you override equals（当覆盖 equals 时，始终覆盖 hashCode） equals相同的，hascodes也必须相同· equals不相同的，hashcodes也可以相同 没有hashCode的实现将破坏基于hash实现的集合的功能 不好的hashCode实现会降低基于hash实现的性能……
+            通信协议没有100%可靠的 经典的红军/蓝军问题 红军 - 敌人 - 蓝军 红军与蓝军交换信息都要经过敌人 因此无论怎么发，都没有100%可靠的通信协议 计算机网络与传统电信网络 传统电信网络 (电话网络) 电路交换网路 (震动-电信号) 计算机网络 目标:实现全球的连接，并且物理无法毁坏的网络 分组交换(在不……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item11-12/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/TCP%E4%B8%8Esocket/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item10/" title="Item10">Item10</a>
+                <a href="https://kongmu373.github.io/posts/effective-java/item16/" title="Item16">Item16</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2020年6月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 10: Obey the general contract when overriding equals（覆盖 equals 方法时应遵守的约定） 覆盖 equals 方法似乎很简单，但是有很多覆盖的方式会导致出错，而且后果可能非常严重。 equals 约定 &ndash; equivalence relation 覆盖equals 应该遵守(equivalence relation) 自反性(Reflexive), x.equals(x) == true 对称性(Symmetric), x.equals(y) == y.equals(x) 传递性(Tra……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item10/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item9/" title="Item9">Item9</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月14日
+            2020年6月21日
         </date>
         
         <div class="post-meta">
@@ -249,55 +295,9 @@
         </div>
         
         <div class="post-content">
-            Item 9: Prefer try-with-resources to try-finally（使用 try-with-resources 优于 try-finally） try-finally 从历史上看，try-finally 语句是确保正确关闭资源的最佳方法 1 2 3 4 5 6 7 8 9 // try-finally - No longer the best way to close resources! static String firstLineOfFile(String path) throws IOException { BufferedReader br = new BufferedReader(new FileReader(path)); try { return br.readLine(); } finally { br.close(); } } 但添加第二个资源时，情况会变得更糟： 1 2 3 4 5 6 7 8 9 10 11……
+            Item 16: In public classes, use accessor methods, not public fields（在公共类中，使用访问器方法，而不是公共字段） 退化类 1 2 3 4 5 // Degenerate classes like this should not be public! class Point { public double x; public double y; } 不好的地方: 由于此类的数据字段是直接访问的，因此这些类没有提供封装的好处 不能在不更改API的情况下更改表示形式 在访问或者设置字段的时候不能使用额外的……
         </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item9/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/" title="浅析SpringWeb应用">浅析SpringWeb应用</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Spring'>Spring</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Web应用 处理HTTP请求 从HTTP请求中提取query string(查询字符串) 从HTTP请求中接收payload(负载)中的参数 返回HTTP响应 status code HTTP resonse header HTTP response body JSON HTML &hellip; HTTP GET Query string ?param1=value1&amp;param2=value2 通常用来传递非敏感信息 使用@RequestParam进行接收 RESTful API 使用HTTP动词来代表动作 GET: 获取资源……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/html/%E6%B5%85%E6%9E%90URL/" title="浅析URL">浅析URL</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/HTML'>HTML</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            WWW = URL + HTTP + HTML，本篇主要讲的是URL URL举例: https://www.baidu.com:443/s?wd=hi&amp;rsv_spt=1#5 https 协议 www.baidu.com 域名(ip) :443 https的端口 /s 路径 ?wd=hi&amp;rsv_spt=1 查询参数 #5 锚点 什么是IP Internet Protocal 约定了两件事: 如何定位一台设备 如何封装数据报文，以跟其他设备交流 几个特殊的IP 127.0.0.1表示自己 localhost通过hosts文件指定为自己……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/html/%E6%B5%85%E6%9E%90URL/">阅读全文</a></p>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item16/">阅读全文</a></p>
     </article>
     
     
@@ -377,7 +377,7 @@
         
         
         <li >
-            <a href="https://kongmu373.github.io/page/12/">12</a>
+            <a href="https://kongmu373.github.io/page/13/">13</a>
         </li>
         
     
@@ -413,43 +413,43 @@
 <ul class="widget-list">
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/34-Serializable/" title="34 Serializable">34 Serializable</a>
+        <a href="https://kongmu373.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="工厂方法与抽象工厂模式">工厂方法与抽象工厂模式</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/32-ObjectInputStream/" title="32 ObjectInputStream">32 ObjectInputStream</a>
+        <a href="https://kongmu373.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" title="策略模式">策略模式</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/29-DataInputStream/" title="29 DataInputStream">29 DataInputStream</a>
+        <a href="https://kongmu373.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/" title="单例模式">单例模式</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/669-trim-a-binary-search/" title="669 Trim a Binary Search">669 Trim a Binary Search</a>
+        <a href="https://kongmu373.github.io/posts/java/%E6%A8%A1%E6%8B%9F%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/" title="模拟数据库连接池">模拟数据库连接池</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/204-count-primes/" title="204 Count Primes">204 Count Primes</a>
+        <a href="https://kongmu373.github.io/posts/java/%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E5%AF%B9%E8%B1%A1/" title="数据库表自动生成Bean代码">数据库表自动生成Bean代码</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/682-Baseball-Game/" title="682 Baseball Game">682 Baseball Game</a>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-4/" title="线程问题">线程问题</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/leetcode/29-employee-importance/" title="29 Employee Importance">29 Employee Importance</a>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-3/" title="操作系统的部分问题">操作系统的部分问题</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/25%E7%AC%94%E8%AE%B0/" title="25笔记">25笔记</a>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-2/" title="Javase 2">Javase 2</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/22%E7%AC%94%E8%AE%B0/" title="22笔记">22笔记</a>
+        <a href="https://kongmu373.github.io/posts/jvm/gc/" title="GC">GC</a>
     </li>
     
     <li>
-        <a href="https://kongmu373.github.io/posts/io/21%E7%AC%94%E8%AE%B0/" title="21笔记">21笔记</a>
+        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-1/" title="Javase 1">Javase 1</a>
     </li>
     
 </ul>
@@ -467,6 +467,8 @@
     
     <li><a href="https://kongmu373.github.io/categories/IO/">IO (19)</a></li>
     
+    <li><a href="https://kongmu373.github.io/categories/java/">java (4)</a></li>
+    
     <li><a href="https://kongmu373.github.io/categories/Java8/">Java8 (4)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
@@ -475,15 +477,23 @@
     
     <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
     
+    <li><a href="https://kongmu373.github.io/categories/java/">java (1)</a></li>
+    
     <li><a href="https://kongmu373.github.io/categories/java8%E4%BD%93%E7%B3%BB/">java8体系 (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/jvm/">jvm (1)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/leetcode/">leetcode (18)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (3)</a></li>
     
-    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (1)</a></li>
+    <li><a href="https://kongmu373.github.io/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构 (4)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8E%9F%E7%90%86/">计算机原理 (1)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式 (3)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题 (11)</a></li>
     

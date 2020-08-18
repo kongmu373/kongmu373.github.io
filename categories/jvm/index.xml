@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jvm on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/categories/jvm/</link>
+    <description>Recent content in jvm on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 04 Aug 2020 10:46:11 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/categories/jvm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GC</title>
+      <link>https://kongmu373.github.io/posts/jvm/gc/</link>
+      <pubDate>Tue, 04 Aug 2020 10:46:11 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/jvm/gc/</guid>
+      <description>GC 什么是垃圾? 没有任何引用指向的一个对象或者一个对象组(循环引用),都是垃圾 C/C++ : malloc/new free/delete Java : new ?(自动内存回收) 优点: 编程更简单，减少人工的出错问题(忘记回收&amp;ndash;内存泄漏，多次回收&amp;ndash;可能删了有价值的东西) 怎么找到这些垃圾呢? reference count 不能解决循环引用 Root Searchin</description>
+    </item>
+    
+  </channel>
+</rss>

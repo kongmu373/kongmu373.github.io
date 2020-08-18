@@ -62,7 +62,7 @@
       <pubDate>Mon, 06 Jul 2020 14:02:41 +0800</pubDate>
       
       <guid>https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
-      <description>TCP/UDP 区别 TCP, Transmission control Protocol 稳定可靠，有纠错和重传 保证交付 应用对质量要求高的场景 UDP, User Datagram Protocol 快，质量低 尽最大可能交付 对质量要求不高的场景，如:直播 在浏览器中发起一个HTTP请求，底层都是TCP连接 TCP三次握手和四次挥手 从浏览器发出请求到服务器接收到请求发送了什么? 在浏览器输入https://ta</description>
+      <description>TCP/UDP 区别 TCP, Transmission control Protocol 稳定可靠，有纠错和重传 保证交付 应用对质量要求高的场景 UDP, User Datagram Protocol 快，质量低 尽最大可能交付 对质量要求不高的场景，如:直播 在浏览器中发起一个HTTP请求，底层都是TCP连接 从浏览器发出请求到服务器接收到请求发送了什么? 在浏览器输入https://taobao.com,计算机</description>
     </item>
     
     <item>
