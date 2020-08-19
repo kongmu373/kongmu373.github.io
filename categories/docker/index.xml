@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on kongmu373的博客</title>
+    <link>https://kongmu373.github.io/categories/docker/</link>
+    <description>Recent content in docker on kongmu373的博客</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Wed, 19 Aug 2020 08:53:59 +0800</lastBuildDate>
+    
+	<atom:link href="https://kongmu373.github.io/categories/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>win10上安装 Docker Toolbox及解决挂载问题</title>
+      <link>https://kongmu373.github.io/posts/docker/%E8%A7%A3%E5%86%B3docker-toolbox%E5%9C%A8win10%E4%B8%8A%E7%9A%84%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 19 Aug 2020 08:53:59 +0800</pubDate>
+      
+      <guid>https://kongmu373.github.io/posts/docker/%E8%A7%A3%E5%86%B3docker-toolbox%E5%9C%A8win10%E4%B8%8A%E7%9A%84%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98/</guid>
+      <description>背景 本来安装了Docker Desktop,但是却启动不了虚拟机(VMare) 原因是使用了win10自带的Hyper-V功能 最终还是选择了Docker Toolbox 安装 因为使用的是Docker Toolbox,就不像Docker Desktop需要专业版了 只需按照官方的步骤，一步一步来就可以装好，</description>
+    </item>
+    
+  </channel>
+</rss>

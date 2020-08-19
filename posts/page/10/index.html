@@ -75,6 +75,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item9/" title="Item9">Item9</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月14日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 9: Prefer try-with-resources to try-finally（使用 try-with-resources 优于 try-finally） try-finally 从历史上看，try-finally 语句是确保正确关闭资源的最佳方法 1 2 3 4 5 6 7 8 9 // try-finally - No longer the best way to close resources! static String firstLineOfFile(String path) throws IOException { BufferedReader br = new BufferedReader(new FileReader(path)); try { return br.readLine(); } finally { br.close(); } } 但添加第二个资源时，情况会变得更糟： 1 2 3 4 5 6 7 8 9 10 11……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item9/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/java/%E6%B5%85%E6%9E%90SpringWeb%E5%BA%94%E7%94%A8/" title="浅析SpringWeb应用">浅析SpringWeb应用</a>
             </h1>
         </header>
@@ -297,31 +322,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item2/" title="Item2">Item2</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月10日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 2: Consider a builder when faced with many constructor parameters. 都构造函数有多个参数时，考虑用builder. 当类的参数过多的时候,使用不同方法创建对象对应的情况 构造函数 过于啰嗦 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 // Telescoping constructor pattern - does not scale well! public class NutritionFacts { private final int servingSize; // (mL) required private final int servings; // (per container) required private final int calories; // (per serving) optional private final……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item2/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -434,6 +434,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/docker/%E8%A7%A3%E5%86%B3docker-toolbox%E5%9C%A8win10%E4%B8%8A%E7%9A%84%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98/" title="win10上安装 Docker Toolbox及解决挂载问题">win10上安装 Docker Toolbox及解决挂载问题</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="工厂方法与抽象工厂模式">工厂方法与抽象工厂模式</a>
     </li>
     
@@ -469,10 +473,6 @@
         <a href="https://kongmu373.github.io/posts/jvm/gc/" title="GC">GC</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-1/" title="Javase 1">Javase 1</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -495,6 +495,8 @@
     <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/docker/">docker (1)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
     

@@ -75,6 +75,31 @@
     <article class="post">
         <header>
             <h1 class="post-title">
+                <a href="https://kongmu373.github.io/posts/effective-java/item16/" title="Item16">Item16</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年6月21日
+        </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
+            
+        </div>
+        
+        <div class="post-content">
+            Item 16: In public classes, use accessor methods, not public fields（在公共类中，使用访问器方法，而不是公共字段） 退化类 1 2 3 4 5 // Degenerate classes like this should not be public! class Point { public double x; public double y; } 不好的地方: 由于此类的数据字段是直接访问的，因此这些类没有提供封装的好处 不能在不更改API的情况下更改表示形式 在访问或者设置字段的时候不能使用额外的……
+        </div>
+        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item16/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
                 <a href="https://kongmu373.github.io/posts/effective-java/item15/" title="Item15">Item15</a>
             </h1>
         </header>
@@ -297,31 +322,6 @@
     
     
     
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://kongmu373.github.io/posts/effective-java/item9/" title="Item9">Item9</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年6月14日
-        </date>
-        
-        <div class="post-meta">
-            <span>|</span>
-            
-            <span class="meta-category"><a href='https://kongmu373.github.io/categories/Effective-Java'>Effective Java</a></span>
-            
-        </div>
-        
-        <div class="post-content">
-            Item 9: Prefer try-with-resources to try-finally（使用 try-with-resources 优于 try-finally） try-finally 从历史上看，try-finally 语句是确保正确关闭资源的最佳方法 1 2 3 4 5 6 7 8 9 // try-finally - No longer the best way to close resources! static String firstLineOfFile(String path) throws IOException { BufferedReader br = new BufferedReader(new FileReader(path)); try { return br.readLine(); } finally { br.close(); } } 但添加第二个资源时，情况会变得更糟： 1 2 3 4 5 6 7 8 9 10 11……
-        </div>
-        <p class="readmore"><a href="https://kongmu373.github.io/posts/effective-java/item9/">阅读全文</a></p>
-    </article>
-    
-    
-    
 
 
 
@@ -434,6 +434,10 @@
 <ul class="widget-list">
     
     <li>
+        <a href="https://kongmu373.github.io/posts/docker/%E8%A7%A3%E5%86%B3docker-toolbox%E5%9C%A8win10%E4%B8%8A%E7%9A%84%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98/" title="win10上安装 Docker Toolbox及解决挂载问题">win10上安装 Docker Toolbox及解决挂载问题</a>
+    </li>
+    
+    <li>
         <a href="https://kongmu373.github.io/posts/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/" title="工厂方法与抽象工厂模式">工厂方法与抽象工厂模式</a>
     </li>
     
@@ -469,10 +473,6 @@
         <a href="https://kongmu373.github.io/posts/jvm/gc/" title="GC">GC</a>
     </li>
     
-    <li>
-        <a href="https://kongmu373.github.io/posts/%E9%9D%A2%E8%AF%95%E9%A2%98/javase-1/" title="Javase 1">Javase 1</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -495,6 +495,8 @@
     <li><a href="https://kongmu373.github.io/categories/Java%E4%BD%93%E7%B3%BB/">Java体系 (26)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/Spring/">Spring (2)</a></li>
+    
+    <li><a href="https://kongmu373.github.io/categories/docker/">docker (1)</a></li>
     
     <li><a href="https://kongmu373.github.io/categories/git/">git (2)</a></li>
     
